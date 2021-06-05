@@ -1,0 +1,13 @@
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.exe
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.deps.json
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.json
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.dev.json
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csprojAssemblyReference.cache
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfoInputs.cache
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfo.cs
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCompileInputs.cache
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache
