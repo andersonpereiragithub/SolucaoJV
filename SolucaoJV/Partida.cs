@@ -53,19 +53,27 @@ namespace SolucaoJV
         public void PreencherJogada(string[,] tab)
         {
             Console.Clear();
-            for (int i = 0; i < tab.GetLength(0); i++)
-            {
-                for (int j = 0; j < tab.GetLength(1); j++)
-                {
-                    if (i == 0)
-                        Console.Write("[{0}]", tab[i, j]);
-                    else if (i == 1)
-                        Console.Write("[{0}]", tab[i, j]);
-                    else
-                        Console.Write("[{0}]", tab[i, j]);
-                }
-                Console.WriteLine();
-            }
+            Console.WriteLine("\t### J O G O  D A  V E L H A ###\n\n");
+
+            Console.WriteLine("\t         |       |         ");
+
+            Console.WriteLine("\t      {0} |  {1}   | {2}   ", tab[0, 0], tab[0, 1], tab[0, 2]);
+
+            Console.WriteLine("\t    _____|_______|_____     ");
+
+            Console.WriteLine("\t         |       |        ");
+
+            Console.WriteLine("\t      {0} |  {1}   | {2}", tab[1, 0], tab[1, 1], tab[1, 2]);
+
+            Console.WriteLine("\t    _____|_______|_____     ");
+
+            Console.WriteLine("\t         |       |          ");
+
+            Console.WriteLine("\t      {0} |  {1}   | {2}", tab[2, 0], tab[2, 1], tab[2, 2]);
+
+            Console.WriteLine("\t         |       |      ");
+            
+            Console.WriteLine();
         }
     }
 }
