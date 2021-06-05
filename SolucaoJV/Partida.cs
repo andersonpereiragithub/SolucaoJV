@@ -24,12 +24,15 @@ namespace SolucaoJV
         {
             Turno++;
         }
-        private void mudarJogador()
+        public void MudarJogador()
         {
             if (jogadorAtual == Tipo.X)
                 jogadorAtual = Tipo.O;
             else
+            {
+                IncrementaTurno();
                 jogadorAtual = Tipo.X;
+            }
         }
         public void PreencherTela(string[,] tab)
         {

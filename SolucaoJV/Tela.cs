@@ -23,6 +23,8 @@ namespace SolucaoJV
                 tab[p.Linha, p.Coluna] = Convert.ToString(partida.jogadorAtual);
 
                 partida.PreencherJogada(tab);
+                
+                partida.MudarJogador();
             }
         }
     }
