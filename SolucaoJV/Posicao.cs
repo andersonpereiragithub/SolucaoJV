@@ -48,7 +48,7 @@ namespace SolucaoJV
         public void JogadaInvalida()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Partida.EscreverEm("Posicação Inválida", 20, 15);
+            Partida.EscreverEm("Jogada Inválida", 20, 15);
             Partida.EscreverEm("Qualquer tecla continua!", 20, 16);
             Console.ResetColor();
             Console.ReadKey();

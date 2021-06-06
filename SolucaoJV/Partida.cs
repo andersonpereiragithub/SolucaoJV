@@ -182,8 +182,31 @@ namespace SolucaoJV
         }
         public static void EscreverEm(string s, int linha, int coluna)
         {
-            Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-            Console.Write(s);
+            if (s == "X" || s == "O")
+                AlterarCor(s, linha, coluna);
+            else
+            {
+                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
+                Console.Write(s);
+            }
+        }
+
+        private static void AlterarCor(string s, int linha, int coluna)
+        {
+            if (s == Convert.ToString(TipoJogador.X))
+            {
+                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(s);
+                Console.ResetColor();
+            }
+            if (s == Convert.ToString(TipoJogador.O))
+            {
+                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(s);
+                Console.ResetColor();
+            }
         }
     }
 }

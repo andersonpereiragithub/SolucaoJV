@@ -18,7 +18,9 @@ namespace SolucaoJV
                 bool posicao = false;
                 Posicao p = new Posicao();
                 Console.WriteLine("Turno: {0}", partida.Turno);
-                Console.WriteLine("Jogador [{0}]", partida.jogadorAtual);
+                Console.Write("Jogador [");
+                Partida.EscreverEm(Convert.ToString(partida.jogadorAtual), 9, 14);
+                Partida.EscreverEm("]", 10, 14);
                 p.InserirJogada();
                 
                 while (!posicao)
@@ -30,11 +32,7 @@ namespace SolucaoJV
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Partida.EscreverEm("Posicação Inválida:", 20, 15);
-                        Console.ResetColor();
-                        Console.ReadKey();
-                        Partida.EscreverEm("                       ", 17, 15);
+                        p.JogadaInvalida();
                         p.InserirJogada();
                     }
                 }
