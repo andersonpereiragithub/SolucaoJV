@@ -9,21 +9,33 @@ namespace SolucaoJV
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
+         public void InserirJogada(char linha, int coluna)
+        {
+            Linha = linha - 'a';
+            Coluna = coluna - 1;
+        }
         public void InserirJogada()
         {
-            Partida.EscreverEm("Sua vez: ", 8, 15);
-            string jogada = Console.ReadLine();
-            
-            if (JogadaValida(jogada))
+            try
             {
-                char linha = jogada[0];
-                int coluna = int.Parse(jogada[1] + "");
-                InserirJogada(linha, coluna);
+                Partida.EscreverEm("Sua vez: ", 8, 15);
+                string jogada = Console.ReadLine();
+
+                if (JogadaValida(jogada))
+                {
+                    char linha = jogada[0];
+                    int coluna = int.Parse(jogada[1] + "");
+                    InserirJogada(linha, coluna);
+                }
+                else
+                {
+                    JogadaInvalida();
+                    InserirJogada();
+                }
             }
-            else
+            catch(Exception e)
             {
-                JogadaInvalida();   
-                InserirJogada();
+                Partida.EscreverEm(Convert.ToString(e.Message), 8, 15);
             }
         }
 
@@ -31,20 +43,11 @@ namespace SolucaoJV
         {
             if ((str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&
                 (str[1] == '1' || str[1] == '2' || str[1] == '3'))
-            {
                 return true;
-            }
             else
-            {
-                
                 return false;
-            }
         }
-        public void InserirJogada(char linha, int coluna)
-        {
-            Linha = linha - 'a';
-            Coluna = coluna - 1;
-        }
+       
         public void JogadaInvalida()
         {
             Console.ForegroundColor = ConsoleColor.Red;

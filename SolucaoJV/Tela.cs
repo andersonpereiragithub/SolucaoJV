@@ -11,7 +11,7 @@ namespace SolucaoJV
             Partida partida = new Partida();
             string[,] tab = new string[3, 3];
                        
-            partida.PreencherJogada(tab);
+            partida.ImprimirTelaJogo(tab);
 
             while (!partida.Terminada)
             {
@@ -38,7 +38,7 @@ namespace SolucaoJV
                 }
 
 
-                partida.PreencherJogada(tab);
+                partida.ImprimirTelaJogo(tab);
                 
                 partida.MudarJogador();
             }

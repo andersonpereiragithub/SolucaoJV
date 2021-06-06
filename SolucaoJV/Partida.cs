@@ -22,7 +22,7 @@ namespace SolucaoJV
             Terminada = false;
         }
 
-        public void IncrementaTurno()
+        public void IncrementarTurno()
         {
             Turno++;
         }
@@ -32,12 +32,12 @@ namespace SolucaoJV
                 jogadorAtual = TipoJogador.O;
             else
             {
-                IncrementaTurno();
+                IncrementarTurno();
                 jogadorAtual = TipoJogador.X;
             }
         }
         
-        public void PreencherJogada(string[,] tab)
+        public void ImprimirTelaJogo(string[,] tab)
         {
             origLinha = 0;
             origColuna = 0;
