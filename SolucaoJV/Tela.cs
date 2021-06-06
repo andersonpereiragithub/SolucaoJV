@@ -10,7 +10,7 @@ namespace SolucaoJV
         {
             Partida partida = new Partida();
             string[,] tab = new string[3, 3];
-            partida.PreencherTela(tab);
+           
             partida.PreencherJogada(tab);
 
             while (!partida.Terminada)
