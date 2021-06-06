@@ -9,8 +9,9 @@ namespace SolucaoJV
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-        public void IncerirJogada()
+        public void InserirJogada()
         {
+            Partida.EscreverEm("Sua vez: ", 8, 15);
             string jogada = Console.ReadLine();
             char linha = jogada[0];
             int coluna = int.Parse(jogada[1] + "");
@@ -22,5 +23,6 @@ namespace SolucaoJV
             Linha = linha - 'a';
             Coluna = coluna - 1;
         }
+
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SolucaoJV
 {
-    enum Tipo
+    enum TipoJogador
     {
         X, O
     }
