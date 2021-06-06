@@ -54,24 +54,38 @@ namespace SolucaoJV
         //}
         public void PreencherJogada(string[,] tab)
         {
-            origLinha = Console.CursorTop;
-            origColuna = Console.CursorLeft;
+            origLinha = 0;
+            origColuna = 0;
 
             Console.Clear();
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
-            
+
             //Colunas
             EscreverEm("|", 14, 2);
             EscreverEm("|", 14, 3);
-            EscreverEm("a1", 10, 3);
+
+            if (tab[0, 0] == "X" || tab[0, 0] == "O")
+                EscreverEm(tab[0, 0], 10, 3);
+            else
+                EscreverEm("a1", 10, 3);
+
             EscreverEm("|", 14, 4);
             EscreverEm("+", 14, 5);
 
             //colunas
             EscreverEm("|", 21, 2);
             EscreverEm("|", 21, 3);
-            EscreverEm("a2", 17, 3);
-            EscreverEm("a3", 24, 3);
+
+            if (tab[0, 1] == "X" || tab[0, 1] == "O")
+                EscreverEm(tab[0, 1], 17, 3);
+            else
+                EscreverEm("a2", 17, 3);
+
+            if (tab[0, 2] == "X" || tab[0, 2] == "O")
+                EscreverEm(tab[0, 2], 24, 3);
+            else
+                EscreverEm("a3", 24, 3);
+
             EscreverEm("|", 21, 4);
             EscreverEm("+", 21, 5);
 
@@ -102,7 +116,12 @@ namespace SolucaoJV
 
             //Colunas
             EscreverEm("|", 14, 6);
-            EscreverEm("b1", 10, 7);
+
+            if (tab[1, 0] == "X" || tab[1, 0] == "O")
+                EscreverEm(tab[1, 0], 10, 7);
+            else
+                EscreverEm("b1", 10, 7);
+
             EscreverEm("|", 14, 7);
             EscreverEm("|", 14, 8);
             EscreverEm("+", 14, 9);
@@ -110,8 +129,17 @@ namespace SolucaoJV
             //Colunas
             EscreverEm("|", 21, 6);
             EscreverEm("|", 21, 7);
-            EscreverEm("b2", 17, 7);
-            EscreverEm("b3", 24, 7);
+
+            if (tab[1, 1] == "X" || tab[1, 1] == "O")
+                EscreverEm(tab[1, 1], 17, 7);
+            else
+                EscreverEm("b2", 17, 7);
+
+            if (tab[1, 2] == "X" || tab[1, 2] == "O")
+                EscreverEm(tab[1, 2], 24, 7);
+            else
+                EscreverEm("b3", 24, 7);
+
             EscreverEm("|", 21, 8);
             EscreverEm("+", 21, 9);
 
@@ -143,13 +171,26 @@ namespace SolucaoJV
 
             EscreverEm("|", 14, 10);
             EscreverEm("|", 14, 11);
-            EscreverEm("c1", 10, 11);
-            EscreverEm("|", 14, 12);
 
+            if (tab[2, 0] == "X" || tab[2, 0] == "O")
+                EscreverEm(tab[2, 0], 10, 11);
+            else
+                EscreverEm("c1", 10, 11);
+
+            EscreverEm("|", 14, 12);
             EscreverEm("|", 21, 10);
             EscreverEm("|", 21, 11);
-            EscreverEm("c2", 17, 11);
-            EscreverEm("c3", 24, 11);
+
+            if (tab[2, 1] == "X" || tab[2, 1] == "O")
+                EscreverEm(tab[2, 1], 17, 11);
+            else
+                EscreverEm("c2", 17, 11);
+
+            if (tab[2, 2] == "X" || tab[2, 2] == "0")
+                EscreverEm(tab[2, 2], 24, 11);
+            else
+                EscreverEm("c3", 24, 11);
+
             EscreverEm("|", 21, 12);
 
             Console.WriteLine();

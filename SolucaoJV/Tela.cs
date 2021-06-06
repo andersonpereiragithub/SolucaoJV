@@ -20,7 +20,7 @@ namespace SolucaoJV
                 Console.WriteLine("Jogador [{0}]", partida.jogadorAtual);
                 Console.Write("\tSua vez: ");
                 p.IncerirJogada();
-                tab[p.Linha, p.Coluna] = " " + Convert.ToString(partida.jogadorAtual);
+                tab[p.Linha, p.Coluna] = Convert.ToString(partida.jogadorAtual);
 
                 partida.PreencherJogada(tab);
                 
