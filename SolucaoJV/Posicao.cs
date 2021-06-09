@@ -18,8 +18,9 @@ namespace SolucaoJV
         {
             try
             {
-                Partida.EscreverEm("Sua vez: ", 8, 15);
+                Tela.EscreverEm("Sua vez: ", 8, 15);
                 string jogada = Console.ReadLine();
+                Tela.EscreverEm("Sua vez:   ", 8, 15);
 
                 if (JogadaValida(jogada))
                 {
@@ -35,7 +36,7 @@ namespace SolucaoJV
             }
             catch(Exception e)
             {
-                Partida.EscreverEm(Convert.ToString(e.Message), 8, 15);
+                Tela.EscreverEm(Convert.ToString(e.Message), 8, 15);
             }
         }
 
@@ -51,12 +52,12 @@ namespace SolucaoJV
         public void JogadaInvalida()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Partida.EscreverEm("Jogada Inválida", 20, 15);
-            Partida.EscreverEm("Qualquer tecla continua!", 20, 16);
+            Tela.EscreverEm("Jogada Inválida", 20, 15);
+            Tela.EscreverEm("Qualquer tecla continua!", 20, 16);
             Console.ResetColor();
             Console.ReadKey();
-            Partida.EscreverEm("                             ", 17, 15);
-            Partida.EscreverEm("                             ", 17, 16);
+            Tela.EscreverEm("                             ", 17, 15);
+            Tela.EscreverEm("                             ", 17, 16);
         }
     }
 }
