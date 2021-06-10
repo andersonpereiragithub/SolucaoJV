@@ -18,9 +18,12 @@ namespace SolucaoJV
         {
             try
             {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Tela.EscreverEm("Sua vez: ", 8, 15);
                 string jogada = Console.ReadLine();
                 Tela.EscreverEm("Sua vez:   ", 8, 15);
+                Console.ResetColor();
 
                 if (JogadaValida(jogada))
                 {
@@ -52,12 +55,12 @@ namespace SolucaoJV
         public void JogadaInvalida()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Tela.EscreverEm("Jogada Inválida", 20, 15);
-            Tela.EscreverEm("Qualquer tecla continua!", 20, 16);
+            Tela.EscreverEm("Jogada Inválida", 18, 15);
+            Tela.EscreverEm("Qualquer tecla continua!", 8, 16);
             Console.ResetColor();
             Console.ReadKey();
             Tela.EscreverEm("                             ", 17, 15);
-            Tela.EscreverEm("                             ", 17, 16);
+            Tela.EscreverEm("                             ", 8, 16);
         }
     }
 }

@@ -45,21 +45,27 @@ namespace SolucaoJV
                 Tela.EscreverEm(Convert.ToString(jogadorAtual), 20, 15);
                 if (Convert.ToString(jogadorAtual) == "X")
                 {
+                    Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Tela.EscreverEm("Venceu!!!", 12, 14);
+                    ReiniciarPartida();
                     Console.ResetColor();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Tela.EscreverEm("Venceu!!!", 12, 14);
+                    ReiniciarPartida();
                     Console.ResetColor();
                 }
             }
             else if (v == -1)
             {
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Tela.EscreverEm("Deu EMPATE!", 18, 15);
+                Tela.EscreverEm("Deu EMPATE!", 17, 15);
+                ReiniciarPartida();
                 Console.ResetColor();
             }
         }
@@ -74,14 +80,14 @@ namespace SolucaoJV
                mat[0, 1] == "X" && mat[1, 1] == "X" && mat[2, 1] == "X" ||
                mat[0, 2] == "X" && mat[1, 2] == "X" && mat[2, 2] == "X" ||
 
-               mat[0, 0] == "0" && mat[0, 1] == "0" && mat[0, 2] == "0" ||
-               mat[1, 0] == "0" && mat[1, 1] == "0" && mat[1, 2] == "0" ||
-               mat[2, 0] == "0" && mat[2, 1] == "0" && mat[2, 2] == "0" ||
-               mat[0, 0] == "0" && mat[1, 1] == "0" && mat[2, 2] == "0" ||
-               mat[0, 2] == "0" && mat[1, 1] == "0" && mat[2, 0] == "0" ||
-               mat[0, 0] == "0" && mat[1, 0] == "0" && mat[2, 0] == "0" ||
-               mat[0, 1] == "0" && mat[1, 1] == "0" && mat[2, 1] == "0" ||
-               mat[0, 2] == "0" && mat[1, 2] == "0" && mat[2, 2] == "0")
+               mat[0, 0] == "O" && mat[0, 1] == "O" && mat[0, 2] == "O" ||
+               mat[1, 0] == "O" && mat[1, 1] == "O" && mat[1, 2] == "O" ||
+               mat[2, 0] == "O" && mat[2, 1] == "O" && mat[2, 2] == "O" ||
+               mat[0, 0] == "O" && mat[1, 1] == "O" && mat[2, 2] == "O" ||
+               mat[0, 2] == "O" && mat[1, 1] == "O" && mat[2, 0] == "O" ||
+               mat[0, 0] == "O" && mat[1, 0] == "O" && mat[2, 0] == "O" ||
+               mat[0, 1] == "O" && mat[1, 1] == "O" && mat[2, 1] == "O" ||
+               mat[0, 2] == "O" && mat[1, 2] == "O" && mat[2, 2] == "O")
             {
                 Terminada = true;
                 return 1;
@@ -93,6 +99,15 @@ namespace SolucaoJV
                 return -1;
             else
                 return 0;
+        }
+        public void ReiniciarPartida()
+        {
+            Tela.EscreverEm("Deseja Reinciar (s/n)? ", 10 , 16);
+            char resp = char.Parse(Console.ReadLine());
+            if (resp.Equals('s'))
+                Tela.ViewTela();
+
+            Environment.Exit(0);
         }
     }
 }

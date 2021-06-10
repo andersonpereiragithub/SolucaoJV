@@ -19,12 +19,18 @@ namespace SolucaoJV
             {
                 bool posicao = false;
                 Posicao p = new Posicao();
+
+
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
                 EscreverEm("Turno: ", 0, 13);
                 EscreverEm(Convert.ToString(partida.Turno), 8, 13);
-
                 EscreverEm("Jogador [", 0, 14);
                 EscreverEm(Convert.ToString(partida.jogadorAtual), 9, 14);
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
                 EscreverEm("]", 10, 14);
+                Console.ResetColor();
                 p.InserirJogada();
 
                 while (!posicao)
@@ -94,6 +100,7 @@ namespace SolucaoJV
         {
             if (s == Convert.ToString(TipoJogador.X))
             {
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(s + " ");
@@ -101,8 +108,9 @@ namespace SolucaoJV
             }
             if (s == Convert.ToString(TipoJogador.O))
             {
+                Console.BackgroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write(s + " ");
                 Console.ResetColor();
             }
@@ -110,7 +118,8 @@ namespace SolucaoJV
         public static void ImprimirTelaJogo()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
             
             for (int i = 2; i < 13; i++)
@@ -128,7 +137,6 @@ namespace SolucaoJV
             EscreverEm("+", 14, 9);
             EscreverEm("+", 21, 5);
             EscreverEm("+", 21, 9);
-            Console.ResetColor();
 
             EscreverEm("a1", 10, 3);
             EscreverEm("a2", 17, 3);
@@ -140,7 +148,7 @@ namespace SolucaoJV
             EscreverEm("c2", 17, 11);
             EscreverEm("c3", 24, 11);
 
-            Console.WriteLine();
+            Console.ResetColor();
         }
     }
 }
