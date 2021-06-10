@@ -21,6 +21,7 @@ namespace SolucaoJV
                 Posicao p = new Posicao();
                 EscreverEm("Turno: ", 0, 13);
                 EscreverEm(Convert.ToString(partida.Turno), 8, 13);
+
                 EscreverEm("Jogador [", 0, 14);
                 EscreverEm(Convert.ToString(partida.jogadorAtual), 9, 14);
                 EscreverEm("]", 10, 14);
@@ -32,7 +33,11 @@ namespace SolucaoJV
                     {
                         partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.jogadorAtual);
                         ImprimirJogadasJogadas(Convert.ToString(partida.jogadorAtual), p.Linha, p.Coluna);
-
+                        
+                        if (partida.Turno > 2)
+                        {
+                            partida.VefificarVitoria();
+                        }
                         posicao = true;
                     }
                     else
@@ -91,7 +96,7 @@ namespace SolucaoJV
             {
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(s+ " ");
+                Console.Write(s + " ");
                 Console.ResetColor();
             }
             if (s == Convert.ToString(TipoJogador.O))
@@ -105,8 +110,9 @@ namespace SolucaoJV
         public static void ImprimirTelaJogo()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
-
+            
             for (int i = 2; i < 13; i++)
             {
                 EscreverEm("|", 14, i);
@@ -122,6 +128,7 @@ namespace SolucaoJV
             EscreverEm("+", 14, 9);
             EscreverEm("+", 21, 5);
             EscreverEm("+", 21, 9);
+            Console.ResetColor();
 
             EscreverEm("a1", 10, 3);
             EscreverEm("a2", 17, 3);

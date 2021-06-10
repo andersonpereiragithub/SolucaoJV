@@ -36,7 +36,7 @@ namespace SolucaoJV
             }
             catch(Exception e)
             {
-                Tela.EscreverEm(Convert.ToString(e.Message), 8, 15);
+                Tela.EscreverEm(Convert.ToString(e.Message), 20, 15);
             }
         }
 
