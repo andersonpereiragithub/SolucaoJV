@@ -11,51 +11,11 @@ namespace SolucaoJV
 
         public static void ViewTela()
         {
-            Partida partida = new Partida();
-
             ImprimirTelaJogo();
 
-            while (!partida.Terminada)
-            {
-                bool posicao = false;
-                Posicao p = new Posicao();
-
-
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                EscreverEm("Turno: ", 0, 13);
-                EscreverEm(Convert.ToString(partida.Turno), 8, 13);
-                EscreverEm("Jogador [", 0, 14);
-                EscreverEm(Convert.ToString(partida.jogadorAtual), 9, 14);
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                EscreverEm("]", 10, 14);
-                Console.ResetColor();
-                p.InserirJogada();
-
-                while (!posicao)
-                {
-                    if (partida.Jogadas[p.Linha, p.Coluna] == null)
-                    {
-                        partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.jogadorAtual);
-                        ImprimirJogadasJogadas(Convert.ToString(partida.jogadorAtual), p.Linha, p.Coluna);
-                        
-                        if (partida.Turno > 2)
-                        {
-                            partida.VefificarVitoria();
-                        }
-                        posicao = true;
-                    }
-                    else
-                    {
-                        p.JogadaInvalida();
-                        p.InserirJogada();
-                    }
-                }
-                partida.MudarJogador();
-            }
+            Partida.IniciarPartida();
         }
-        public static void ImprimirJogadasJogadas(string jogador, int linha, int coluna)
+        public static void SetJogadas(string jogador, int linha, int coluna)
         {
             if (linha == 0)
             {

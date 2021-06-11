@@ -6,10 +6,9 @@ namespace SolucaoJV
 {
     class Partida
     {
-        public Tela tab { get; set; }
         public int QtePartida { get; set; }
         public int Turno { get; set; }
-        public TipoJogador jogadorAtual { get; private set; }
+        public TipoJogador JogadorAtual { get; private set; }
         public bool Terminada { get; set; }
         public string[,] Jogadas { get; set; }
 
@@ -17,23 +16,66 @@ namespace SolucaoJV
         {
             QtePartida = 0;
             Turno = 1;
-            jogadorAtual = TipoJogador.X;
+            JogadorAtual = TipoJogador.X;
             Terminada = false;
             Jogadas = new string[3, 3];
         }
+        public static void IniciarPartida()
+        {
+            Partida partida = new Partida();
 
+            while (!partida.Terminada)
+            {
+                bool posicao = false;
+                Posicao p = new Posicao();
+
+
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Tela.EscreverEm("Turno: ", 0, 13);
+                Tela.EscreverEm(Convert.ToString(partida.Turno), 8, 13);
+                Tela.EscreverEm("Jogador [", 0, 14);
+                Tela.EscreverEm(Convert.ToString(partida.JogadorAtual), 9, 14);
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Tela.EscreverEm("]", 10, 14);
+                Console.ResetColor();
+                p.InserirJogada();
+
+                while (!posicao)
+                {
+                    if (partida.Jogadas[p.Linha, p.Coluna] == null)
+                    {
+                        partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
+                        Tela.SetJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
+
+                        if (partida.Turno > 2)
+                        {
+                            partida.VefificarVitoria();
+                        }
+                        posicao = true;
+                    }
+                    else
+                    {
+                        p.JogadaInvalida();
+                        p.InserirJogada();
+                    }
+                }
+                partida.MudarJogador();
+            }
+        }
         public void IncrementarTurno()
         {
             Turno++;
         }
         public void MudarJogador()
         {
-            if (jogadorAtual == TipoJogador.X)
-                jogadorAtual = TipoJogador.O;
+            if (JogadorAtual == TipoJogador.X)
+                JogadorAtual = TipoJogador.O;
             else
             {
                 IncrementarTurno();
-                jogadorAtual = TipoJogador.X;
+                JogadorAtual = TipoJogador.X;
             }
         }
 
@@ -42,8 +84,8 @@ namespace SolucaoJV
             int v = CondicaoDeVitoria(Jogadas);
             if (v == 1)
             {
-                Tela.EscreverEm(Convert.ToString(jogadorAtual), 20, 15);
-                if (Convert.ToString(jogadorAtual) == "X")
+                Tela.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
+                if (Convert.ToString(JogadorAtual) == "X")
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -102,12 +144,12 @@ namespace SolucaoJV
         }
         public void ReiniciarPartida()
         {
-            Tela.EscreverEm("Deseja Reinciar (s/n)? ", 10 , 16);
+            Tela.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
                 Tela.ViewTela();
 
-            Environment.Exit(0);
+            Environment.Exit(1);
         }
     }
 }
