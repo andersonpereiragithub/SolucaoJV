@@ -35,12 +35,11 @@ namespace SolucaoJV
                 Tela.EscreverEm("Turno: ", 0, 13);
                 Tela.EscreverEm(Convert.ToString(partida.Turno), 8, 13);
                 Tela.EscreverEm("Jogador [", 0, 14);
-                Tela.EscreverEm(Convert.ToString(partida.JogadorAtual), 9, 14);
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Tela.EscreverEm("]", 10, 14);
+                Tela.EscreverEm("]", 12, 14);
+                Tela.EscreverEm(Convert.ToString(partida.JogadorAtual), 10, 14);
                 Console.ResetColor();
-                p.InserirJogada();
+                
+                p.LerJogada();
 
                 while (!posicao)
                 {
@@ -58,7 +57,7 @@ namespace SolucaoJV
                     else
                     {
                         p.JogadaInvalida();
-                        p.InserirJogada();
+                        p.LerJogada();
                     }
                 }
                 partida.MudarJogador();
@@ -89,7 +88,7 @@ namespace SolucaoJV
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Tela.EscreverEm("Venceu!!!", 12, 14);
+                    Tela.EscreverEm("Venceu!!!", 14, 14);
                     ReiniciarPartida();
                     Console.ResetColor();
                 }
@@ -97,7 +96,7 @@ namespace SolucaoJV
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Tela.EscreverEm("Venceu!!!", 12, 14);
+                    Tela.EscreverEm("Venceu!!!", 14, 14);
                     ReiniciarPartida();
                     Console.ResetColor();
                 }
@@ -144,7 +143,9 @@ namespace SolucaoJV
         }
         public void ReiniciarPartida()
         {
+            Tela.EscreverEm("                       ", 8, 15);
             Tela.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
+            
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
                 Tela.ViewTela();

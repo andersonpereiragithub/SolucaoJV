@@ -14,7 +14,7 @@ namespace SolucaoJV
             Linha = linha - 'a';
             Coluna = coluna - 1;
         }
-        public void InserirJogada()
+        public void LerJogada()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace SolucaoJV
                 else
                 {
                     JogadaInvalida();
-                    InserirJogada();
+                    LerJogada();
                 }
             }
             catch(Exception e)
