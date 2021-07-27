@@ -12,3 +12,16 @@ C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJ
 C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache
 C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.AssemblyReference.cache
 C:\Users\Delon\source\repos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.exe
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.deps.json
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.json
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.dev.json
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Projetos\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.AssemblyReference.cache
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfoInputs.cache
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfo.cs
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCompileInputs.cache
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache

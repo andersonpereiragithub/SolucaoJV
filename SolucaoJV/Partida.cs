@@ -40,7 +40,7 @@ namespace SolucaoJV
                     if (partida.Jogadas[p.Linha, p.Coluna] == null)
                     {
                         partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
-                        tab.SetJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
+                        tab.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
 
                         if (partida.Turno > 2)
                         {

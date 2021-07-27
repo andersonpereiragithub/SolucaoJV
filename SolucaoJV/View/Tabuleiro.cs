@@ -54,7 +54,7 @@ namespace View
             Partida.IniciarPartida();
         }
 
-        public void SetJogadas(string jogador, int linha, int coluna)
+        public void ImprimeJogadas(string jogador, int linha, int coluna)
         {
             if (linha == 0)
             {
