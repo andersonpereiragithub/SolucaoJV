@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using View;
 
 namespace SolucaoJV
 {
-    class Partida
+    class Partida : Tabuleiro
     {
         public int QtePartida { get; set; }
         public int Turno { get; set; }
@@ -28,15 +27,10 @@ namespace SolucaoJV
             {
                 bool posicao = false;
                 Posicao p = new Posicao();
+                Tabuleiro tab = new Tabuleiro();
 
-
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Tela.EscreverEm("Turno: ", 0, 13);
-                Tela.EscreverEm(Convert.ToString(partida.Turno), 8, 13);
-                Tela.EscreverEm("Jogador [", 0, 14);
-                Tela.EscreverEm("]", 12, 14);
-                Tela.EscreverEm(Convert.ToString(partida.JogadorAtual), 10, 14);
+                tab.EscreverEm(Convert.ToString(partida.Turno), 8, 13);
+                tab.EscreverEm(Convert.ToString(partida.JogadorAtual), 10, 14);
                 Console.ResetColor();
                 
                 p.LerJogada();
@@ -46,7 +40,7 @@ namespace SolucaoJV
                     if (partida.Jogadas[p.Linha, p.Coluna] == null)
                     {
                         partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
-                        Tela.SetJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
+                        tab.SetJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
 
                         if (partida.Turno > 2)
                         {
@@ -80,15 +74,16 @@ namespace SolucaoJV
 
         public void VefificarVitoria()
         {
+            Tabuleiro t = new Tabuleiro();
             int v = CondicaoDeVitoria(Jogadas);
             if (v == 1)
             {
-                Tela.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
+                t.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
                 if (Convert.ToString(JogadorAtual) == "X")
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Tela.EscreverEm("Venceu!!!", 14, 14);
+                    t.EscreverEm("Venceu!!!", 14, 14);
                     ReiniciarPartida();
                     Console.ResetColor();
                 }
@@ -96,7 +91,7 @@ namespace SolucaoJV
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Tela.EscreverEm("Venceu!!!", 14, 14);
+                    t.EscreverEm("Venceu!!!", 14, 14);
                     ReiniciarPartida();
                     Console.ResetColor();
                 }
@@ -105,7 +100,7 @@ namespace SolucaoJV
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Tela.EscreverEm("Deu EMPATE!", 17, 15);
+                t.EscreverEm("Deu EMPATE!", 17, 15);
                 ReiniciarPartida();
                 Console.ResetColor();
             }
@@ -143,12 +138,13 @@ namespace SolucaoJV
         }
         public void ReiniciarPartida()
         {
-            Tela.EscreverEm("                       ", 8, 15);
-            Tela.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
+            Tabuleiro t = new Tabuleiro();
+            t.EscreverEm("                       ", 8, 15);
+            t.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
             
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
-                Tela.ViewTela();
+                t.ImprimirTelaJogo();
 
             Environment.Exit(1);
         }

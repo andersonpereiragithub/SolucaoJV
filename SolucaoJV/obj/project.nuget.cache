@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kC6I6gKT9U6pnDzMr+QrEB9nXWlXkPfYEs+ha+53cJhJxuECHSEp3F91I8JLvAbyQECPybjfsn8QVqGXIhJw5A==",
+  "dgSpecHash": "4wJ32Kp8wEyLdpPq2/aLdZWpzh/oWa0z5bttw2BcOv+71rvfAv2+NYuRNd27Eeex/0+TRHzlC4Xi0HOatrmXvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Delon\\source\\repos\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Delon\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.16\\microsoft.netcore.app.host.win-x64.3.1.16.nupkg.sha512"
+  ],
   "logs": []
 }

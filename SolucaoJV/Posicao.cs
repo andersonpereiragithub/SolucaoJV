@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using View;
 
 namespace SolucaoJV
 {
@@ -20,9 +21,11 @@ namespace SolucaoJV
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Tela.EscreverEm("Sua vez: ", 8, 15);
+                Console.SetCursorPosition( 8, 15);
+                Console.Write("Sua vez: ");
                 string jogada = Console.ReadLine();
-                Tela.EscreverEm("Sua vez:   ", 8, 15);
+                Console.SetCursorPosition(8, 15);
+                Console.Write("Sua vez: "); 
                 Console.ResetColor();
 
                 if (JogadaValida(jogada))
@@ -37,9 +40,10 @@ namespace SolucaoJV
                     LerJogada();
                 }
             }
-            catch(Exception e)
+            catch
             {
-                Tela.EscreverEm(Convert.ToString(e.Message), 20, 15);
+                Console.SetCursorPosition(20, 15);
+                Console.Write("Insira uma posição");
             }
         }
 
@@ -54,13 +58,18 @@ namespace SolucaoJV
        
         public void JogadaInvalida()
         {
+            Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
-            Tela.EscreverEm("Jogada Inválida", 18, 15);
-            Tela.EscreverEm("Qualquer tecla continua!", 8, 16);
+            Console.SetCursorPosition(18, 15);
+            Console.Write("Jogada Inválida");
+            Console.SetCursorPosition(18, 16);
+            Console.Write("Qualquer tecla continua!");
             Console.ResetColor();
             Console.ReadKey();
-            Tela.EscreverEm("                             ", 17, 15);
-            Tela.EscreverEm("                             ", 8, 16);
+            Console.SetCursorPosition(17, 15);
+            Console.Write("                             ");
+            Console.SetCursorPosition(8, 16);
+            Console.Write("                             ");
         }
     }
 }

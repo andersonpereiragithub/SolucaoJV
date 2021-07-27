@@ -1,21 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SolucaoJV;
+using System;
 
-namespace SolucaoJV
+namespace View
 {
-    class Tela
+    class Tabuleiro
     {
         public static int origLinha = 0;
         public static int origColuna = 0;
 
-        public static void ViewTela()
+        public void ImprimirTelaJogo()
         {
-            ImprimirTelaJogo();
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
+
+            for (int i = 2; i < 13; i++)
+            {
+                EscreverEm("|", 14, i);
+                EscreverEm("|", 21, i);
+            }
+            for (int i = 8; i < 28; i++)
+            {
+                EscreverEm("-", i, 5);
+                EscreverEm("-", i, 9);
+            }
+
+            EscreverEm("+", 14, 5);
+            EscreverEm("+", 14, 9);
+            EscreverEm("+", 21, 5);
+            EscreverEm("+", 21, 9);
+
+            EscreverEm("a1", 10, 3);
+            EscreverEm("a2", 17, 3);
+            EscreverEm("a3", 24, 3);
+            EscreverEm("b1", 10, 7);
+            EscreverEm("b2", 17, 7);
+            EscreverEm("b3", 24, 7);
+            EscreverEm("c1", 10, 11);
+            EscreverEm("c2", 17, 11);
+            EscreverEm("c3", 24, 11);
+
+            Console.ResetColor();
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            EscreverEm("Turno: ", 0, 13);
+
+            EscreverEm("Jogador [", 0, 14);
+            EscreverEm("]", 12, 14);
+
 
             Partida.IniciarPartida();
         }
-        public static void SetJogadas(string jogador, int linha, int coluna)
+
+        public void SetJogadas(string jogador, int linha, int coluna)
         {
             if (linha == 0)
             {
@@ -45,7 +84,7 @@ namespace SolucaoJV
                     EscreverEm(jogador, 24, 11);
             }
         }
-        public static void EscreverEm(string s, int linha, int coluna)
+        public void EscreverEm(string s, int linha, int coluna)
         {
             if (s == "X" || s == "O")
                 AlterarCor(s, linha, coluna);
@@ -74,41 +113,6 @@ namespace SolucaoJV
                 Console.Write(s + " ");
                 Console.ResetColor();
             }
-        }
-        public static void ImprimirTelaJogo()
-        {
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
-            EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
-            
-            for (int i = 2; i < 13; i++)
-            {
-                EscreverEm("|", 14, i);
-                EscreverEm("|", 21, i);
-            }
-            for (int i = 8; i < 28; i++)
-            {
-                EscreverEm("-", i, 5);
-                EscreverEm("-", i, 9);
-            }
-
-            EscreverEm("+", 14, 5);
-            EscreverEm("+", 14, 9);
-            EscreverEm("+", 21, 5);
-            EscreverEm("+", 21, 9);
-
-            EscreverEm("a1", 10, 3);
-            EscreverEm("a2", 17, 3);
-            EscreverEm("a3", 24, 3);
-            EscreverEm("b1", 10, 7);
-            EscreverEm("b2", 17, 7);
-            EscreverEm("b3", 24, 7);
-            EscreverEm("c1", 10, 11);
-            EscreverEm("c2", 17, 11);
-            EscreverEm("c3", 24, 11);
-
-            Console.ResetColor();
         }
     }
 }
