@@ -29,10 +29,8 @@ namespace SolucaoJV
                 Posicao p = new Posicao();
                 Tabuleiro tab = new Tabuleiro();
 
-                tab.EscreverEm(Convert.ToString(partida.Turno), 8, 13);
-                tab.EscreverEm(Convert.ToString(partida.JogadorAtual), 10, 14);
-                Console.ResetColor();
-                
+                tab.ImprimirControladores(partida);
+
                 p.LerJogada();
 
                 while (!posicao)

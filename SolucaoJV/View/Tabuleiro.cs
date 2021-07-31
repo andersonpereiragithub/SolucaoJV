@@ -45,13 +45,20 @@ namespace View
 
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            EscreverEm("Turno: ", 0, 13);
+            EscreverEm("Turno: \nJogador [   ]", 0, 13);
 
-            EscreverEm("Jogador [", 0, 14);
-            EscreverEm("]", 12, 14);
-
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.SetCursorPosition(8, 15);
+            Console.Write("Sua vez: ");
 
             Partida.IniciarPartida();
+        }
+        public void ImprimirControladores(Partida p)
+        {
+            EscreverEm(Convert.ToString(p.Turno), 8, 13);
+            EscreverEm(Convert.ToString(p.JogadorAtual), 10, 14);
+            Console.SetCursorPosition(17, 15);
         }
 
         public void ImprimeJogadas(string jogador, int linha, int coluna)
@@ -88,6 +95,10 @@ namespace View
         {
             if (s == "X" || s == "O")
                 AlterarCor(s, linha, coluna);
+            else if (s == "1" || s == "2" || s == "3" || s == "4")
+            {
+                AlterarCor(s, linha, coluna);
+            }
             else
             {
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
@@ -110,6 +121,14 @@ namespace View
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(s + " ");
+                Console.ResetColor();
+            }
+            if (s == "1" || s == "2" || s == "3" || s == "4")
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.Write(s + " ");
                 Console.ResetColor();
             }
