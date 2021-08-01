@@ -19,15 +19,8 @@ namespace SolucaoJV
         {
             try
             {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.SetCursorPosition( 8, 15);
-                Console.Write("Sua vez: ");
                 string jogada = Console.ReadLine();
-                Console.SetCursorPosition(8, 15);
-                Console.Write("Sua vez: "); 
-                Console.ResetColor();
-
+     
                 if (JogadaValida(jogada))
                 {
                     char linha = jogada[0];
@@ -64,12 +57,12 @@ namespace SolucaoJV
             Console.Write("Jogada Inválida");
             Console.SetCursorPosition(18, 16);
             Console.Write("Qualquer tecla continua!");
-            Console.ResetColor();
             Console.ReadKey();
             Console.SetCursorPosition(17, 15);
             Console.Write("                             ");
-            Console.SetCursorPosition(8, 16);
+            Console.SetCursorPosition(17, 16);
             Console.Write("                             ");
+            Console.SetCursorPosition(17, 1);
         }
     }
 }

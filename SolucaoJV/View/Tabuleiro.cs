@@ -41,14 +41,8 @@ namespace View
             EscreverEm("c2", 17, 11);
             EscreverEm("c3", 24, 11);
 
-            Console.ResetColor();
-
-            Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             EscreverEm("Turno: \nJogador [   ]", 0, 13);
-
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(8, 15);
             Console.Write("Sua vez: ");
 
@@ -58,6 +52,8 @@ namespace View
         {
             EscreverEm(Convert.ToString(p.Turno), 8, 13);
             EscreverEm(Convert.ToString(p.JogadorAtual), 10, 14);
+            Console.SetCursorPosition(17, 15);
+            Console.Write("  ");
             Console.SetCursorPosition(17, 15);
         }
 
