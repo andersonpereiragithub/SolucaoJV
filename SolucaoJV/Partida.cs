@@ -3,7 +3,7 @@ using View;
 
 namespace SolucaoJV
 {
-    class Partida : Tabuleiro
+    class Partida
     {
         public int QtePartida { get; set; }
         public int Turno { get; set; }

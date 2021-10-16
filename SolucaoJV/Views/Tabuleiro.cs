@@ -53,6 +53,8 @@ namespace View
             EscreverEm(Convert.ToString(p.Turno), 8, 13);
             EscreverEm(Convert.ToString(p.JogadorAtual), 10, 14);
             Console.SetCursorPosition(17, 15);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.Write("  ");
             Console.SetCursorPosition(17, 15);
         }
@@ -104,30 +106,21 @@ namespace View
 
         private static void AlterarCor(string s, int linha, int coluna)
         {
-            if (s == Convert.ToString(TipoJogador.X))
+            Console.BackgroundColor = ConsoleColor.White;
+
+            if (s == Convert.ToString(TipoJogador.X) || s == Convert.ToString(TipoJogador.O))
             {
-                Console.BackgroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(s + " ");
-                Console.ResetColor();
+                Console.ForegroundColor = (s == Convert.ToString(TipoJogador.X)) ? (ConsoleColor.Red) : (ConsoleColor.DarkGreen);
             }
-            if (s == Convert.ToString(TipoJogador.O))
+            else
             {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write(s + " ");
-                Console.ResetColor();
-            }
-            if (s == "1" || s == "2" || s == "3" || s == "4")
-            {
-                Console.BackgroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.Write(s + " ");
-                Console.ResetColor();
             }
+
+            Console.Write(s + " ");
+            Console.ResetColor();
         }
     }
 }
