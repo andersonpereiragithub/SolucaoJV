@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 
 namespace SolucaoJV
 {
@@ -7,7 +9,7 @@ namespace SolucaoJV
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-         public void InserirJogada(char linha, int coluna)
+        public void InserirJogada(char linha, int coluna)
         {
             Linha = linha - 'a';
             Coluna = coluna - 1;
@@ -17,7 +19,7 @@ namespace SolucaoJV
             try
             {
                 string jogada = Console.ReadLine();
-     
+
                 if (JogadaValida(jogada))
                 {
                     char linha = jogada[0];
@@ -27,13 +29,11 @@ namespace SolucaoJV
                 else
                 {
                     JogadaInvalida();
-                    LerJogada();
                 }
             }
             catch
             {
-                Console.SetCursorPosition(20, 15);
-                Console.Write("Insira uma posição");
+                JogadaInvalida();
             }
         }
 
@@ -45,21 +45,35 @@ namespace SolucaoJV
             else
                 return false;
         }
-       
+
         public void JogadaInvalida()
         {
+            int t = 3;
+
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(18, 15);
-            Console.Write("Jogada Inválida");
-            Console.SetCursorPosition(18, 16);
-            Console.Write("Qualquer tecla continua!");
-            Console.ReadKey();
+
+            for (int i = 0; i < 3; i++)
+            {
+                PosicaoCursorMsg($"Jogada Inválida...({t})");
+                Thread.Sleep(1000);
+                t--;
+            }
+
+            LimpaMsg(); 
+        }
+
+        private void LimpaMsg()
+        {
+            PosicaoCursorMsg("                           ");
+            PosicaoCursorMsg("");
+        }
+
+        private void PosicaoCursorMsg(string msg)
+        {
             Console.SetCursorPosition(17, 15);
-            Console.Write("                             ");
-            Console.SetCursorPosition(17, 16);
-            Console.Write("                             ");
-            Console.SetCursorPosition(17, 1);
+            Console.Write(msg);
+            Thread.Sleep(1000);
         }
     }
 }

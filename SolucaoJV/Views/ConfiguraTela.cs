@@ -10,7 +10,6 @@ namespace View
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WindowWidth = 40;
             Console.WindowHeight = 18;
-            Console.WindowLeft = 80; 
             Console.Title = "Jogo da Velha";
 
             Tabuleiro tab = new Tabuleiro();
