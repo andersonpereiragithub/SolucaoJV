@@ -25,3 +25,17 @@ C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCom
 C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
 C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb
 C:\Projetos\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.exe
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.deps.json
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.json
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.dev.json
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfoInputs.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfo.cs
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCompileInputs.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.sourcelink.json
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache

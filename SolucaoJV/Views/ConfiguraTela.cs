@@ -4,13 +4,13 @@ namespace View
 {
     class ConfiguraTela
     {
-        public void ViewTela()
+        public void ViewTela(ConsoleColor bgColor, ConsoleColor fgColor, int largura, int altura, string titulo)
         {
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WindowWidth = 40;
-            Console.WindowHeight = 18;
-            Console.Title = "Jogo da Velha";
+            Console.SetWindowSize(largura, altura); 
+            Console.SetBufferSize(largura, altura); 
+            Console.Title = titulo;
+            Console.BackgroundColor = bgColor;
+            Console.ForegroundColor = fgColor;
 
             Tabuleiro tab = new Tabuleiro();
             tab.ImprimirTelaJogo();
