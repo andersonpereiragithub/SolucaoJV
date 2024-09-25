@@ -15,16 +15,12 @@ namespace View
             Console.ForegroundColor = ConsoleColor.Black;
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
 
-            for (int i = 2; i < 13; i++)
-            {
-                EscreverEm("|", 14, i);
-                EscreverEm("|", 21, i);
-            }
-            for (int i = 8; i < 28; i++)
-            {
-                EscreverEm("-", i, 5);
-                EscreverEm("-", i, 9);
-            }
+
+            DesenharLinhaVertical(14);
+            DesenharLinhaVertical(21);
+
+            DesenharLinhaHorizontal(5);
+            DesenharLinhaHorizontal(9);
 
             EscreverEm("+", 14, 5);
             EscreverEm("+", 14, 9);
@@ -47,6 +43,21 @@ namespace View
             Console.Write("Sua vez: ");
 
             Partida.IniciarPartida();
+        }
+        private void DesenharLinhaVertical(int coluna)
+        {
+            for (int i = 2; i < 13; i++)
+            {
+                EscreverEm("|", coluna, i);
+            }
+
+        }
+        private void DesenharLinhaHorizontal(int linha)
+        {
+            for (int i = 8; i < 28; i++)
+            {
+                EscreverEm("-", i, linha);
+            }
         }
         public void ImprimirControladores(Partida p)
         {

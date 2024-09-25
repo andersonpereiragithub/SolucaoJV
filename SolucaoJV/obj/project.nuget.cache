@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3N7c+MU/cc0=",
+  "dgSpecHash": "l5V5eoccouQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Aderson\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aderson\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

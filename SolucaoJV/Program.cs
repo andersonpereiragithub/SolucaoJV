@@ -9,10 +9,10 @@ namespace SolucaoJV.V
         {
             ConfiguraTela tela = new ConfiguraTela();
             tela.ViewTela(
-                bgColor: ConsoleColor.White, 
-                fgColor: ConsoleColor.Blue, 
-                largura: 40, 
-                altura: 18, 
+                bgColor: ConsoleColor.White,
+                fgColor: ConsoleColor.Blue,
+                largura: 40,
+                altura: 18,
                 titulo: "Jogo da Velha"
             );
         }
