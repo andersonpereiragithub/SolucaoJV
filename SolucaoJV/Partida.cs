@@ -45,7 +45,7 @@ namespace SolucaoJV
 
                         if (partida.Turno > 2)
                         {
-                            partida.VefificarVitoria();
+                            partida.VefificarVitoria(tab);
                         }
                         posicao = true;
                     }
@@ -73,38 +73,35 @@ namespace SolucaoJV
             }
         }
 
-        public void VefificarVitoria()
+        public void VefificarVitoria(Tabuleiro t)
         {
-            Tabuleiro t = new Tabuleiro();
             int v = CondicaoDeVitoria(Jogadas);
             if (v == 1)
             {
                 t.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
-                if (Convert.ToString(JogadorAtual) == "X")
+                
+                Console.BackgroundColor = ConsoleColor.White;
+                
+                if (JogadorAtual == "X")
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    t.EscreverEm("Venceu!!!", 14, 14);
-                    ReiniciarPartida();
-                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
+                }
                     t.EscreverEm("Venceu!!!", 14, 14);
                     ReiniciarPartida();
-                    Console.ResetColor();
-                }
             }
             else if (v == -1)
             {
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Cyan;
+                
                 t.EscreverEm("Deu EMPATE!", 17, 15);
                 ReiniciarPartida();
-                Console.ResetColor();
             }
+                Console.ResetColor();
         }
         public int CondicaoDeVitoria(string[,] mat)
         {
