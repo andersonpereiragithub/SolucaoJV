@@ -35,9 +35,12 @@ namespace SolucaoJV
 
                 while (!posicao)
                 {
-                    if (partida.Jogadas[p.Linha, p.Coluna] == null)
+                    bool posicaoTabuleiroDisponivel = partida.Jogadas[p.Linha, p.Coluna] == null;
+                    
+                    if (posicaoTabuleiroDisponivel)
                     {
                         partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
+
                         tab.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
 
                         if (partida.Turno > 2)
@@ -113,7 +116,6 @@ namespace SolucaoJV
                mat[0, 0] == "X" && mat[1, 0] == "X" && mat[2, 0] == "X" ||
                mat[0, 1] == "X" && mat[1, 1] == "X" && mat[2, 1] == "X" ||
                mat[0, 2] == "X" && mat[1, 2] == "X" && mat[2, 2] == "X" ||
-
                mat[0, 0] == "O" && mat[0, 1] == "O" && mat[0, 2] == "O" ||
                mat[1, 0] == "O" && mat[1, 1] == "O" && mat[1, 2] == "O" ||
                mat[2, 0] == "O" && mat[2, 1] == "O" && mat[2, 2] == "O" ||
