@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SolucaoJV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1e7b3c795b1baa080663651f405aa6f512223b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e525c90c4c01732726ca3836ddc01a17177257d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SolucaoJV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SolucaoJV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

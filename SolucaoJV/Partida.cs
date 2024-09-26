@@ -108,33 +108,49 @@ namespace SolucaoJV
         }
         public int CondicaoDeVitoria(string[,] mat)
         {
-            if (mat[0, 0] == "X" && mat[0, 1] == "X" && mat[0, 2] == "X" ||
-               mat[1, 0] == "X" && mat[1, 1] == "X" && mat[1, 2] == "X" ||
-               mat[2, 0] == "X" && mat[2, 1] == "X" && mat[2, 2] == "X" ||
-               mat[0, 0] == "X" && mat[1, 1] == "X" && mat[2, 2] == "X" ||
-               mat[0, 2] == "X" && mat[1, 1] == "X" && mat[2, 0] == "X" ||
-               mat[0, 0] == "X" && mat[1, 0] == "X" && mat[2, 0] == "X" ||
-               mat[0, 1] == "X" && mat[1, 1] == "X" && mat[2, 1] == "X" ||
-               mat[0, 2] == "X" && mat[1, 2] == "X" && mat[2, 2] == "X" ||
-               mat[0, 0] == "O" && mat[0, 1] == "O" && mat[0, 2] == "O" ||
-               mat[1, 0] == "O" && mat[1, 1] == "O" && mat[1, 2] == "O" ||
-               mat[2, 0] == "O" && mat[2, 1] == "O" && mat[2, 2] == "O" ||
-               mat[0, 0] == "O" && mat[1, 1] == "O" && mat[2, 2] == "O" ||
-               mat[0, 2] == "O" && mat[1, 1] == "O" && mat[2, 0] == "O" ||
-               mat[0, 0] == "O" && mat[1, 0] == "O" && mat[2, 0] == "O" ||
-               mat[0, 1] == "O" && mat[1, 1] == "O" && mat[2, 1] == "O" ||
-               mat[0, 2] == "O" && mat[1, 2] == "O" && mat[2, 2] == "O")
+            if (VerificarVitoria("X"))
             {
                 Terminada = true;
-                return 1;
+                return 1;  // Vitória de "X"
             }
 
-            else if (mat[0, 0] != null && mat[1, 0] != null && mat[2, 0] != null &&
-                     mat[0, 1] != null && mat[1, 1] != null && mat[2, 1] != null &&
-                     mat[0, 2] != null && mat[1, 2] != null && mat[2, 2] != null)
-                return -1;
-            else
-                return 0;
+            if (VerificarVitoria("O"))
+            {
+                Terminada = true;
+                return 1;  // Vitória de "O"
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (mat[i, j] == null)
+                    {
+                        return 0;  // Jogo ainda em andamento
+                    }
+                }
+            }
+
+            return -1;
+            
+            bool VerificarVitoria(string jogador)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if ((mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador) ||  // Linha
+                        (mat[0, i] == jogador && mat[1, i] == jogador && mat[2, i] == jogador))   // Coluna
+                    {
+                        return true;
+                    }
+                }
+                if ((mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador) ||  // Diagonal principal
+                    (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador))   // Diagonal secundária
+                {
+                    return true;
+                }
+
+                return false;
+            }
         }
         public void ReiniciarPartida()
         {
