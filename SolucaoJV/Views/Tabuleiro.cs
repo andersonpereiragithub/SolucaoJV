@@ -22,20 +22,7 @@ namespace View
             DesenharLinhaHorizontal(5);
             DesenharLinhaHorizontal(9);
 
-            EscreverEm("+", 14, 5);
-            EscreverEm("+", 14, 9);
-            EscreverEm("+", 21, 5);
-            EscreverEm("+", 21, 9);
-
-            EscreverEm("a1", 10, 3);
-            EscreverEm("a2", 17, 3);
-            EscreverEm("a3", 24, 3);
-            EscreverEm("b1", 10, 7);
-            EscreverEm("b2", 17, 7);
-            EscreverEm("b3", 24, 7);
-            EscreverEm("c1", 10, 11);
-            EscreverEm("c2", 17, 11);
-            EscreverEm("c3", 24, 11);
+            DesenharPosicoesDeJogadas();
 
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             EscreverEm("Turno: \nJogador [   ]", 0, 13);
@@ -50,13 +37,44 @@ namespace View
             {
                 EscreverEm("|", coluna, i);
             }
-
         }
         private void DesenharLinhaHorizontal(int linha)
         {
             for (int i = 8; i < 28; i++)
             {
-                EscreverEm("-", i, linha);
+                if (i == 14 || i == 21)
+                {
+                    EscreverEm("+", i, linha);
+                }
+                else
+                {
+                    EscreverEm("-", i, linha);
+                }
+            }
+        }
+            private void DesenharPosicoesDeJogadas()
+        {
+            string[,] posicoes = { 
+                { "a1", "a2", "a3" }, 
+                { "b1", "b2", "b3" }, 
+                { "c1", "c2", "c3" } 
+            };
+            
+            int colunaInicial_X = 10;
+            int linhaInicial_y = 3;
+            int espacoEntreColunas = 7;
+            int espacoEntreLinhas = 4;
+            
+            for (int linha = 0; linha < 3; linha++)
+            {
+                for (int coluna = 0; coluna < 3; coluna++)
+                {
+                    int posicaoX = colunaInicial_X + espacoEntreColunas * coluna;
+                    int posicaoY = linhaInicial_y + espacoEntreLinhas * linha;
+
+                    EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY);
+                    
+                }
             }
         }
         public void ImprimirControladores(Partida p)
