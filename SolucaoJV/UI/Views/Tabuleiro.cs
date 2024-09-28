@@ -1,7 +1,8 @@
 ﻿using SolucaoJV;
+using SolucaoJV.Domain.Entities;
 using System;
 
-namespace View
+namespace SolucaoJV.UI.Views
 {
     class Tabuleiro
     {
@@ -52,19 +53,19 @@ namespace View
                 }
             }
         }
-            private void DesenharPosicoesDeJogadas()
+        private void DesenharPosicoesDeJogadas()
         {
-            string[,] posicoes = { 
-                { "a1", "a2", "a3" }, 
-                { "b1", "b2", "b3" }, 
-                { "c1", "c2", "c3" } 
+            string[,] posicoes = {
+                { "a1", "a2", "a3" },
+                { "b1", "b2", "b3" },
+                { "c1", "c2", "c3" }
             };
-            
+
             int colunaInicial_X = 10;
             int linhaInicial_y = 3;
             int espacoEntreColunas = 7;
             int espacoEntreLinhas = 4;
-            
+
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
@@ -73,7 +74,7 @@ namespace View
                     int posicaoY = linhaInicial_y + espacoEntreLinhas * linha;
 
                     EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY);
-                    
+
                 }
             }
         }
@@ -140,7 +141,7 @@ namespace View
             if (s == Convert.ToString(TipoJogador.X) || s == Convert.ToString(TipoJogador.O))
             {
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = (s == Convert.ToString(TipoJogador.X)) ? (ConsoleColor.Red) : (ConsoleColor.DarkGreen);
+                Console.ForegroundColor = s == Convert.ToString(TipoJogador.X) ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             }
             else
             {

@@ -1,5 +1,7 @@
-﻿using System;
-using View;
+﻿using SolucaoJV.Domain.Entities;
+using SolucaoJV.Domain.ValueObjects;
+using SolucaoJV.UI.Views;
+using System;
 
 namespace SolucaoJV
 {
@@ -82,7 +84,7 @@ namespace SolucaoJV
                 
                 Console.BackgroundColor = ConsoleColor.White;
                 
-                if (JogadorAtual == "X")
+                if (JogadorAtual.ToString() == "X")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }

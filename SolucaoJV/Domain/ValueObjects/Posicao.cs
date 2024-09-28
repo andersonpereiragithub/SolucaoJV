@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace SolucaoJV
+namespace SolucaoJV.Domain.ValueObjects
 {
     class Posicao
     {
@@ -60,7 +60,7 @@ namespace SolucaoJV
                 t--;
             }
 
-            LimpaMsg(); 
+            LimpaMsg();
         }
 
         private void LimpaMsg()

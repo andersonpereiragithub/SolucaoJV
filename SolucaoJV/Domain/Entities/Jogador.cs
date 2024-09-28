@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SolucaoJV
+namespace SolucaoJV.Domain.Entities
 {
     class Jogador
     {
