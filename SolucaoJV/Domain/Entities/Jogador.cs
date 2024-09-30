@@ -14,10 +14,5 @@ namespace SolucaoJV.Domain.Entities
             Name = name;
             Tipo = tipo;
         }
-
-        public void CondicaoDeVitoria() { 
-
-        }
-
     }
 }

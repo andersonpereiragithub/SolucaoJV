@@ -1,6 +1,9 @@
 ﻿using SolucaoJV;
+using SolucaoJV.Application.Services;
 using SolucaoJV.Domain.Entities;
+using SolucaoJV.Domain.Services;
 using System;
+using PartidaService = SolucaoJV.Domain.Services.PartidaService;
 
 namespace SolucaoJV.UI.Views
 {
@@ -29,8 +32,6 @@ namespace SolucaoJV.UI.Views
             EscreverEm("Turno: \nJogador [   ]", 0, 13);
             Console.SetCursorPosition(8, 15);
             Console.Write("Sua vez: ");
-
-            Partida.IniciarPartida();
         }
         private void DesenharLinhaVertical(int coluna)
         {
@@ -78,7 +79,7 @@ namespace SolucaoJV.UI.Views
                 }
             }
         }
-        public void ImprimirControladores(Partida p)
+        public void ImprimirControladores(PartidaService p)
         {
             EscreverEm(Convert.ToString(p.Turno), 8, 13);
             EscreverEm(Convert.ToString(p.JogadorAtual), 10, 14);
@@ -151,6 +152,10 @@ namespace SolucaoJV.UI.Views
 
             Console.Write(s + " ");
             Console.ResetColor();
+        }
+        public void LimparTabuleiro()
+        {
+            Console.Clear();
         }
     }
 }

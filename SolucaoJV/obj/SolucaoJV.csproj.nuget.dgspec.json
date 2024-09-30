@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Delon\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj": {}
+    "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Delon\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj": {
+    "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Delon\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
+        "projectUniqueName": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
         "projectName": "SolucaoJV",
-        "projectPath": "C:\\Users\\Delon\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
+        "projectPath": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
         "packagesPath": "C:\\Users\\Delon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Delon\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\obj\\",
+        "outputPath": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

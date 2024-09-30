@@ -14,6 +14,8 @@ namespace SolucaoJV.UI.Views
 
             Tabuleiro tab = new Tabuleiro();
             tab.ImprimirTelaJogo();
+
+            //AQUI eu tenho que entrar no jogo!!!
         }
     }
 }
