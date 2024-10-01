@@ -21,7 +21,7 @@ namespace SolucaoJV.Application.Services
 
         public void IniciarPartida()
         {
-            _tabuleiroUI.LimparTabuleiro();
+            P
         }
         public void MudarJogador()
         {

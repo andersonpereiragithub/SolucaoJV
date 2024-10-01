@@ -10,13 +10,7 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-            ConfiguraTela tela = new ConfiguraTela();
-            tela.ViewTela();
-
-            var partidaDomainService = new PartidaDomainService();
-            var partidaAppService = new PartidaAppService(partidaDomainService);
-
-            var partidaController = new PartidaController(partidaAppService);
+            ////teste commit
 
             partidaController.IniciarPartida();
         }
