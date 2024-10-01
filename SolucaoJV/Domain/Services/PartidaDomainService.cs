@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SolucaoJV.Domain.Services
 {
-    internal class PartidaService
+    internal class PartidaDomainService
     {
         public int Linha { get; set; }
         public int Coluna { get; set; }
@@ -16,7 +16,7 @@ namespace SolucaoJV.Domain.Services
         public bool Terminada { get; set; }
         public int Turno;
 
-        public PartidaService()
+        public PartidaDomainService()
         {
             Linha = 0;
             Coluna = 0;
@@ -26,61 +26,64 @@ namespace SolucaoJV.Domain.Services
             Turno = 1;
         }
 
-        PartidaService tab = new PartidaService();
+        PartidaDomainService tab = new PartidaDomainService();
         Tabuleiro tabuleiro = new Tabuleiro();
         
-        public void IniciarPartida(PartidaService tab)
+        //public void IniciarPartida(PartidaDomainService tab)
+        //{
+        //    Tabuleiro = new string[3, 3];
+
+        //    JogadorAtual = TipoJogador.X;
+
+        //    Terminada = false;
+
+        //    Turno = 1;
+
+        //    tabuleiro.ImprimirTelaJogo();
+
+        //    PartidaDomainService partida = new PartidaDomainService();
+
+        //    while (!partida.Terminada)
+        //    {
+        //        bool posicao = false;
+        //        Posicao p = new Posicao();
+
+        //        tabuleiro.ImprimirControladores(partida);
+
+        //        p.LerJogada();
+
+        //        while (!posicao)
+        //        {
+        //            bool posicaoTabuleiroDisponivel = partida.Tabuleiro[p.Linha, p.Coluna] == null;
+
+        //            if (posicaoTabuleiroDisponivel)
+        //            {
+        //                partida.Tabuleiro[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
+
+        //                tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
+
+        //                if (partida.Turno > 2)
+        //                {
+        //                    partida.VefificarVitoria(tabuleiro);
+        //                }
+        //                posicao = true;
+        //            }
+        //            else
+        //            {
+        //                p.JogadaInvalida();
+        //                p.LerJogada();
+        //            }
+        //        }
+        //        MudarJogador();
+        //    }
+        //}
+
+        public void VefificarVitoria(string[,] Tabuleiro)
         {
-            Tabuleiro = new string[3, 3];
+            Tabuleiro t = new Tabuleiro();
 
-            JogadorAtual = TipoJogador.X;
+            int v = CondicaoDeVitoria(Tabuleiro);
 
-            Terminada = false;
-
-            Turno = 1;
-
-            tabuleiro.ImprimirTelaJogo();
-
-            PartidaService partida = new PartidaService();
-
-            while (!partida.Terminada)
-            {
-                bool posicao = false;
-                Posicao p = new Posicao();
-
-                tabuleiro.ImprimirControladores(partida);
-
-                p.LerJogada();
-
-                while (!posicao)
-                {
-                    bool posicaoTabuleiroDisponivel = partida.Tabuleiro[p.Linha, p.Coluna] == null;
-
-                    if (posicaoTabuleiroDisponivel)
-                    {
-                        partida.Tabuleiro[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
-
-                        tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
-
-                        if (partida.Turno > 2)
-                        {
-                            partida.VefificarVitoria(tabuleiro);
-                        }
-                        posicao = true;
-                    }
-                    else
-                    {
-                        p.JogadaInvalida();
-                        p.LerJogada();
-                    }
-                }
-                MudarJogador();
-            }
-        }
-
-        public void VefificarVitoria(Tabuleiro t)
-        {
-            int v = CondicaoDeVitoria(t);
             if (v == 1)
             {
                 t.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);

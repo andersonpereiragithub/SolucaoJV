@@ -1,6 +1,8 @@
 ﻿using System;
 using SolucaoJV.Application.Services;
+using SolucaoJV.Domain.Services;
 using SolucaoJV.UI.Views;
+using SolucaoJV.UI.Controllers;
 
 namespace SolucaoJV.V
 {
@@ -8,25 +10,15 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-            
             ConfiguraTela tela = new ConfiguraTela();
-            tela.ViewTela(
-                bgColor: ConsoleColor.White,
-                fgColor: ConsoleColor.Blue,
-                largura: 40,
-                altura: 18,
-                titulo: "Jogo da Velha"
-            );
+            tela.ViewTela();
 
-            Tabuleiro tabuleiroUI = new Tabuleiro();
-            PartidaService partidaService = new PartidaService(tabuleiroUI);
+            var partidaDomainService = new PartidaDomainService();
+            var partidaAppService = new PartidaAppService(partidaDomainService);
 
-            partidaService.InciarPartida();
+            var partidaController = new PartidaController(partidaAppService);
 
-            while (!partidaService.JogoTerminou())
-            {
-                partidaService.RealizarJogada();
-            }
+            partidaController.IniciarPartida();
         }
     }
 }

@@ -4,13 +4,17 @@ namespace SolucaoJV.UI.Views
 {
     class ConfiguraTela
     {
-        public void ViewTela(ConsoleColor bgColor, ConsoleColor fgColor, int largura, int altura, string titulo)
+        public void ViewTela()
         {
-            Console.SetWindowSize(largura, altura);
-            Console.SetBufferSize(largura, altura);
-            Console.Title = titulo;
-            Console.BackgroundColor = bgColor;
-            Console.ForegroundColor = fgColor;
+            int larguraTela = 40;
+            int alturaTela = 18;
+            string tituloTela = "Jogo da Velha";
+            
+            Console.SetWindowSize(larguraTela, alturaTela);
+            Console.SetBufferSize(larguraTela, alturaTela);
+            Console.Title = tituloTela;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             Tabuleiro tab = new Tabuleiro();
             tab.ImprimirTelaJogo();
