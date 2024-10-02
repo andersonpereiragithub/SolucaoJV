@@ -34,6 +34,7 @@ namespace SolucaoJV.UI.Controllers
             PartidaDomainService partida = new PartidaDomainService();
 
             Tabuleiro tabuleiro = new Tabuleiro();
+            
            
             TipoJogador jogadorAtual = TipoJogador.X;
 
@@ -53,11 +54,11 @@ namespace SolucaoJV.UI.Controllers
 
                 while (!posicao)
                 {
-                    bool posicaoTabuleiroDisponivel = partida.Tabuleiro[p.Linha, p.Coluna] == null;
+                    bool posicaoTabuleiroDisponivel = partida.Jogadas[p.Linha, p.Coluna] == null;
 
                     if (posicaoTabuleiroDisponivel)
                     {
-                        partida.Tabuleiro[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
+                        partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
 
                         tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
 

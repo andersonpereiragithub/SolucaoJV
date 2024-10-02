@@ -11,23 +11,24 @@ namespace SolucaoJV.Domain.Services
     {
         public int Linha { get; set; }
         public int Coluna { get; set; }
-        public string[,] Tabuleiro { get; set; }
+        public string[,] Jogadas { get; set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
+
         public int Turno;
 
         public PartidaDomainService()
         {
             Linha = 0;
             Coluna = 0;
-            Tabuleiro = new string[3, 3];
+            Jogadas = new string[3, 3];
             JogadorAtual = TipoJogador.X;
             Terminada = false;
             Turno = 1;
         }
 
-        PartidaDomainService tab = new PartidaDomainService();
-        Tabuleiro tabuleiro = new Tabuleiro();
+        //PartidaDomainService tab = new PartidaDomainService();
+        //Tabuleiro tabuleiro = new Tabuleiro();
         
         //public void IniciarPartida(PartidaDomainService tab)
         //{
@@ -78,15 +79,13 @@ namespace SolucaoJV.Domain.Services
         //    }
         //}
 
-        public void VefificarVitoria(string[,] Tabuleiro)
+        public void VefificarVitoria(Tabuleiro tabuleiro)
         {
-            Tabuleiro t = new Tabuleiro();
-
-            int v = CondicaoDeVitoria(Tabuleiro);
+            int v = CondicaoDeVitoria(Jogadas);
 
             if (v == 1)
             {
-                t.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
+                tabuleiro.EscreverEm(Convert.ToString(JogadorAtual), 20, 15);
 
                 Console.BackgroundColor = ConsoleColor.White;
 
@@ -98,7 +97,7 @@ namespace SolucaoJV.Domain.Services
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
-                t.EscreverEm("Venceu!!!", 14, 14);
+                tabuleiro.EscreverEm("Venceu!!!", 14, 14);
                 ReiniciarPartida();
             }
             else if (v == -1)
@@ -106,7 +105,7 @@ namespace SolucaoJV.Domain.Services
                 Console.BackgroundColor = ConsoleColor.White;
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
-                t.EscreverEm("Deu EMPATE!", 17, 15);
+                tabuleiro.EscreverEm("Deu EMPATE!", 17, 15);
                 ReiniciarPartida();
             }
             Console.ResetColor();
@@ -191,7 +190,7 @@ namespace SolucaoJV.Domain.Services
             {
                 for (int coluna = 0; coluna < 3; coluna++)
                 {
-                    Tabuleiro[linha, coluna] = null;
+                    Jogadas[linha, coluna] = null;
                 }
 
             }

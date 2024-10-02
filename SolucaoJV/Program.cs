@@ -10,9 +10,16 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-            ////teste commit
+            Tabuleiro tabuleiro = new Tabuleiro();
+            ConfiguraTela configura = new ConfiguraTela();
+            
+            configura.ViewTela();
 
-            partidaController.IniciarPartida();
+            PartidaDomainService partidaDomainService = new PartidaDomainService();
+
+            PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
+            
+            partidaAppService.IniciarPartida();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SolucaoJV.UI.Views;
+using SolucaoJV.UI.Controllers;
 using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
@@ -21,7 +22,8 @@ namespace SolucaoJV.Application.Services
 
         public void IniciarPartida()
         {
-            P
+            PartidaController partidaController = new PartidaController(this);
+            partidaController.IniciarPartida();
         }
         public void MudarJogador()
         {
