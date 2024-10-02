@@ -13,11 +13,12 @@ namespace SolucaoJV.UI.Views
             Console.SetWindowSize(larguraTela, alturaTela);
             Console.SetBufferSize(larguraTela, alturaTela);
             Console.Title = tituloTela;
+            Console.Clear();
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Blue;
 
             Tabuleiro tab = new Tabuleiro();
-            tab.ImprimirTelaJogo();
+            tab.DesenharTabuleiroJogo();
         }
     }
 }

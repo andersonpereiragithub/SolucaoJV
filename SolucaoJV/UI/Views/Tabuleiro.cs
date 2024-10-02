@@ -12,7 +12,7 @@ namespace SolucaoJV.UI.Views
         public static int origLinha = 0;
         public static int origColuna = 0;
 
-        public void ImprimirTelaJogo()
+        public void DesenharTabuleiroJogo()
         {
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.White;

@@ -170,7 +170,7 @@ namespace SolucaoJV.Domain.Services
 
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
-                t.ImprimirTelaJogo();
+                t.DesenharTabuleiroJogo();
 
             Environment.Exit(1);
         }

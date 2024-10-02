@@ -142,10 +142,10 @@ namespace SolucaoJV.UI.Controllers
             if (partida.JogadorAtual == TipoJogador.X)
             {
                 partida.JogadorAtual = TipoJogador.O;
-
             }
             else
             {
+                partida.JogadorAtual = TipoJogador.X;
                 IncrementarTurno();
             }
         }
