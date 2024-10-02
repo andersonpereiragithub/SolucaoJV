@@ -135,7 +135,7 @@ namespace SolucaoJV.UI.Controllers
         }
         public void IncrementarTurno()
         {
-            turno++;
+            partida.Turno++;
         }
         public void MudarJogador()
         {
