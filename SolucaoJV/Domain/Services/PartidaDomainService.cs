@@ -1,4 +1,5 @@
-﻿using SolucaoJV.Domain.Entities;
+﻿using SolucaoJV.Application.Services;
+using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.ValueObjects;
 using SolucaoJV.UI.Views;
 using System;
@@ -26,58 +27,6 @@ namespace SolucaoJV.Domain.Services
             Terminada = false;
             Turno = 1;
         }
-
-        //PartidaDomainService tab = new PartidaDomainService();
-        //Tabuleiro tabuleiro = new Tabuleiro();
-        
-        //public void IniciarPartida(PartidaDomainService tab)
-        //{
-        //    Tabuleiro = new string[3, 3];
-
-        //    JogadorAtual = TipoJogador.X;
-
-        //    Terminada = false;
-
-        //    Turno = 1;
-
-        //    tabuleiro.ImprimirTelaJogo();
-
-        //    PartidaDomainService partida = new PartidaDomainService();
-
-        //    while (!partida.Terminada)
-        //    {
-        //        bool posicao = false;
-        //        Posicao p = new Posicao();
-
-        //        tabuleiro.ImprimirControladores(partida);
-
-        //        p.LerJogada();
-
-        //        while (!posicao)
-        //        {
-        //            bool posicaoTabuleiroDisponivel = partida.Tabuleiro[p.Linha, p.Coluna] == null;
-
-        //            if (posicaoTabuleiroDisponivel)
-        //            {
-        //                partida.Tabuleiro[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
-
-        //                tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
-
-        //                if (partida.Turno > 2)
-        //                {
-        //                    partida.VefificarVitoria(tabuleiro);
-        //                }
-        //                posicao = true;
-        //            }
-        //            else
-        //            {
-        //                p.JogadaInvalida();
-        //                p.LerJogada();
-        //            }
-        //        }
-        //        MudarJogador();
-        //    }
-        //}
 
         public void VefificarVitoria(Tabuleiro tabuleiro)
         {
@@ -164,13 +113,19 @@ namespace SolucaoJV.Domain.Services
         }
         public void ReiniciarPartida()
         {
-            Tabuleiro t = new Tabuleiro();
-            t.EscreverEm("                       ", 8, 15);
-            t.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
+            Tabuleiro tabuleiro = new Tabuleiro();
+            PartidaDomainService partidaDomainService = new PartidaDomainService();
+            PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
+
+            tabuleiro.EscreverEm("                       ", 8, 15);
+            tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
 
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
-                t.DesenharTabuleiroJogo();
+            {
+                tabuleiro.DesenharTabuleiroJogo();
+                partidaAppService.IniciarPartida();
+            }
 
             Environment.Exit(1);
         }
@@ -180,7 +135,7 @@ namespace SolucaoJV.Domain.Services
                 JogadorAtual = TipoJogador.O;
             else
             {
-         //       IncrementarTurno();
+                //       IncrementarTurno();
                 JogadorAtual = TipoJogador.X;
             }
         }

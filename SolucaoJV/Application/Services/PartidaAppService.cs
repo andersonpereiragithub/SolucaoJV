@@ -47,9 +47,7 @@ namespace SolucaoJV.Application.Services
             {
                 IniciarPartida();
             }
-
             Environment.Exit(0);    
-            
         }
     }
 }
