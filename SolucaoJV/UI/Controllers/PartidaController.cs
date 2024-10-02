@@ -12,8 +12,14 @@ namespace SolucaoJV.UI.Controllers
     internal class PartidaController
     {
         private readonly PartidaAppService _partidaAppService;
-        
+
         Posicao p = new Posicao();
+
+
+        PartidaDomainService partida = new PartidaDomainService();
+        
+
+        int turno = 1;
 
         public PartidaController(PartidaAppService partidaAppService)
         {
@@ -31,18 +37,13 @@ namespace SolucaoJV.UI.Controllers
 
         public void IniciarPartida()
         {
-            PartidaDomainService partida = new PartidaDomainService();
 
             Tabuleiro tabuleiro = new Tabuleiro();
-            
-           
-            TipoJogador jogadorAtual = TipoJogador.X;
 
             partida.Terminada = false;
 
-            partida.Turno = 1;
 
-            tabuleiro.ImprimirTelaJogo();
+            //tabuleiro.ImprimirTelaJogo();
 
             while (!partida.Terminada)
             {
@@ -54,13 +55,13 @@ namespace SolucaoJV.UI.Controllers
 
                 while (!posicao)
                 {
-                    bool posicaoTabuleiroDisponivel = partida.Jogadas[p.Linha, p.Coluna] == null;
+                    bool posicaoTabuleiroDisponivel = partida.Jogadas[Linha, Coluna] == null;
 
                     if (posicaoTabuleiroDisponivel)
                     {
-                        partida.Jogadas[p.Linha, p.Coluna] = Convert.ToString(partida.JogadorAtual);
+                        partida.Jogadas[Linha, Coluna] = Convert.ToString(partida.JogadorAtual);
 
-                        tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), p.Linha, p.Coluna);
+                        tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), Linha, Coluna);
 
                         if (partida.Turno > 2)
                         {
@@ -70,11 +71,12 @@ namespace SolucaoJV.UI.Controllers
                     }
                     else
                     {
+                        IncrementarTurno();
                         JogadaInvalida();
                         LerJogada();
                     }
                 }
-                MudarJogador(jogadorAtual);
+                MudarJogador();
             }
         }
 
@@ -89,7 +91,7 @@ namespace SolucaoJV.UI.Controllers
                 {
                     char linha = jogada[0];
                     int coluna = int.Parse(jogada[1] + "");
-                    //RegistrarJogada(linha, coluna);
+                    RegistrarJogada(linha, coluna);
                 }
                 else
                 {
@@ -131,10 +133,21 @@ namespace SolucaoJV.UI.Controllers
             Console.Write(msg);
             Thread.Sleep(1000);
         }
-        public void MudarJogador(TipoJogador jogadorAtual)
+        public void IncrementarTurno()
         {
-            if (jogadorAtual == TipoJogador.X)
-                jogadorAtual = TipoJogador.O;
+            turno++;
+        }
+        public void MudarJogador()
+        {
+            if (partida.JogadorAtual == TipoJogador.X)
+            {
+                partida.JogadorAtual = TipoJogador.O;
+
+            }
+            else
+            {
+                IncrementarTurno();
+            }
         }
     }
 }
