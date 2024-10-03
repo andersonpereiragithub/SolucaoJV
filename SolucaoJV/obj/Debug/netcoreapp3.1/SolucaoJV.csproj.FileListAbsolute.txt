@@ -53,3 +53,7 @@ C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debu
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.dll
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.pdb
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.AssemblyReference.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.Up2Date
