@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolucaoJV.Application.Services;
+using System;
 
 namespace SolucaoJV.Application.Interfaces
 {

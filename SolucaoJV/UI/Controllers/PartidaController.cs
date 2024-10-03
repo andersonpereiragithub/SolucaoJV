@@ -15,15 +15,18 @@ namespace SolucaoJV.UI.Controllers
 
         Posicao p = new Posicao();
 
-
-        PartidaDomainService partida = new PartidaDomainService();
+        //PartidaDomainService partida = new PartidaDomainService();
         
+        private readonly PartidaDomainService _partidaDomainService;
+        private readonly Tabuleiro _tabuleiro;
 
         int turno = 1;
 
-        public PartidaController(PartidaAppService partidaAppService)
+        public PartidaController(PartidaAppService partidaAppService, PartidaDomainService partidaDomainService, Tabuleiro tabuleiro)
         {
             _partidaAppService = partidaAppService;
+            _partidaDomainService = partidaDomainService;
+            _tabuleiro = tabuleiro;
         }
 
         public int Linha { get; set; }
@@ -38,34 +41,35 @@ namespace SolucaoJV.UI.Controllers
         public void IniciarPartida()
         {
 
-            Tabuleiro tabuleiro = new Tabuleiro();
+            //Tabuleiro tabuleiro = new Tabuleiro();
 
-            partida.Terminada = false;
+            _partidaDomainService.Terminada = false;
 
-
+            _tabuleiro.DesenharTabuleiroJogo();
+            
             //tabuleiro.ImprimirTelaJogo();
 
-            while (!partida.Terminada)
+            while (!_partidaDomainService.Terminada)
             {
                 bool posicao = false;
 
-                tabuleiro.ImprimirControladores(partida);
+                _tabuleiro.ImprimirControladores(_partidaDomainService);
 
                 LerJogada();
 
                 while (!posicao)
                 {
-                    bool posicaoTabuleiroDisponivel = partida.Jogadas[Linha, Coluna] == null;
+                    bool posicaoTabuleiroDisponivel = _partidaDomainService.Jogadas[Linha, Coluna] == null;
 
                     if (posicaoTabuleiroDisponivel)
                     {
-                        partida.Jogadas[Linha, Coluna] = Convert.ToString(partida.JogadorAtual);
+                        _partidaDomainService.Jogadas[Linha, Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
 
-                        tabuleiro.ImprimeJogadas(Convert.ToString(partida.JogadorAtual), Linha, Coluna);
+                        _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
 
-                        if (partida.Turno > 2)
+                        if (_partidaDomainService.Turno > 2)
                         {
-                            partida.VefificarVitoria(tabuleiro);
+                            _partidaDomainService.VefificarVitoria(_tabuleiro);
                         }
                         posicao = true;
                     }
@@ -135,17 +139,17 @@ namespace SolucaoJV.UI.Controllers
         }
         public void IncrementarTurno()
         {
-            partida.Turno++;
+            _partidaDomainService.Turno++;
         }
         public void MudarJogador()
         {
-            if (partida.JogadorAtual == TipoJogador.X)
+            if (_partidaDomainService.JogadorAtual == TipoJogador.X)
             {
-                partida.JogadorAtual = TipoJogador.O;
+                _partidaDomainService.JogadorAtual = TipoJogador.O;
             }
             else
             {
-                partida.JogadorAtual = TipoJogador.X;
+                _partidaDomainService.JogadorAtual = TipoJogador.X;
                 IncrementarTurno();
             }
         }

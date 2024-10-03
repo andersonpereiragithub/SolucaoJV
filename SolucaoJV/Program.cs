@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Application.Services;
 using SolucaoJV.Domain.Services;
 using SolucaoJV.UI.Views;
 using SolucaoJV.UI.Controllers;
 using System;
+using SolucaoJV.Application.Interfaces;
 
 namespace SolucaoJV.V
 {
@@ -15,19 +17,21 @@ namespace SolucaoJV.V
                 .AddSingleton<Tabuleiro>()
                 .AddSingleton<ConfiguraTela>()
                 .AddSingleton<PartidaDomainService>()
-                .AddSingleton<PartidaController>()
                 .AddSingleton<PartidaAppService>()
+                .AddSingleton<PartidaController>()
+                .AddSingleton<IPartidaService, PartidaAppService>()
                 .BuildServiceProvider();
 
             var configuraTela = serviceProvider.GetService<ConfiguraTela>();
             var partidaAppService = serviceProvider.GetService<PartidaAppService>();
+            var ipartidaService = serviceProvider.GetService<IPartidaService>();
             var partidaController = serviceProvider.GetRequiredService<PartidaController>();
 
             configuraTela.ViewTela();
-            partidaAppService.IniciarPartida();
+            ipartidaService.IniciarPartida();
 
             //Tabuleiro tabuleiro = new Tabuleiro();
-            //ConfiguraTela configura = new ConfiguraTela();
+            //ConfiguraTela configura = new ConfiguraTela(); 
             
             //configura.ViewTela();
 

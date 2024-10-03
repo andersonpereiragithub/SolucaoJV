@@ -1,22 +1,46 @@
 ﻿using SolucaoJV.Application.Services;
 using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.ValueObjects;
+using SolucaoJV.UI.Controllers;
 using SolucaoJV.UI.Views;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
+using System.Threading.Channels;
 
 namespace SolucaoJV.Domain.Services
 {
+    //Refatoração de Métodos Complexos
+    // Métodos como VefificarVitoria em PartidaDomainService.cs são grandes e
+    // misturam várias responsabilidades, como lógica de verificação e apresentação de resultados.
+    // Sugestão: Divida esses métodos em partes menores e mais focadas.Crie métodos auxiliares que
+    // cada um tenha uma única responsabilidade.
+
+    // Uso de Tipos Específicos
+    // Coordenadas(Linha e Coluna) são armazenadas como valores primitivos.Isso reduz a
+    // legibilidade e pode aumentar a chance de erros.
+    // Sugestão: Crie uma classe Coordenada para representar a posição no tabuleiro,
+    // melhorando a clareza do código.
+
     internal class PartidaDomainService
     {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
+        private readonly Tabuleiro _tabuleiro;
+        private readonly PartidaAppService _partidaAppService;
+
+        public int Linha { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
+        public int Coluna { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
         public string[,] Jogadas { get; set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
 
         public int Turno;
+
+        public PartidaDomainService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController paridaController)
+        {
+            _tabuleiro = tabuleiro;
+            _partidaAppService = partidaAppService;
+        }
 
         public PartidaDomainService()
         {
@@ -46,7 +70,7 @@ namespace SolucaoJV.Domain.Services
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
-                tabuleiro.EscreverEm("Venceu!!!", 14, 14);
+                tabuleiro.EscreverEm("Venceu!!!", 14, 14); //ATENÇÃO!!! RETIRAR ESSA MENSAGEM. RESPOSABILIDA DA UI
                 ReiniciarPartida();
             }
             else if (v == -1)
@@ -113,9 +137,19 @@ namespace SolucaoJV.Domain.Services
         }
         public void ReiniciarPartida()
         {
-            Tabuleiro tabuleiro = new Tabuleiro();
-            PartidaDomainService partidaDomainService = new PartidaDomainService();
-            PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
+            //Este médto está ERRADO. não deveria instanciar e chamar PartidaService diretamente
+            //A responsabilidade de iniciar uma nova partida pode ser movida para um serviço de
+            //controle ou para a camada de aplicação.
+
+            // Controle de Fluxo
+            // A lógica de controle de fluxo(ReiniciarPartida()) está dispersa por várias classes e
+            // misturada com a lógica de aplicação e apresentação.
+            // Sugestão: Centralize o controle do fluxo do jogo em uma classe específica, que pode
+            // ser chamada de GameFlowController, por exemplo.
+
+            //Tabuleiro tabuleiro = new Tabuleiro();
+            //PartidaDomainService partidaDomainService = new PartidaDomainService();
+           // PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
 
             tabuleiro.EscreverEm("                       ", 8, 15);
             tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
@@ -135,7 +169,6 @@ namespace SolucaoJV.Domain.Services
                 JogadorAtual = TipoJogador.O;
             else
             {
-                //       IncrementarTurno();
                 JogadorAtual = TipoJogador.X;
             }
         }
