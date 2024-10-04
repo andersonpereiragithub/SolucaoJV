@@ -4,6 +4,7 @@ using SolucaoJV.UI.Controllers;
 using SolucaoJV.UI.Views;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Channels;
@@ -30,7 +31,7 @@ namespace SolucaoJV.Domain.Services
 
         public int Linha { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
         public int Coluna { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
-        public string[,] Jogadas { get; set; }
+        public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
 
@@ -39,20 +40,25 @@ namespace SolucaoJV.Domain.Services
         public PartidaDomainService(Tabuleiro tabuleiro)
         {
             _tabuleiro = tabuleiro;
-          //  _partidaAppService = partidaAppService;
+            //  _partidaAppService = partidaAppService;
             //_partidaController = paridaController;
+            IniciarJogadas();
         }
 
         public PartidaDomainService()
         {
             Linha = 0;
             Coluna = 0;
-            Jogadas = new string[3, 3];
             JogadorAtual = TipoJogador.X;
             Terminada = false;
             Turno = 1;
+            IniciarJogadas();
         }
 
+        private void IniciarJogadas()
+        {
+            Jogadas = new string[3, 3];
+        }
         public void VefificarVitoria(Tabuleiro tabuleiro)
         {
             int v = CondicaoDeVitoria(Jogadas);
@@ -83,6 +89,17 @@ namespace SolucaoJV.Domain.Services
                 ReiniciarPartida();
             }
             Console.ResetColor();
+        }
+        public bool PosicaoDisponivel(int linha, int coluna)
+        {
+            if (Jogadas[Linha, coluna] == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void RegistrarJogada(char linha, int coluna)
         {
@@ -150,7 +167,7 @@ namespace SolucaoJV.Domain.Services
 
             //Tabuleiro tabuleiro = new Tabuleiro();
             //PartidaDomainService partidaDomainService = new PartidaDomainService();
-           // PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
+            // PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
 
             _tabuleiro.EscreverEm("                       ", 8, 15);
             _tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);

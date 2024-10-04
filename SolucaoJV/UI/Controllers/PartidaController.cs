@@ -11,23 +11,22 @@ namespace SolucaoJV.UI.Controllers
 {
     internal class PartidaController
     {
-       //private readonly PartidaAppService _partidaAppService;
+        //private readonly PartidaAppService _partidaAppService;
         // Posicao p = new Posicao();
         private readonly Posicao _posicao;
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
 
-
         //PartidaDomainService partida = new PartidaDomainService();
 
+        //int turno = 1;
 
-        int turno = 1;
-
-        public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService)
+        public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao)
         {
             //_partidaAppService = partidaAppService;
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
+            _posicao = posicao;
         }
 
         public int Linha { get; set; }
@@ -58,7 +57,7 @@ namespace SolucaoJV.UI.Controllers
 
                 while (!posicao)
                 {
-                    bool posicaoTabuleiroDisponivel = _partidaDomainService.Jogadas[Linha, Coluna] == null;
+                    bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(Linha, Coluna);
 
                     if (posicaoTabuleiroDisponivel)
                     {
@@ -74,7 +73,6 @@ namespace SolucaoJV.UI.Controllers
                     }
                     else
                     {
-                        IncrementarTurno();
                         JogadaInvalida();
                         LerJogada();
                     }
@@ -85,7 +83,6 @@ namespace SolucaoJV.UI.Controllers
 
         public void LerJogada()
         {
-
             try
             {
                 string jogada = Console.ReadLine();
