@@ -1,5 +1,4 @@
-﻿using SolucaoJV.Application.Services;
-using SolucaoJV.Domain.Entities;
+﻿using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.ValueObjects;
 using SolucaoJV.UI.Controllers;
 using SolucaoJV.UI.Views;
@@ -26,7 +25,8 @@ namespace SolucaoJV.Domain.Services
     internal class PartidaDomainService
     {
         private readonly Tabuleiro _tabuleiro;
-        private readonly PartidaAppService _partidaAppService;
+        //private readonly PartidaAppService _partidaAppService;
+        //private readonly PartidaController _partidaController;
 
         public int Linha { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
         public int Coluna { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
@@ -36,10 +36,11 @@ namespace SolucaoJV.Domain.Services
 
         public int Turno;
 
-        public PartidaDomainService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController paridaController)
+        public PartidaDomainService(Tabuleiro tabuleiro)
         {
             _tabuleiro = tabuleiro;
-            _partidaAppService = partidaAppService;
+          //  _partidaAppService = partidaAppService;
+            //_partidaController = paridaController;
         }
 
         public PartidaDomainService()
@@ -151,14 +152,14 @@ namespace SolucaoJV.Domain.Services
             //PartidaDomainService partidaDomainService = new PartidaDomainService();
            // PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
 
-            tabuleiro.EscreverEm("                       ", 8, 15);
-            tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
+            _tabuleiro.EscreverEm("                       ", 8, 15);
+            _tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
 
             char resp = char.Parse(Console.ReadLine());
             if (resp.Equals('s'))
             {
-                tabuleiro.DesenharTabuleiroJogo();
-                partidaAppService.IniciarPartida();
+                _tabuleiro.DesenharTabuleiroJogo();
+                //_partidaAppService.IniciarPartida();
             }
 
             Environment.Exit(1);

@@ -9,10 +9,11 @@ namespace SolucaoJV.Application.Services
 {
     internal class PartidaAppService : IPartidaService
     {
-        private TipoJogador _jogadorAtual;
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiroUI;
+        private TipoJogador _jogadorAtual;
         private readonly PartidaController _partidaController;
+        private readonly ConfiguraTela _configuraTela;
 
         // A lógica de domínio (regras do jogo) e a lógica de apresentação (interface do console)
         // estão misturadas em várias classes (PartidaDomainService.cs, PartidaAppService.cs).
@@ -20,29 +21,26 @@ namespace SolucaoJV.Application.Services
         // Sugestão: Separe essas responsabilidades. Por exemplo, PartidaDomainService deve se
         // concentrar nas regras do jogo e não na interação com o usuário.
 
-        public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController partidaController)
+        public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController partidaController, ConfiguraTela configuraTela)
         {
             //_jogadorAtual = TipoJogador.X;
             _tabuleiroUI = tabuleiro;
             _partidaDomainService = partidaDomainService;
             _partidaController = partidaController;
+            _configuraTela = configuraTela;
         }
 
         public void IniciarPartida()
         {
-            //PartidaController partidaController = new PartidaController(this);
+            _configuraTela.ViewTela();
+            _tabuleiroUI.DesenharTabuleiroJogo();
             _partidaController.IniciarPartida();
+
+            //PartidaController partidaController = new PartidaController(this);
         }
         public void MudarJogador()
         {
-            if (_jogadorAtual == TipoJogador.X)
-            {
-                _jogadorAtual = TipoJogador.O;
-            }
-            else
-            {
-                _jogadorAtual = TipoJogador.X;
-            }
+            _partidaDomainService.MudarJogador();
         }
 
         public void ReiniciarPartida()

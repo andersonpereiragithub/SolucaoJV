@@ -4,6 +4,13 @@ namespace SolucaoJV.UI.Views
 {
     class ConfiguraTela
     {
+        private readonly Tabuleiro _tabuleiro;
+
+        public ConfiguraTela(Tabuleiro tabuleiro)
+        {
+            _tabuleiro = tabuleiro;
+        }
+
         public void ViewTela()
         {
             int larguraTela = 40;
@@ -17,8 +24,9 @@ namespace SolucaoJV.UI.Views
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Blue;
 
-            Tabuleiro tab = new Tabuleiro();
-            tab.DesenharTabuleiroJogo();
+            //    Tabuleiro tab = new Tabuleiro();
+            //    tab.DesenharTabuleiroJogo();
+            _tabuleiro.DesenharTabuleiroJogo();
         }
     }
 }
