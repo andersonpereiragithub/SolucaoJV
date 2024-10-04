@@ -22,6 +22,7 @@ namespace SolucaoJV.V
                 .AddSingleton<IPartidaService, PartidaAppService>()
                 .BuildServiceProvider();
 
+            var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
             var configuraTela = serviceProvider.GetService<ConfiguraTela>();
             var posicao = serviceProvider.GetService<Posicao>();
             var partidaAppService = serviceProvider.GetService<PartidaAppService>();

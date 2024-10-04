@@ -34,8 +34,7 @@ namespace SolucaoJV.Domain.Services
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
-
-        public int Turno;
+        public int Turno { get; set; }
 
         public PartidaDomainService(Tabuleiro tabuleiro)
         {
@@ -92,7 +91,7 @@ namespace SolucaoJV.Domain.Services
         }
         public bool PosicaoDisponivel(int linha, int coluna)
         {
-            if (Jogadas[Linha, coluna] == null)
+            if (Jogadas[linha, coluna] == null)
             {
                 return true;
             }

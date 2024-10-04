@@ -1,9 +1,6 @@
-﻿using SolucaoJV;
-using SolucaoJV.Application.Services;
-using SolucaoJV.Domain.Entities;
+﻿using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
 using System;
-using PartidaDomainService = SolucaoJV.Domain.Services.PartidaDomainService;
 
 namespace SolucaoJV.UI.Views
 {
@@ -11,6 +8,8 @@ namespace SolucaoJV.UI.Views
     {
         public static int origLinha = 0;
         public static int origColuna = 0;
+
+        public Tabuleiro(){}
 
         public void DesenharTabuleiroJogo()
         {
@@ -82,10 +81,10 @@ namespace SolucaoJV.UI.Views
                 }
             }
         }
-        public void ImprimirControladores(PartidaDomainService p)
+        public void ImprimirControladores(int turno, TipoJogador jogadorAtual)
         {
-            EscreverEm(Convert.ToString(p.Turno), 8, 13);
-            EscreverEm(Convert.ToString(p.JogadorAtual), 10, 14);
+            EscreverEm(Convert.ToString(turno), 8, 13);
+            EscreverEm(Convert.ToString(jogadorAtual), 10, 14);
             Console.SetCursorPosition(17, 15);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;

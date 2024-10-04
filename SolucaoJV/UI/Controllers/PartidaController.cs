@@ -51,7 +51,7 @@ namespace SolucaoJV.UI.Controllers
             {
                 bool posicao = false;
 
-                _tabuleiro.ImprimirControladores(_partidaDomainService);
+                _tabuleiro.ImprimirControladores(_partidaDomainService.Turno, _partidaDomainService.JogadorAtual);
 
                 LerJogada();
 
@@ -65,7 +65,7 @@ namespace SolucaoJV.UI.Controllers
 
                         _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
 
-                        if (_partidaDomainService.Turno > 2)
+                        if (_partidaDomainService.Turno > 4)
                         {
                             _partidaDomainService.VefificarVitoria(_tabuleiro);
                         }
@@ -83,22 +83,16 @@ namespace SolucaoJV.UI.Controllers
 
         public void LerJogada()
         {
-            try
-            {
-                string jogada = Console.ReadLine();
+            string jogada = Console.ReadLine();
 
-                if (_posicao.JogadaValida(jogada))
-                {
-                    char linha = jogada[0];
-                    int coluna = int.Parse(jogada[1] + "");
-                    RegistrarJogada(linha, coluna);
-                }
-                else
-                {
-                    JogadaInvalida();
-                }
+            if (_posicao.JogadaValida(jogada))
+            {
+                char linha = jogada[0];
+                int coluna = int.Parse(jogada[1] + "");
+                RegistrarJogada(linha, coluna);
+                IncrementarTurno();
             }
-            catch
+            else
             {
                 JogadaInvalida();
             }
