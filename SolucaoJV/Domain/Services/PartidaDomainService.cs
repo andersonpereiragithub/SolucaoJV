@@ -34,7 +34,7 @@ namespace SolucaoJV.Domain.Services
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
-        public int Turno { get; set; }
+        public int Turno = 1;
 
         public PartidaDomainService(Tabuleiro tabuleiro)
         {
@@ -50,7 +50,7 @@ namespace SolucaoJV.Domain.Services
             Coluna = 0;
             JogadorAtual = TipoJogador.X;
             Terminada = false;
-            Turno = 1;
+            //Turno = 1;
             IniciarJogadas();
         }
 

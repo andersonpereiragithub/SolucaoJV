@@ -29,7 +29,7 @@ namespace SolucaoJV.V
             var ipartidaService = serviceProvider.GetService<IPartidaService>();
             var partidaController = serviceProvider.GetRequiredService<PartidaController>();
 
-            configuraTela.ViewTela();
+            //configuraTela.ViewTela();
             ipartidaService.IniciarPartida();
         }
     }

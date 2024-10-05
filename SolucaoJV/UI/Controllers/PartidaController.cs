@@ -11,19 +11,12 @@ namespace SolucaoJV.UI.Controllers
 {
     internal class PartidaController
     {
-        //private readonly PartidaAppService _partidaAppService;
-        // Posicao p = new Posicao();
         private readonly Posicao _posicao;
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
 
-        //PartidaDomainService partida = new PartidaDomainService();
-
-        //int turno = 1;
-
         public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao)
         {
-            //_partidaAppService = partidaAppService;
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
             _posicao = posicao;
@@ -31,6 +24,7 @@ namespace SolucaoJV.UI.Controllers
 
         public int Linha { get; set; }
         public int Coluna { get; set; }
+        private int contador = 1;
 
         public void RegistrarJogada(int linha, int coluna)
         {
@@ -40,16 +34,10 @@ namespace SolucaoJV.UI.Controllers
 
         public void IniciarPartida()
         {
-
-            //Tabuleiro tabuleiro = new Tabuleiro();
-
-            //_tabuleiro.DesenharTabuleiroJogo();
-
-            //tabuleiro.ImprimirTelaJogo();
-
             while (!_partidaDomainService.Terminada)
             {
                 bool posicao = false;
+                int teste = _partidaDomainService.Turno;
 
                 _tabuleiro.ImprimirControladores(_partidaDomainService.Turno, _partidaDomainService.JogadorAtual);
 
@@ -129,7 +117,16 @@ namespace SolucaoJV.UI.Controllers
         }
         public void IncrementarTurno()
         {
-            _partidaDomainService.Turno++;
+            bool par = contador % 2 == 0;
+
+            if (par)
+            {
+                _partidaDomainService.Turno++;
+            }
+            else
+            {
+                contador++;
+            }
         }
         public void MudarJogador()
         {

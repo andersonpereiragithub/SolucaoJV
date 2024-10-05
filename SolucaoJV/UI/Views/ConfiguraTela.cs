@@ -24,8 +24,6 @@ namespace SolucaoJV.UI.Views
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Blue;
 
-            //    Tabuleiro tab = new Tabuleiro();
-            //    tab.DesenharTabuleiroJogo();
             _tabuleiro.DesenharTabuleiroJogo();
         }
     }
