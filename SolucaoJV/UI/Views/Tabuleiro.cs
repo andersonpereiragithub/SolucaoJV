@@ -13,11 +13,7 @@ namespace SolucaoJV.UI.Views
 
         public void DesenharTabuleiroJogo()
         {
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
-
 
             DesenharLinhaVertical(14);
             DesenharLinhaVertical(21);
@@ -94,6 +90,7 @@ namespace SolucaoJV.UI.Views
 
         public void ImprimeJogadas(string jogador, int linha, int coluna)
         {
+            // REFATORAR CÓDIGO => inserindo variáveis nas posiçõe a1, b1, c1, etc...
             if (linha == 0)
             {
                 if (coluna == 0)

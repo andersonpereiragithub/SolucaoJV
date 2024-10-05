@@ -34,7 +34,7 @@ namespace SolucaoJV.Application.Services
         {
             _configuraTela.ViewTela();
             _tabuleiroUI.DesenharTabuleiroJogo();
-            _partidaController.IniciarPartida();
+            _partidaController.IniciarPartidaController();
 
             //PartidaController partidaController = new PartidaController(this);
         }

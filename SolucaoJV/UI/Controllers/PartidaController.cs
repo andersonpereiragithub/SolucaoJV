@@ -24,7 +24,6 @@ namespace SolucaoJV.UI.Controllers
 
         public int Linha { get; set; }
         public int Coluna { get; set; }
-        private int contador = 1;
 
         public void RegistrarJogada(int linha, int coluna)
         {
@@ -32,12 +31,11 @@ namespace SolucaoJV.UI.Controllers
             Coluna = coluna - 1;
         }
 
-        public void IniciarPartida()
+        public void IniciarPartidaController()
         {
             while (!_partidaDomainService.Terminada)
             {
                 bool posicao = false;
-                int teste = _partidaDomainService.Turno;
 
                 _tabuleiro.ImprimirControladores(_partidaDomainService.Turno, _partidaDomainService.JogadorAtual);
 
@@ -53,7 +51,7 @@ namespace SolucaoJV.UI.Controllers
 
                         _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
 
-                        if (_partidaDomainService.Turno > 4)
+                        if (_partidaDomainService.Turno > 2)
                         {
                             _partidaDomainService.VefificarVitoria(_tabuleiro);
                         }
@@ -78,7 +76,6 @@ namespace SolucaoJV.UI.Controllers
                 char linha = jogada[0];
                 int coluna = int.Parse(jogada[1] + "");
                 RegistrarJogada(linha, coluna);
-                IncrementarTurno();
             }
             else
             {
@@ -117,16 +114,7 @@ namespace SolucaoJV.UI.Controllers
         }
         public void IncrementarTurno()
         {
-            bool par = contador % 2 == 0;
-
-            if (par)
-            {
-                _partidaDomainService.Turno++;
-            }
-            else
-            {
-                contador++;
-            }
+            _partidaDomainService.Turno++;
         }
         public void MudarJogador()
         {
