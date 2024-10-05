@@ -23,7 +23,6 @@ namespace SolucaoJV.Application.Services
 
         public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController partidaController, ConfiguraTela configuraTela)
         {
-            //_jogadorAtual = TipoJogador.X;
             _tabuleiroUI = tabuleiro;
             _partidaDomainService = partidaDomainService;
             _partidaController = partidaController;
@@ -35,9 +34,8 @@ namespace SolucaoJV.Application.Services
             _configuraTela.ViewTela();
             _tabuleiroUI.DesenharTabuleiroJogo();
             _partidaController.IniciarPartidaController();
-
-            //PartidaController partidaController = new PartidaController(this);
         }
+
         public void MudarJogador()
         {
             _partidaDomainService.MudarJogador();
@@ -45,18 +43,8 @@ namespace SolucaoJV.Application.Services
 
         public void ReiniciarPartida()
         {
-            // Mistura lógica de controle de fluxo e apresenta
-            // Retirar a escrita no tabuleiro da lógica de reiniciar a partida
-
-            _tabuleiroUI.EscreverEm("                        ", 8, 15);
-            _tabuleiroUI.EscreverEm("Deseja Reiniciar (s/n)? ", 10, 16);
-
-            char resposta = char.Parse(Console.ReadLine());
-            if (resposta.Equals('s'))
-            {
-                IniciarPartida();
-            }
-            Environment.Exit(0);
+            _tabuleiroUI.DesenharTabuleiroJogo();
+            _partidaController.IniciarPartidaController();
         }
     }
 }

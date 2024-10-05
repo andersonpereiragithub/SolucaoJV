@@ -39,8 +39,6 @@ namespace SolucaoJV.Domain.Services
         public PartidaDomainService(Tabuleiro tabuleiro)
         {
             _tabuleiro = tabuleiro;
-            //  _partidaAppService = partidaAppService;
-            //_partidaController = paridaController;
             IniciarJogadas();
         }
 
@@ -77,7 +75,7 @@ namespace SolucaoJV.Domain.Services
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
                 tabuleiro.EscreverEm("Venceu!!!", 14, 14); //ATENÇÃO!!! RETIRAR ESSA MENSAGEM. RESPOSABILIDA DA UI
-                ReiniciarPartida();
+                //ReiniciarPartida();
             }
             else if (v == -1)
             {
@@ -85,10 +83,11 @@ namespace SolucaoJV.Domain.Services
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
                 tabuleiro.EscreverEm("Deu EMPATE!", 17, 15);
-                ReiniciarPartida();
+                //ReiniciarPartida();
             }
             Console.ResetColor();
         }
+
         public bool PosicaoDisponivel(int linha, int coluna)
         {
             if (Jogadas[linha, coluna] == null)
@@ -100,6 +99,7 @@ namespace SolucaoJV.Domain.Services
                 return false;
             }
         }
+
         public void RegistrarJogada(char linha, int coluna)
         {
             Linha = linha - 'a';
@@ -152,6 +152,7 @@ namespace SolucaoJV.Domain.Services
                 return false;
             }
         }
+
         public void ReiniciarPartida()
         {
             //Este médto está ERRADO. não deveria instanciar e chamar PartidaService diretamente
@@ -180,6 +181,7 @@ namespace SolucaoJV.Domain.Services
 
             Environment.Exit(1);
         }
+
         public void MudarJogador()
         {
             if (JogadorAtual == TipoJogador.X)
@@ -189,6 +191,7 @@ namespace SolucaoJV.Domain.Services
                 JogadorAtual = TipoJogador.X;
             }
         }
+
         public void LimparTabuleiro()
         {
             for (int linha = 0; linha < 3; linha++)
@@ -200,7 +203,6 @@ namespace SolucaoJV.Domain.Services
 
             }
         }
-
     }
 }
 
