@@ -2,6 +2,7 @@
 using SolucaoJV.Domain.ValueObjects;
 using SolucaoJV.UI.Controllers;
 using SolucaoJV.UI.Views;
+using SolucaoJV.V;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
@@ -169,17 +170,17 @@ namespace SolucaoJV.Domain.Services
             //PartidaDomainService partidaDomainService = new PartidaDomainService();
             // PartidaAppService partidaAppService = new PartidaAppService(tabuleiro, partidaDomainService);
 
-            _tabuleiro.EscreverEm("                       ", 8, 15);
-            _tabuleiro.EscreverEm("Deseja Reinciar (s/n)? ", 10, 16);
-
-            char resp = char.Parse(Console.ReadLine());
-            if (resp.Equals('s'))
+            Console.WriteLine("\nDeseja reiniciar o jogo? (s/n)");
+            char resposta = char.Parse(Console.ReadLine());
+            if (resposta.Equals('s') || resposta.Equals('S'))
             {
-                _tabuleiro.DesenharTabuleiroJogo();
-                //_partidaAppService.IniciarPartida();
+                // Retornar ao Main para reiniciar o fluxo do jogo
+                Program.IniciarJogo();
             }
-
-            Environment.Exit(1);
+            else
+            {
+                Environment.Exit(0);
+            }
         }
 
         public void MudarJogador()

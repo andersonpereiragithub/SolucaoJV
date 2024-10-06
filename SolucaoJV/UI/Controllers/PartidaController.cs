@@ -15,7 +15,8 @@ namespace SolucaoJV.UI.Controllers
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
         bool posicao = false;
-
+        public int Linha { get; set; }
+        public int Coluna { get; set; }
 
         public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao)
         {
@@ -23,9 +24,6 @@ namespace SolucaoJV.UI.Controllers
             _tabuleiro = tabuleiro;
             _posicao = posicao;
         }
-
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
 
         public void RegistrarJogada(int linha, int coluna)
         {
@@ -67,15 +65,15 @@ namespace SolucaoJV.UI.Controllers
                 }
                 MudarJogador();
             }
-            _tabuleiro.EscreverEm("                        ", 8, 15);
-            _tabuleiro.EscreverEm("Deseja Reiniciar (s/n)? ", 10, 16);
+            //_tabuleiro.EscreverEm("                        ", 8, 15);
+            //_tabuleiro.EscreverEm("Deseja Reiniciar (s/n)? ", 10, 16);
 
-            char resposta = char.Parse(Console.ReadLine());
-            if (resposta.Equals('s'))
-            {
-                _partidaDomainService.Terminada = false;
-            }
-            Environment.Exit(0);
+            //char resposta = char.Parse(Console.ReadLine());
+            //if (resposta.Equals('s'))
+            //{
+            //    _partidaDomainService.Terminada = false;
+            //}
+            //Environment.Exit(0);
         }
 
         public void LerJogada()

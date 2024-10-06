@@ -13,23 +13,44 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<Tabuleiro>()
-                .AddSingleton<ConfiguraTela>()
-                .AddSingleton<PartidaDomainService>()
-                .AddSingleton<PartidaController>()
-                .AddSingleton<Posicao>()
-                .AddSingleton<IPartidaService, PartidaAppService>()
-                .BuildServiceProvider();
+            IniciarJogo(); 
+        }
+        
+        public static void IniciarJogo()
+        {
+            bool jogarNovamente = true;
 
-            var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
-            var configuraTela = serviceProvider.GetService<ConfiguraTela>();
-            var posicao = serviceProvider.GetService<Posicao>();
-            var partidaAppService = serviceProvider.GetService<PartidaAppService>();
-            var ipartidaService = serviceProvider.GetService<IPartidaService>();
-            var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+            while (jogarNovamente)
+            {
 
-            ipartidaService.IniciarPartida();
+                var serviceProvider = new ServiceCollection()
+                    .AddSingleton<Tabuleiro>()
+                    .AddSingleton<ConfiguraTela>()
+                    .AddSingleton<PartidaDomainService>()
+                    .AddSingleton<PartidaController>()
+                    .AddSingleton<Posicao>()
+                    .AddSingleton<IPartidaService, PartidaAppService>()
+                    .BuildServiceProvider();
+
+                var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
+                var configuraTela = serviceProvider.GetService<ConfiguraTela>();
+                var posicao = serviceProvider.GetService<Posicao>();
+                var partidaAppService = serviceProvider.GetService<PartidaAppService>();
+                var ipartidaService = serviceProvider.GetService<IPartidaService>();
+                var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+
+                configuraTela.ViewTela();
+
+                ipartidaService.IniciarPartida();
+            }
+        }
+
+        static bool PerguntarSeDesejaReiniciar()
+        {
+            Console.WriteLine("Deseja reiniciar o jogo? (s/n)");
+            char resposta = Console.ReadKey().KeyChar;
+
+            return resposta == 's' || resposta == 'S';
         }
     }
 }
