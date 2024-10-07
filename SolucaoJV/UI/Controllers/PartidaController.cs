@@ -37,7 +37,7 @@ namespace SolucaoJV.UI.Controllers
             {
                 posicao = false;
 
-                _tabuleiro.ImprimirControladores(_partidaDomainService.Turno, _partidaDomainService.JogadorAtual);
+                _tabuleiro.ImprimirControladores(_partidaDomainService.ObterTurno(), _partidaDomainService.JogadorAtual);
 
                 LerJogada();
 
@@ -51,9 +51,9 @@ namespace SolucaoJV.UI.Controllers
 
                         _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
 
-                        if (_partidaDomainService.Turno > 2)
+                        if (_partidaDomainService.ObterTurno() > 2)
                         {
-                            _partidaDomainService.VefificarVitoria(_tabuleiro);
+                            _partidaDomainService.VefificarVitoria();
                         }
                         posicao = true;
                     }
@@ -65,15 +65,6 @@ namespace SolucaoJV.UI.Controllers
                 }
                 MudarJogador();
             }
-            //_tabuleiro.EscreverEm("                        ", 8, 15);
-            //_tabuleiro.EscreverEm("Deseja Reiniciar (s/n)? ", 10, 16);
-
-            //char resposta = char.Parse(Console.ReadLine());
-            //if (resposta.Equals('s'))
-            //{
-            //    _partidaDomainService.Terminada = false;
-            //}
-            //Environment.Exit(0);
         }
 
         public void LerJogada()
@@ -120,10 +111,7 @@ namespace SolucaoJV.UI.Controllers
             Console.Write(msg);
             Thread.Sleep(1000);
         }
-        public void IncrementarTurno()
-        {
-            _partidaDomainService.Turno++;
-        }
+       
         public void MudarJogador()
         {
             if (_partidaDomainService.JogadorAtual == TipoJogador.X)
@@ -133,7 +121,7 @@ namespace SolucaoJV.UI.Controllers
             else
             {
                 _partidaDomainService.JogadorAtual = TipoJogador.X;
-                IncrementarTurno();
+                _partidaDomainService.IncrementarTurno();
             }
         }
     }

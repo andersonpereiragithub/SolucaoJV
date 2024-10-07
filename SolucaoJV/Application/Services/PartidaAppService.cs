@@ -15,12 +15,6 @@ namespace SolucaoJV.Application.Services
         private readonly PartidaController _partidaController;
         private readonly ConfiguraTela _configuraTela;
 
-        // A lógica de domínio (regras do jogo) e a lógica de apresentação (interface do console)
-        // estão misturadas em várias classes (PartidaDomainService.cs, PartidaAppService.cs).
-
-        // Sugestão: Separe essas responsabilidades. Por exemplo, PartidaDomainService deve se
-        // concentrar nas regras do jogo e não na interação com o usuário.
-
         public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController partidaController, ConfiguraTela configuraTela)
         {
             _tabuleiroUI = tabuleiro;
