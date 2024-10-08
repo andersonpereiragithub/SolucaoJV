@@ -36,8 +36,10 @@ namespace SolucaoJV.UI.Controllers
             while (!_partidaDomainService.Terminada)
             {
                 posicao = false;
+                int turnoAtual = _partidaDomainService.ObterTurno();
+                TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
-                _tabuleiro.ImprimirControladores(_partidaDomainService.ObterTurno(), _partidaDomainService.JogadorAtual);
+                _tabuleiro.ImprimirControladores(turnoAtual, jogadorAtual);
 
                 LerJogada();
 

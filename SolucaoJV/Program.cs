@@ -42,12 +42,19 @@ namespace SolucaoJV.V
                 configuraTela.ViewTela();
 
                 ipartidaService.IniciarPartida();
+                jogarNovamente = PerguntarSeDesejaReiniciar();
             }
         }
 
         static bool PerguntarSeDesejaReiniciar()
         {
-            Console.WriteLine("Deseja reiniciar o jogo? (s/n)");
+            Console.SetCursorPosition(14, 14);
+            Console.WriteLine("Venceu!!!");
+            Console.SetCursorPosition(8, 15);
+            Console.Write("               ");
+
+            Console.SetCursorPosition(5, 16);
+            Console.WriteLine("Deseja reiniciar o jogo? (s/n) ");
             char resposta = Console.ReadKey().KeyChar;
 
             return resposta == 's' || resposta == 'S';
