@@ -6,6 +6,7 @@ using System.Threading;
 using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
 using SolucaoJV.UI.Views;
+using SolucaoJV.Application.Interfaces;
 
 namespace SolucaoJV.UI.Controllers
 {
@@ -14,15 +15,20 @@ namespace SolucaoJV.UI.Controllers
         private readonly Posicao _posicao;
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
+        //private readonly IPartidaService _partidaService;
+        private readonly IMensagemService _imensagemService;
+
         bool posicao = false;
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-        public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao)
+        public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao, IMensagemService mensagemService)
         {
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
             _posicao = posicao;
+            _imensagemService = mensagemService;
+            //_partidaService = partidaService;
         }
 
         public void RegistrarJogada(int linha, int coluna)
@@ -31,43 +37,43 @@ namespace SolucaoJV.UI.Controllers
             Coluna = coluna - 1;
         }
 
-        public void IniciarPartidaController()
-        {
-            while (!_partidaDomainService.Terminada)
-            {
-                posicao = false;
-                int turnoAtual = _partidaDomainService.ObterTurno();
-                TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
+        //public void IniciarPartidaController()
+        //{
+        //    //while (!_partidaDomainService.Terminada)
+        //    //{
+        //    //    posicao = false;
+        //    //    int turnoAtual = _partidaDomainService.ObterTurno();
+        //    //    TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
-                _tabuleiro.ImprimirControladores(turnoAtual, jogadorAtual);
+        //    //    _tabuleiro.ImprimirControladores(turnoAtual, jogadorAtual);
 
-                LerJogada();
+        //    //    LerJogada();
 
-                while (!posicao)
-                {
-                    bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(Linha, Coluna);
+        //    //    while (!posicao)
+        //    //    {
+        //    //        bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(Linha, Coluna);
 
-                    if (posicaoTabuleiroDisponivel)
-                    {
-                        _partidaDomainService.Jogadas[Linha, Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
+        //    //        if (posicaoTabuleiroDisponivel)
+        //    //        {
+        //    //            _partidaDomainService.Jogadas[Linha, Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
 
-                        _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
+        //    //            _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
 
-                        if (_partidaDomainService.ObterTurno() > 2)
-                        {
-                            _partidaDomainService.VefificarVitoria();
-                        }
-                        posicao = true;
-                    }
-                    else
-                    {
-                        JogadaInvalida();
-                        LerJogada();
-                    }
-                }
-                MudarJogador();
-            }
-        }
+        //    //            if (_partidaDomainService.ObterTurno() > 2)
+        //    //            {
+        //    //                _partidaDomainService.VefificarVitoria();
+        //    //            }
+        //    //            posicao = true;
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            JogadaInvalida();
+        //    //            LerJogada();
+        //    //        }
+        //    //    }
+        //    //    MudarJogador();
+        //    //}
+        //}
 
         public void LerJogada()
         {
@@ -113,7 +119,7 @@ namespace SolucaoJV.UI.Controllers
             Console.Write(msg);
             Thread.Sleep(1000);
         }
-       
+
         public void MudarJogador()
         {
             if (_partidaDomainService.JogadorAtual == TipoJogador.X)
@@ -124,6 +130,14 @@ namespace SolucaoJV.UI.Controllers
             {
                 _partidaDomainService.JogadorAtual = TipoJogador.X;
                 _partidaDomainService.IncrementarTurno();
+            }
+        }
+        public void FinalizarJogo(string vencedor)
+        {
+            string resposta = _imensagemService.PerguntarSeDesejaReiniciar();
+            if (resposta.Equals("s", StringComparison.OrdinalIgnoreCase))
+            {
+                //_partidaService.ReiniciarPartida();
             }
         }
     }

@@ -30,6 +30,7 @@ namespace SolucaoJV.V
                     .AddSingleton<PartidaController>()
                     .AddSingleton<Posicao>()
                     .AddSingleton<IPartidaService, PartidaAppService>()
+                    .AddSingleton<IMensagemService, MensagemService>()
                     .BuildServiceProvider();
 
                 var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
@@ -38,26 +39,18 @@ namespace SolucaoJV.V
                 var partidaAppService = serviceProvider.GetService<PartidaAppService>();
                 var ipartidaService = serviceProvider.GetService<IPartidaService>();
                 var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+                var imensagemService = serviceProvider.GetService<IMensagemService>();
+                var mensagemService = serviceProvider.GetService<IMensagemService>();
 
                 configuraTela.ViewTela();
 
                 ipartidaService.IniciarPartida();
-                jogarNovamente = PerguntarSeDesejaReiniciar();
+                
+                if(imensagemService.PerguntarSeDesejaReiniciar() == 's'.ToString() || imensagemService.PerguntarSeDesejaReiniciar() == 'S'.ToString())
+                {
+                    jogarNovamente = true;
+                }
             }
-        }
-
-        static bool PerguntarSeDesejaReiniciar()
-        {
-            Console.SetCursorPosition(14, 14);
-            Console.WriteLine("Venceu!!!");
-            Console.SetCursorPosition(8, 15);
-            Console.Write("               ");
-
-            Console.SetCursorPosition(5, 16);
-            Console.WriteLine("Deseja reiniciar o jogo? (s/n) ");
-            char resposta = Console.ReadKey().KeyChar;
-
-            return resposta == 's' || resposta == 'S';
         }
     }
 }
