@@ -12,6 +12,7 @@ namespace SolucaoJV.UI.Views
 
         public string PerguntarSeDesejaReiniciar()
         {
+            Console.SetCursorPosition(7, 15);
             Console.WriteLine("Deseja reiniciar o jogo? (s/n)");
             return Console.ReadLine();
         }

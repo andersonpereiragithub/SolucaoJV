@@ -11,7 +11,7 @@ namespace SolucaoJV.Domain.Services
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
-        private int Turno { get; set; }
+        public int Turno { get; set; }
 
         public PartidaDomainService()
         {
@@ -25,10 +25,7 @@ namespace SolucaoJV.Domain.Services
         {
             return Turno;
         }
-        public void IncrementarTurno()
-        {
-            Turno++;
-        }
+        
         private void IniciarJogadas()
         {
             Jogadas = new string[3, 3];

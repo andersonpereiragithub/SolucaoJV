@@ -91,16 +91,12 @@ namespace SolucaoJV.UI.Controllers
             else
             {
                 _partidaDomainService.JogadorAtual = TipoJogador.X;
-                _partidaDomainService.IncrementarTurno();
+                IncrementarTurno();
             }
         }
-        public void FinalizarJogo(string vencedor)
+        public void IncrementarTurno()
         {
-            string resposta = _imensagemService.PerguntarSeDesejaReiniciar();
-            if (resposta.Equals("s", StringComparison.OrdinalIgnoreCase))
-            {
-                //_partidaService.ReiniciarPartida();
-            }
+            _partidaDomainService.Turno++;
         }
     }
 }

@@ -56,6 +56,7 @@ namespace SolucaoJV.Application.Services
                         {
                             _partidaDomainService.VefificarVitoria();
                         }
+                        _partidaController.IncrementarTurno();
                         posicao = true;
                     }
                     else
