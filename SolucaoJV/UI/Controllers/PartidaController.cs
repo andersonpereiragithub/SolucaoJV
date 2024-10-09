@@ -37,44 +37,6 @@ namespace SolucaoJV.UI.Controllers
             Coluna = coluna - 1;
         }
 
-        //public void IniciarPartidaController()
-        //{
-        //    //while (!_partidaDomainService.Terminada)
-        //    //{
-        //    //    posicao = false;
-        //    //    int turnoAtual = _partidaDomainService.ObterTurno();
-        //    //    TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
-
-        //    //    _tabuleiro.ImprimirControladores(turnoAtual, jogadorAtual);
-
-        //    //    LerJogada();
-
-        //    //    while (!posicao)
-        //    //    {
-        //    //        bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(Linha, Coluna);
-
-        //    //        if (posicaoTabuleiroDisponivel)
-        //    //        {
-        //    //            _partidaDomainService.Jogadas[Linha, Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
-
-        //    //            _tabuleiro.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), Linha, Coluna);
-
-        //    //            if (_partidaDomainService.ObterTurno() > 2)
-        //    //            {
-        //    //                _partidaDomainService.VefificarVitoria();
-        //    //            }
-        //    //            posicao = true;
-        //    //        }
-        //    //        else
-        //    //        {
-        //    //            JogadaInvalida();
-        //    //            LerJogada();
-        //    //        }
-        //    //    }
-        //    //    MudarJogador();
-        //    //}
-        //}
-
         public void LerJogada()
         {
             string jogada = Console.ReadLine();

@@ -1,0 +1,105 @@
+@startuml
+package SolucaoJV {
+    class Program {
+        + Main()
+        + IniciarJogo()
+    }
+    package Domain {
+        package Entities {
+            class TipoJogador<<numeration>> {
+            X
+            O
+            }
+            class Jogador{
+                string Name
+                TipoJogador Tipo
+            }
+        }
+        package Services {
+            class PartidaDomainService {
+                 int Linha
+                 int Coluna
+                 string[,] Jogadas
+                 TipoJogador JogadorAtual
+                 bool Terminada
+                 int Turno
+                 + ObterTurno()
+                 + IncrementarTurno()
+                 + IniciarJogadas()
+                 + VerificarVitoria()
+                 + PosicaoDisponivel()
+                 + RegistrarJogada()
+                 + CondicaoDeVitoria()
+                 + MudarJogador()
+                 + LimparTabuleiro()
+            }
+        }
+        package ValueObjects {
+            class Posicao{
+                int Linha
+                int Coluna
+                + JogadaValida()
+            }
+        }
+    }
+    package Aplication {
+        package Interfaces {
+            class IPartidaService 
+            class IMensagemService
+        }
+        package Services {
+            class PartidaAppService{
+                +  IniciarPartida()
+                +  MudarJogador()
+                + ReiniciarPartida()
+           }
+        }
+    }
+    package UI {
+        package Controllers {
+            class PartidaController{
+                bool posicao
+                int Linha
+                int Coluna
+                + RegistrarJogada()
+                + LerJogada()
+                + JogadaInvalida()
+                + LimpaMsg()
+                + PosicaCursorMsg()
+                + MudarJogador()
+                + FinalizarJogo()
+            }
+        }
+        package Views {
+            class Tabuleiro{
+                int origLinha 
+                int origColuna
+                + DesenharTabuleiroJogo()
+                + DesenharLinhaVertical()
+                + DesenharLinhaHorizontal()
+                + DesenharPosicoesDeJogadas()
+                + ImprimirControladores()
+                + ImprimeJogadas()
+                + EscreverEm()
+                + AlterarCor()
+                + LimparTabuleiro()
+            }
+            class ConfiguraTela{
+                + ViewTela()
+            }
+            class MensagemService{
+                + ExibirVencedor()
+                + PerguntarSeDesejaReiniciar()
+            }
+        }
+    }
+    Program --> UI.Controllers.PartidaController
+    Program --> UI.Views.ConfiguraTela
+    UI.Controllers.PartidaController --> Aplication.Services.PartidaAppService
+    Aplication.Services.PartidaAppService --> Aplication.Interfaces.IPartidaService
+    Aplication.Services.PartidaAppService --> Domain.Services.PartidaDomainService
+    Domain.Services.PartidaDomainService --> Domain.Entities.Jogador
+    Domain.Entities.Jogador --> Domain.ValueObjects.Posicao
+    UI.Views.MensagemService --> Aplication.Interfaces.IMensagemService
+}
+@enduml

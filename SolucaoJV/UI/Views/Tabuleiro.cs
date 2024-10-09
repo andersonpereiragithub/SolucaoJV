@@ -77,6 +77,7 @@ namespace SolucaoJV.UI.Views
                 }
             }
         }
+       
         public void ImprimirControladores(int turno, TipoJogador jogadorAtual)
         {
             EscreverEm(Convert.ToString(turno), 8, 13);
@@ -119,6 +120,7 @@ namespace SolucaoJV.UI.Views
                     EscreverEm(jogador, 24, 11);
             }
         }
+        
         public void EscreverEm(string s, int linha, int coluna)
         {
             if (s == "X" || s == "O")
@@ -152,6 +154,7 @@ namespace SolucaoJV.UI.Views
             Console.Write(s + " ");
             Console.ResetColor();
         }
+        
         public void LimparTabuleiro()
         {
             Console.Clear();
