@@ -15,7 +15,6 @@ namespace SolucaoJV.UI.Controllers
         private readonly Posicao _posicao;
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
-        //private readonly IPartidaService _partidaService;
         private readonly IMensagemService _imensagemService;
 
         bool posicao = false;
@@ -28,7 +27,6 @@ namespace SolucaoJV.UI.Controllers
             _tabuleiro = tabuleiro;
             _posicao = posicao;
             _imensagemService = mensagemService;
-            //_partidaService = partidaService;
         }
 
         public void RegistrarJogada(int linha, int coluna)
@@ -39,7 +37,7 @@ namespace SolucaoJV.UI.Controllers
 
         public void LerJogada()
         {
-            string jogada = Console.ReadLine();
+            string jogada = Console.ReadLine().ToLower();
 
             if (_posicao.JogadaValida(jogada))
             {
@@ -80,23 +78,6 @@ namespace SolucaoJV.UI.Controllers
             Console.SetCursorPosition(17, 15);
             Console.Write(msg);
             Thread.Sleep(1000);
-        }
-
-        public void MudarJogador()
-        {
-            if (_partidaDomainService.JogadorAtual == TipoJogador.X)
-            {
-                _partidaDomainService.JogadorAtual = TipoJogador.O;
-            }
-            else
-            {
-                _partidaDomainService.JogadorAtual = TipoJogador.X;
-                IncrementarTurno();
-            }
-        }
-        public void IncrementarTurno()
-        {
-            _partidaDomainService.Turno++;
         }
     }
 }

@@ -56,7 +56,6 @@ namespace SolucaoJV.Application.Services
                         {
                             _partidaDomainService.VefificarVitoria();
                         }
-                        _partidaController.IncrementarTurno();
                         posicao = true;
                     }
                     else
@@ -67,7 +66,6 @@ namespace SolucaoJV.Application.Services
                 }
                 MudarJogador();
             }
-            //_partidaController.IniciarPartidaController();
         }
 
         public void MudarJogador()

@@ -13,7 +13,7 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-            IniciarJogo(); 
+             IniciarJogo(); 
         }
         
         public static void IniciarJogo()
@@ -46,9 +46,13 @@ namespace SolucaoJV.V
 
                 ipartidaService.IniciarPartida();
                 
-                if(imensagemService.PerguntarSeDesejaReiniciar() == 's'.ToString() || imensagemService.PerguntarSeDesejaReiniciar() == 'S'.ToString())
+                if(imensagemService.PerguntarSeDesejaReiniciar() == 's'.ToString())
                 {
                     jogarNovamente = true;
+                }
+                else
+                {
+                    Environment.Exit(0);
                 }
             }
         }

@@ -30,6 +30,7 @@ namespace SolucaoJV.Domain.Services
         {
             Jogadas = new string[3, 3];
         }
+        
         public void VefificarVitoria()
         {
             int v = CondicaoDeVitoria(Jogadas);
@@ -121,13 +122,21 @@ namespace SolucaoJV.Domain.Services
         public void MudarJogador()
         {
             if (JogadorAtual == TipoJogador.X)
+            {
                 JogadorAtual = TipoJogador.O;
+            }
             else
             {
                 JogadorAtual = TipoJogador.X;
+                IncrementarTurno();
             }
         }
-
+        
+        public void IncrementarTurno()
+        {
+            Turno++;
+        }
+        
         public void LimparTabuleiro()
         {
             for (int linha = 0; linha < 3; linha++)
