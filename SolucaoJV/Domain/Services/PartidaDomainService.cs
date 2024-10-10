@@ -54,24 +54,6 @@ namespace SolucaoJV.Domain.Services
             }
         }
 
-        public bool PosicaoDisponivel(int linha, int coluna)
-        {
-            if (Jogadas[linha, coluna] == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void RegistrarJogada(char linha, int coluna)
-        {
-            Linha = linha - 'a';
-            Coluna = coluna - 1;
-        }
-
         public int CondicaoDeVitoria(string[,] mat)
         {
             if (VerificarVitoria("X"))
@@ -118,6 +100,25 @@ namespace SolucaoJV.Domain.Services
                 return false;
             }
         }
+
+        public bool PosicaoDisponivel(int linha, int coluna)
+        {
+            if (Jogadas[linha, coluna] == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void RegistrarJogada(char linha, int coluna)
+        {
+            Linha = linha - 'a';
+            Coluna = coluna - 1;
+        }
+
 
         public void MudarJogador()
         {
