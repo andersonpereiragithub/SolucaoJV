@@ -66,6 +66,7 @@ namespace SolucaoJV.Application.Services
                 }
                 MudarJogador();
             }
+            _partidaController.IniciarJogo();
         }
 
         public void MudarJogador()

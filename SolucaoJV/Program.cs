@@ -13,48 +13,27 @@ namespace SolucaoJV.V
     {
         static void Main(string[] args)
         {
-             IniciarJogo(); 
-        }
-        
-        public static void IniciarJogo()
-        {
-            bool jogarNovamente = true;
+            var serviceProvider = new ServiceCollection()
 
-            while (jogarNovamente)
-            {
+                .AddSingleton<Tabuleiro>()
+                .AddSingleton<ConfiguraTela>()
+                .AddSingleton<PartidaDomainService>()
+                .AddSingleton<PartidaController>()
+                .AddSingleton<Posicao>()
+                .AddSingleton<IPartidaService, PartidaAppService>()
+                .AddSingleton<IMensagemService, MensagemService>()
+                .BuildServiceProvider();
 
-                var serviceProvider = new ServiceCollection()
-                    .AddSingleton<Tabuleiro>()
-                    .AddSingleton<ConfiguraTela>()
-                    .AddSingleton<PartidaDomainService>()
-                    .AddSingleton<PartidaController>()
-                    .AddSingleton<Posicao>()
-                    .AddSingleton<IPartidaService, PartidaAppService>()
-                    .AddSingleton<IMensagemService, MensagemService>()
-                    .BuildServiceProvider();
+            var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
+            var configuraTela = serviceProvider.GetService<ConfiguraTela>();
+            var posicao = serviceProvider.GetService<Posicao>();
+            var partidaAppService = serviceProvider.GetService<PartidaAppService>();
+            var ipartidaService = serviceProvider.GetService<IPartidaService>();
+            var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+            var imensagemService = serviceProvider.GetService<IMensagemService>();
+            var mensagemService = serviceProvider.GetService<IMensagemService>();
 
-                var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
-                var configuraTela = serviceProvider.GetService<ConfiguraTela>();
-                var posicao = serviceProvider.GetService<Posicao>();
-                var partidaAppService = serviceProvider.GetService<PartidaAppService>();
-                var ipartidaService = serviceProvider.GetService<IPartidaService>();
-                var partidaController = serviceProvider.GetRequiredService<PartidaController>();
-                var imensagemService = serviceProvider.GetService<IMensagemService>();
-                var mensagemService = serviceProvider.GetService<IMensagemService>();
-
-                configuraTela.ViewTela();
-
-                ipartidaService.IniciarPartida();
-                
-                if(imensagemService.PerguntarSeDesejaReiniciar() == 's'.ToString())
-                {
-                    jogarNovamente = true;
-                }
-                else
-                {
-                    Environment.Exit(0);
-                }
-            }
+            ipartidaService.IniciarPartida();
         }
     }
 }

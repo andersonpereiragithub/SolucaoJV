@@ -16,19 +16,36 @@ namespace SolucaoJV.UI.Controllers
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
         private readonly IMensagemService _imensagemService;
+        private readonly PartidaAppService _partidaAppService;
 
         bool posicao = false;
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-        public PartidaController(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, Posicao posicao, IMensagemService mensagemService)
+        public PartidaController(
+            Tabuleiro tabuleiro, 
+            PartidaDomainService partidaDomainService, 
+            Posicao posicao, 
+            IMensagemService mensagemService,
+            PartidaAppService partidaService)
         {
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
             _posicao = posicao;
             _imensagemService = mensagemService;
+            _partidaAppService = partidaService;
         }
 
+        public void IniciarJogo()
+        {
+            bool jogarNovamente = _imensagemService.PerguntarSeDesejaReiniciar();
+
+            do
+            {
+                _partidaAppService.ReiniciarPartida();
+            }
+            while (jogarNovamente);
+        }
         public void RegistrarJogada(int linha, int coluna)
         {
             Linha = linha - 'a';
