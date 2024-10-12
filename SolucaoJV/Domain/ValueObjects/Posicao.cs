@@ -9,9 +9,6 @@ namespace SolucaoJV.Domain.ValueObjects
 {
     class Posicao
     {
-        public int Linha { get; set; } //
-        public int Coluna { get; set; }
-
         public bool JogadaValida(string str)
         {
             if ((str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&

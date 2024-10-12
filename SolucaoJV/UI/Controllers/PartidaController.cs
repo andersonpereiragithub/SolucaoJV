@@ -16,24 +16,24 @@ namespace SolucaoJV.UI.Controllers
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
         private readonly IMensagemService _imensagemService;
-        private readonly PartidaAppService _partidaAppService;
+        private readonly IPartidaService _partidaService;
 
         bool posicao = false;
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
+        //public int Linha { get; set; }
+        //public int Coluna { get; set; }
 
         public PartidaController(
-            Tabuleiro tabuleiro, 
-            PartidaDomainService partidaDomainService, 
-            Posicao posicao, 
+            Tabuleiro tabuleiro,
+            PartidaDomainService partidaDomainService,
+            Posicao posicao,
             IMensagemService mensagemService,
-            PartidaAppService partidaService)
+            IPartidaService partidaService)
         {
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
             _posicao = posicao;
             _imensagemService = mensagemService;
-            _partidaAppService = partidaService;
+            _partidaService = partidaService;
         }
 
         public void IniciarJogo()
@@ -42,30 +42,36 @@ namespace SolucaoJV.UI.Controllers
 
             do
             {
-                _partidaAppService.ReiniciarPartida();
+                _partidaService.ReiniciarPartida();
+                while (!_partidaDomainService.Terminada)
+                {
+                    (int linha, int coluna) = LerJogada();
+                    RegistrarJogada(linha, coluna);
+                }
             }
             while (jogarNovamente);
         }
-        public void RegistrarJogada(int linha, int coluna)
-        {
-            Linha = linha - 'a';
-            Coluna = coluna - 1;
-        }
-
-        public void LerJogada()
+        public (int, int) LerJogada()
         {
             string jogada = Console.ReadLine().ToLower();
-
             if (_posicao.JogadaValida(jogada))
             {
                 char linha = jogada[0];
                 int coluna = int.Parse(jogada[1] + "");
-                RegistrarJogada(linha, coluna);
+                return RegistrarJogada(linha, coluna);
             }
             else
             {
                 JogadaInvalida();
+                return LerJogada();
             }
+        }
+
+        private (int, int) RegistrarJogada(int linha, int coluna)
+        {
+            int linhaIndex = linha - 'a';
+            int colunaIndex = coluna - 1;
+            return (linhaIndex, colunaIndex);
         }
 
         public void JogadaInvalida()

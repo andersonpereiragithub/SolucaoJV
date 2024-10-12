@@ -13,16 +13,16 @@ namespace SolucaoJV.Application.Services
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiroUI;
         private TipoJogador _jogadorAtual;
-        private readonly PartidaController _partidaController;
+        //private readonly PartidaController _partidaController;
         private readonly ConfiguraTela _configuraTela;
 
         bool posicao = false;
 
-        public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, PartidaController partidaController, ConfiguraTela configuraTela)
+        public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, ConfiguraTela configuraTela)
         {
             _tabuleiroUI = tabuleiro;
             _partidaDomainService = partidaDomainService;
-            _partidaController = partidaController;
+            //_partidaController = partidaController;
             _configuraTela = configuraTela;
         }
 
@@ -40,33 +40,58 @@ namespace SolucaoJV.Application.Services
 
                 _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
 
-                _partidaController.LerJogada();
-
-                while (!posicao)
+                if(_partidaDomainService.ObterTurno() > 2)
                 {
-                    bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(_partidaController.Linha, _partidaController.Coluna);
-
-                    if (posicaoTabuleiroDisponivel)
-                    {
-                        _partidaDomainService.Jogadas[_partidaController.Linha, _partidaController.Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
-
-                        _tabuleiroUI.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), _partidaController.Linha, _partidaController.Coluna);
-
-                        if (_partidaDomainService.ObterTurno() > 2)
-                        {
-                            _partidaDomainService.VefificarVitoria();
-                        }
-                        posicao = true;
-                    }
-                    else
-                    {
-                        _partidaController.JogadaInvalida();
-                        _partidaController.LerJogada();
-                    }
+                    _partidaDomainService.VefificarVitoria();
                 }
                 MudarJogador();
             }
-            _partidaController.IniciarJogo();
+        }
+
+            //_partidaController.LerJogada();
+        public void RegistrarJogada(int linha, int coluna) 
+        {
+            if (_partidaDomainService.PosicaoDisponivel(linha, coluna))
+            {
+                _partidaDomainService.Jogadas[linha, coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
+                _tabuleiroUI.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), linha, coluna);
+
+                if (_partidaDomainService.ObterTurno() > 2)
+                {
+                    _partidaDomainService.VefificarVitoria();
+                }
+                posicao = true;
+            }
+            else
+            {
+                posicao = false;
+            }
+
+            //while (!posicao)
+            //    {
+            //        bool posicaoTabuleiroDisponivel = _partidaDomainService.PosicaoDisponivel(_partidaController.Linha, _partidaController.Coluna);
+
+            //        if (posicaoTabuleiroDisponivel)
+            //        {
+            //            _partidaDomainService.Jogadas[_partidaController.Linha, _partidaController.Coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
+
+            //            _tabuleiroUI.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), _partidaController.Linha, _partidaController.Coluna);
+
+            //            if (_partidaDomainService.ObterTurno() > 2)
+            //            {
+            //                _partidaDomainService.VefificarVitoria();
+            //            }
+            //            posicao = true;
+            //        }
+            //        else
+            //        {
+            //            _partidaController.JogadaInvalida();
+            //            _partidaController.LerJogada();
+            //        }
+            //    }
+            //    MudarJogador();
+            //}
+            //_partidaController.IniciarJogo();
         }
 
         public void MudarJogador()

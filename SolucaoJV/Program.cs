@@ -17,21 +17,23 @@ namespace SolucaoJV.V
 
                 .AddSingleton<Tabuleiro>()
                 .AddSingleton<ConfiguraTela>()
-                .AddSingleton<PartidaDomainService>()
-                .AddSingleton<PartidaController>()
                 .AddSingleton<Posicao>()
-                .AddSingleton<IPartidaService, PartidaAppService>()
-                .AddSingleton<IMensagemService, MensagemService>()
+
+                .AddScoped<PartidaDomainService>()
+                .AddScoped<IPartidaService, PartidaAppService>()
+                .AddScoped<PartidaController>()
+                .AddScoped<IMensagemService, MensagemService>()
+
                 .BuildServiceProvider();
 
-            var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
-            var configuraTela = serviceProvider.GetService<ConfiguraTela>();
-            var posicao = serviceProvider.GetService<Posicao>();
-            var partidaAppService = serviceProvider.GetService<PartidaAppService>();
-            var ipartidaService = serviceProvider.GetService<IPartidaService>();
-            var partidaController = serviceProvider.GetRequiredService<PartidaController>();
-            var imensagemService = serviceProvider.GetService<IMensagemService>();
-            var mensagemService = serviceProvider.GetService<IMensagemService>();
+            //var tabuleiro = serviceProvider.GetServices<Tabuleiro>();
+            //var configuraTela = serviceProvider.GetService<ConfiguraTela>();
+            //var posicao = serviceProvider.GetService<Posicao>();
+            //var partidaAppService = serviceProvider.GetService<PartidaAppService>();
+             var ipartidaService = serviceProvider.GetService<IPartidaService>();
+             var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+            //var imensagemService = serviceProvider.GetService<IMensagemService>();
+            //var mensagemService = serviceProvider.GetService<IMensagemService>();
 
             ipartidaService.IniciarPartida();
         }
