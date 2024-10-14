@@ -13,17 +13,21 @@ namespace SolucaoJV.Application.Services
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiroUI;
         private TipoJogador _jogadorAtual;
-        //private readonly PartidaController _partidaController;
         private readonly ConfiguraTela _configuraTela;
+        private readonly JogadaService _jogadaService;
 
         bool posicao = false;
 
-        public PartidaAppService(Tabuleiro tabuleiro, PartidaDomainService partidaDomainService, ConfiguraTela configuraTela)
+        public PartidaAppService(
+            Tabuleiro tabuleiro, 
+            PartidaDomainService partidaDomainService, 
+            ConfiguraTela configuraTela,
+            JogadaService jogadaService)
         {
             _tabuleiroUI = tabuleiro;
             _partidaDomainService = partidaDomainService;
-            //_partidaController = partidaController;
             _configuraTela = configuraTela;
+            _jogadaService = jogadaService;
         }
 
         public void IniciarPartida()
@@ -39,8 +43,10 @@ namespace SolucaoJV.Application.Services
                 TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
                 _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
+                
+                _jogadaService.LerJogada();
 
-                if(_partidaDomainService.ObterTurno() > 2)
+                if (_partidaDomainService.ObterTurno() > 2)
                 {
                     _partidaDomainService.VefificarVitoria();
                 }

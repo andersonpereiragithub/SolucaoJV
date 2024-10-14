@@ -18,11 +18,13 @@ namespace SolucaoJV.V
                 .AddSingleton<Tabuleiro>()
                 .AddSingleton<ConfiguraTela>()
                 .AddSingleton<Posicao>()
-
+                .AddSingleton<JogadaService>()
                 .AddScoped<PartidaDomainService>()
                 .AddScoped<IPartidaService, PartidaAppService>()
                 .AddScoped<PartidaController>()
                 .AddScoped<IMensagemService, MensagemService>()
+
+                
 
                 .BuildServiceProvider();
 

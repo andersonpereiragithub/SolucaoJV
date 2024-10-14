@@ -67,12 +67,7 @@ namespace SolucaoJV.UI.Controllers
             }
         }
 
-        private (int, int) RegistrarJogada(int linha, int coluna)
-        {
-            int linhaIndex = linha - 'a';
-            int colunaIndex = coluna - 1;
-            return (linhaIndex, colunaIndex);
-        }
+        
 
         public void JogadaInvalida()
         {
