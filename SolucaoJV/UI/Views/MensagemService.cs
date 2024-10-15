@@ -9,7 +9,9 @@ namespace SolucaoJV.UI.Views
 
         public void ExibirVencedor(string vencedor)
         {
+            Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");
+            PerguntarSeDesejaReiniciar();
         }
         public bool PerguntarSeDesejaReiniciar()
         {

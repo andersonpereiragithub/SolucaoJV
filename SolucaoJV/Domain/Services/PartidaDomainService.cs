@@ -31,7 +31,7 @@ namespace SolucaoJV.Domain.Services
             Jogadas = new string[3, 3];
         }
         
-        public string VefificarVitoria()
+        public string VerificarVitoria()
         {
             int v = CondicaoDeVitoria(Jogadas);
 

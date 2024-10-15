@@ -52,7 +52,7 @@ namespace SolucaoJV.Application.Services
 
                 if (_partidaDomainService.ObterTurno() > 2)
                 {
-                    string vencedor = _partidaDomainService.VefificarVitoria();
+                    string vencedor = _partidaDomainService.VerificarVitoria();
                     
                     if(vencedor != null)
                     {
