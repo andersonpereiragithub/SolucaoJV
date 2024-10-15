@@ -11,24 +11,24 @@ namespace SolucaoJV.UI.Views
         {
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");
-            PerguntarSeDesejaReiniciar();
+            // PerguntarSeDesejaReiniciar();
         }
-        public bool PerguntarSeDesejaReiniciar()
+        public void MensagemSeDesejaReiniciar()
         {
             Console.SetCursorPosition(3, 15);
             Console.WriteLine("Deseja reiniciar o jogo? (s/n): ");
             Console.SetCursorPosition(34, 15);
 
-            resposta = Console.ReadLine().ToLower();
+            //resposta = Console.ReadLine().ToLower();
 
-            if (resposta[0] == 's')
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //if (resposta[0] == 's')
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
     }
 }

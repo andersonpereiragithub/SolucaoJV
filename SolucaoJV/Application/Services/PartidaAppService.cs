@@ -19,8 +19,8 @@ namespace SolucaoJV.Application.Services
         bool posicao = false;
 
         public PartidaAppService(
-            Tabuleiro tabuleiro, 
-            PartidaDomainService partidaDomainService, 
+            Tabuleiro tabuleiro,
+            PartidaDomainService partidaDomainService,
             ConfiguraTela configuraTela,
             JogadaService jogadaService,
             IMensagemService imensagemService)
@@ -45,7 +45,7 @@ namespace SolucaoJV.Application.Services
                 TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
                 _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
-                
+
                 (int linha, int coluna) = _jogadaService.LerJogada();
 
                 RegistrarJogada(linha, coluna);
@@ -53,10 +53,11 @@ namespace SolucaoJV.Application.Services
                 if (_partidaDomainService.ObterTurno() > 2)
                 {
                     string vencedor = _partidaDomainService.VerificarVitoria();
-                    
-                    if(vencedor != null)
+
+                    if (vencedor != null)
                     {
                         _imensagemService.ExibirVencedor(vencedor);
+                        ReiniciarPartida();
                         break;
                     }
                 }
@@ -64,18 +65,13 @@ namespace SolucaoJV.Application.Services
             }
         }
 
-            //_partidaController.LerJogada();
-        public void RegistrarJogada(int linha, int coluna) 
+        public void RegistrarJogada(int linha, int coluna)
         {
             if (_partidaDomainService.PosicaoDisponivel(linha, coluna))
             {
                 _partidaDomainService.Jogadas[linha, coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
                 _tabuleiroUI.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), linha, coluna);
 
-                //if (_partidaDomainService.ObterTurno() > 2)
-                //{
-                //    _partidaDomainService.VefificarVitoria();
-                //}
                 posicao = true;
             }
             else
@@ -91,8 +87,24 @@ namespace SolucaoJV.Application.Services
 
         public void ReiniciarPartida()
         {
-            _tabuleiroUI.DesenharTabuleiroJogo();
-            //_partidaDomainService.Reiniciar();
+            //_tabuleiroUI.DesenharTabuleiroJogo();
+            _imensagemService.MensagemSeDesejaReiniciar();
+            string jogarNovamente = Console.ReadLine().ToLower();
+
+            if (jogarNovamente == 's'.ToString())
+            {
+                ResetarParametros();
+                IniciarPartida();
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void ResetarParametros()
+        {
+            _partidaDomainService.LimparTabuleiro();
         }
     }
 }

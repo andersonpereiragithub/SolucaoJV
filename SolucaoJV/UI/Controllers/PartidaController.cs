@@ -20,9 +20,7 @@ namespace SolucaoJV.UI.Controllers
         private readonly JogadaService _jogadaService;
 
         bool posicao = false;
-        //public int Linha { get; set; }
-        //public int Coluna { get; set; }
-
+        
         public PartidaController(
             Tabuleiro tabuleiro,
             PartidaDomainService partidaDomainService,
@@ -39,21 +37,21 @@ namespace SolucaoJV.UI.Controllers
             _jogadaService = jogadaService;
         }
 
-        public void IniciarJogo()
-        {
-            bool jogarNovamente = _imensagemService.PerguntarSeDesejaReiniciar();
+        //public void IniciarJogo()
+        //{
+        //    //bool jogarNovamente = _imensagemService.PerguntarSeDesejaReiniciar();
 
-            do
-            {
-                _partidaService.ReiniciarPartida();
-                while (!_partidaDomainService.Terminada)
-                {
-                    (int linha, int coluna) = LerJogada();
-                    _jogadaService.RegistrarJogada(linha, coluna);
-                }
-            }
-            while (jogarNovamente);
-        }
+        //    do
+        //    {
+        //        _partidaService.ReiniciarPartida();
+        //        while (!_partidaDomainService.Terminada)
+        //        {
+        //            (int linha, int coluna) = LerJogada();
+        //            _jogadaService.RegistrarJogada(linha, coluna);
+        //        }
+        //    }
+        //    while (jogarNovamente);
+        //}
         public (int, int) LerJogada()
         {
             string jogada = Console.ReadLine().ToLower();
@@ -69,8 +67,6 @@ namespace SolucaoJV.UI.Controllers
                 return LerJogada();
             }
         }
-
-        
 
         public void JogadaInvalida()
         {
