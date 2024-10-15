@@ -34,6 +34,7 @@ namespace SolucaoJV.V
             //var partidaAppService = serviceProvider.GetService<PartidaAppService>();
              var ipartidaService = serviceProvider.GetService<IPartidaService>();
              var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+             //var jogadaService = serviceProvider.GetService<JogadaService>();
             //var imensagemService = serviceProvider.GetService<IMensagemService>();
             //var mensagemService = serviceProvider.GetService<IMensagemService>();
 

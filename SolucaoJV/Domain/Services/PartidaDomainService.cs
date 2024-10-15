@@ -31,7 +31,7 @@ namespace SolucaoJV.Domain.Services
             Jogadas = new string[3, 3];
         }
         
-        public void VefificarVitoria()
+        public string VefificarVitoria()
         {
             int v = CondicaoDeVitoria(Jogadas);
 
@@ -42,16 +42,22 @@ namespace SolucaoJV.Domain.Services
                 if (JogadorAtual.ToString() == "X")
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                    string vencedor = JogadorAtual.ToString();
+                    return vencedor;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    string vencedor = JogadorAtual.ToString();
+                    return vencedor;
                 }
             }
             else if (v == -1)
             {
                Terminada = true;
+                return null;
             }
+            return null;
         }
 
         public int CondicaoDeVitoria(string[,] mat)

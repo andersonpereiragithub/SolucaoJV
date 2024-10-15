@@ -17,6 +17,7 @@ namespace SolucaoJV.UI.Controllers
         private readonly Tabuleiro _tabuleiro;
         private readonly IMensagemService _imensagemService;
         private readonly IPartidaService _partidaService;
+        private readonly JogadaService _jogadaService;
 
         bool posicao = false;
         //public int Linha { get; set; }
@@ -27,13 +28,15 @@ namespace SolucaoJV.UI.Controllers
             PartidaDomainService partidaDomainService,
             Posicao posicao,
             IMensagemService mensagemService,
-            IPartidaService partidaService)
+            IPartidaService partidaService,
+            JogadaService jogadaService)
         {
             _partidaDomainService = partidaDomainService;
             _tabuleiro = tabuleiro;
             _posicao = posicao;
             _imensagemService = mensagemService;
             _partidaService = partidaService;
+            _jogadaService = jogadaService;
         }
 
         public void IniciarJogo()
@@ -46,7 +49,7 @@ namespace SolucaoJV.UI.Controllers
                 while (!_partidaDomainService.Terminada)
                 {
                     (int linha, int coluna) = LerJogada();
-                    RegistrarJogada(linha, coluna);
+                    _jogadaService.RegistrarJogada(linha, coluna);
                 }
             }
             while (jogarNovamente);
@@ -58,7 +61,7 @@ namespace SolucaoJV.UI.Controllers
             {
                 char linha = jogada[0];
                 int coluna = int.Parse(jogada[1] + "");
-                return RegistrarJogada(linha, coluna);
+                return _jogadaService.RegistrarJogada(linha, coluna);
             }
             else
             {
