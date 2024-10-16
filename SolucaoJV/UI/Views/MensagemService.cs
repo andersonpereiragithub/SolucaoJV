@@ -11,7 +11,11 @@ namespace SolucaoJV.UI.Views
         {
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");
-            // PerguntarSeDesejaReiniciar();
+        }
+        public void ExibirEmpate()
+        {
+            Console.SetCursorPosition(14, 14);
+            Console.WriteLine($"Houve EMPATE!!!");
         }
         public void MensagemSeDesejaReiniciar()
         {

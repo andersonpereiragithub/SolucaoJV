@@ -43,6 +43,12 @@ C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debu
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb
 C:\Users\Aderson\source\repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.genruntimeconfig.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.AssemblyReference.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfoInputs.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfo.cs
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCompileInputs.cache
+C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.sourcelink.json
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.exe
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.deps.json
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.runtimeconfig.json
@@ -51,12 +57,6 @@ C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\SolucaoJV.pdb
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.AssemblyReference.cache
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfoInputs.cache
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.AssemblyInfo.cs
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.CoreCompileInputs.cache
-C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.sourcelink.json
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.csproj.Up2Date
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.dll
 C:\Users\Delon\Source\Repos\andersonpereiragithub\SolucaoJV\SolucaoJV\obj\Debug\netcoreapp3.1\SolucaoJV.pdb

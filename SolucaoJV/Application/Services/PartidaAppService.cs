@@ -87,7 +87,6 @@ namespace SolucaoJV.Application.Services
 
         public void ReiniciarPartida()
         {
-            //_tabuleiroUI.DesenharTabuleiroJogo();
             _imensagemService.MensagemSeDesejaReiniciar();
             string jogarNovamente = Console.ReadLine().ToLower();
 
