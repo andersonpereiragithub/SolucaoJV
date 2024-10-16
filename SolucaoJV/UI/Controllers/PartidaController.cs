@@ -37,21 +37,6 @@ namespace SolucaoJV.UI.Controllers
             _jogadaService = jogadaService;
         }
 
-        //public void IniciarJogo()
-        //{
-        //    //bool jogarNovamente = _imensagemService.PerguntarSeDesejaReiniciar();
-
-        //    do
-        //    {
-        //        _partidaService.ReiniciarPartida();
-        //        while (!_partidaDomainService.Terminada)
-        //        {
-        //            (int linha, int coluna) = LerJogada();
-        //            _jogadaService.RegistrarJogada(linha, coluna);
-        //        }
-        //    }
-        //    while (jogarNovamente);
-        //}
         public (int, int) LerJogada()
         {
             string jogada = Console.ReadLine().ToLower();
