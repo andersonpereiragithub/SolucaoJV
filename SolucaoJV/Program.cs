@@ -20,13 +20,13 @@ namespace SolucaoJV.V
                 .AddSingleton<Posicao>()
                 .AddSingleton<JogadaService>()
                 .AddScoped<PartidaDomainService>()
-                .AddScoped<IPartidaService, PartidaAppService>()
+                .AddScoped<IPartidaAppService, PartidaAppService>()
                 .AddScoped<PartidaController>()
                 .AddScoped<IMensagemService, MensagemService>()
 
                 .BuildServiceProvider();
             
-             var ipartidaService = serviceProvider.GetService<IPartidaService>();
+             var ipartidaService = serviceProvider.GetService<IPartidaAppService>();
              var partidaController = serviceProvider.GetRequiredService<PartidaController>();
              
             ipartidaService.IniciarPartida();

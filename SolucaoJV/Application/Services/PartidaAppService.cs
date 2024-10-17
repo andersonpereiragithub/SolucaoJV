@@ -8,7 +8,7 @@ using SolucaoJV.Domain.ValueObjects;
 
 namespace SolucaoJV.Application.Services
 {
-    internal class PartidaAppService : IPartidaService
+    internal class PartidaAppService : IPartidaAppService
     {
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiroUI;
@@ -16,7 +16,6 @@ namespace SolucaoJV.Application.Services
         private readonly ConfiguraTela _configuraTela;
         private readonly JogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
-        bool posicao = false;
 
         public PartidaAppService(
             Tabuleiro tabuleiro,
@@ -37,10 +36,8 @@ namespace SolucaoJV.Application.Services
             _configuraTela.ViewTela();
             _tabuleiroUI.DesenharTabuleiroJogo();
 
-
             while (!_partidaDomainService.Terminada)
             {
-                posicao = false;
                 int turnoAtual = _partidaDomainService.ObterTurno();
                 TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
@@ -50,15 +47,23 @@ namespace SolucaoJV.Application.Services
 
                 RegistrarJogada(linha, coluna);
 
-                if (_partidaDomainService.ObterTurno() > 2)
+                bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
+
+                if (podeHaverGanhador)
                 {
                     string vencedor = _partidaDomainService.VerificarVitoria();
+                    bool houveVitoria = vencedor != null;
+                    bool houveEmpate = vencedor != null && turnoAtual == 5;
 
-                    if (vencedor != null)
+                    if (houveVitoria)
                     {
                         _imensagemService.ExibirVencedor(vencedor);
                         ReiniciarPartida();
-                        break;
+                    }
+                    else if (houveEmpate)
+                    {
+                        _imensagemService.ExibirEmpate();
+                        ReiniciarPartida();
                     }
                 }
                 MudarJogador();
@@ -67,16 +72,15 @@ namespace SolucaoJV.Application.Services
 
         public void RegistrarJogada(int linha, int coluna)
         {
-            if (_partidaDomainService.PosicaoDisponivel(linha, coluna))
-            {
-                _partidaDomainService.Jogadas[linha, coluna] = Convert.ToString(_partidaDomainService.JogadorAtual);
-                _tabuleiroUI.ImprimeJogadas(Convert.ToString(_partidaDomainService.JogadorAtual), linha, coluna);
+            bool PosicaoEstaDisponivel = _partidaDomainService.PosicaoDisponivel(linha, coluna);
 
-                posicao = true;
-            }
-            else
+            if (PosicaoEstaDisponivel)
             {
-                posicao = false;
+                string jogadorAtual = Convert.ToString(_partidaDomainService.JogadorAtual);
+
+                _partidaDomainService.Jogadas[linha, coluna] = jogadorAtual;
+                _tabuleiroUI.ImprimeJogadas(jogadorAtual, linha, coluna);
+
             }
         }
 
@@ -97,6 +101,7 @@ namespace SolucaoJV.Application.Services
             }
             else
             {
+                Console.Clear();
                 Environment.Exit(0);
             }
         }

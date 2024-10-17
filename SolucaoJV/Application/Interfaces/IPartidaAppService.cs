@@ -4,7 +4,7 @@ using System;
 
 namespace SolucaoJV.Application.Interfaces
 {
-    public interface IPartidaService
+    public interface IPartidaAppService
     {
         void IniciarPartida();
         void MudarJogador();

@@ -25,12 +25,12 @@ namespace SolucaoJV.Domain.Services
         {
             return Turno;
         }
-        
+
         private void IniciarJogadas()
         {
             Jogadas = new string[3, 3];
         }
-        
+
         public string VerificarVitoria()
         {
             int v = CondicaoDeVitoria(Jogadas);
@@ -54,7 +54,7 @@ namespace SolucaoJV.Domain.Services
             }
             else if (v == -1)
             {
-               Terminada = true;
+                Terminada = true;
                 return null;
             }
             return null;
@@ -138,12 +138,12 @@ namespace SolucaoJV.Domain.Services
                 IncrementarTurno();
             }
         }
-        
+
         public void IncrementarTurno()
         {
             Turno++;
         }
-        
+
         public void LimparTabuleiro()
         {
             for (int linha = 0; linha < 3; linha++)

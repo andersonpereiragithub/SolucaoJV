@@ -16,7 +16,7 @@ namespace SolucaoJV.UI.Controllers
         private readonly PartidaDomainService _partidaDomainService;
         private readonly Tabuleiro _tabuleiro;
         private readonly IMensagemService _imensagemService;
-        private readonly IPartidaService _partidaService;
+        private readonly IPartidaAppService _partidaService;
         private readonly JogadaService _jogadaService;
 
         bool posicao = false;
@@ -26,7 +26,7 @@ namespace SolucaoJV.UI.Controllers
             PartidaDomainService partidaDomainService,
             Posicao posicao,
             IMensagemService mensagemService,
-            IPartidaService partidaService,
+            IPartidaAppService partidaService,
             JogadaService jogadaService)
         {
             _partidaDomainService = partidaDomainService;
