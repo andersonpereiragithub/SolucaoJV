@@ -6,8 +6,8 @@ namespace SolucaoJV.Domain.Services
 {
     internal class PartidaDomainService
     {
-        private int Linha { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
-        private int Coluna { get; set; } //TORNAR ESSA VARIÁVEL PRIVADA
+        private int Linha { get; set; } 
+        private int Coluna { get; set; } 
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
@@ -30,36 +30,42 @@ namespace SolucaoJV.Domain.Services
         {
             Jogadas = new string[3, 3];
         }
-
         public string VerificarVitoria()
         {
-            int v = CondicaoDeVitoria(Jogadas);
+            int resultadoVitoria = CondicaoDeVitoria(Jogadas);
 
-            if (v == 1)
+            if (resultadoVitoria == 1)
             {
-                Console.BackgroundColor = ConsoleColor.White;
+                AlterarCorDeFundo(ConsoleColor.White);
+                AlterarCorDeTextoPorJogador(JogadorAtual);
 
-                if (JogadorAtual.ToString() == "X")
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    string vencedor = JogadorAtual.ToString();
-                    return vencedor;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    string vencedor = JogadorAtual.ToString();
-                    return vencedor;
-                }
+                return JogadorAtual.ToString();
             }
-            else if (v == -1)
+            else if (resultadoVitoria == -1)
             {
-                Terminada = true;
-                return null;
+                Terminada = true; //Aqui está o motivo de não gerar o EMPATE
             }
+
             return null;
         }
 
+        private void AlterarCorDeTextoPorJogador(TipoJogador jogador)
+        {
+            if (jogador == TipoJogador.X)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+            }
+        }
+
+        private void AlterarCorDeFundo(ConsoleColor cor)
+        {
+            Console.BackgroundColor = cor;
+        }
+        
         public int CondicaoDeVitoria(string[,] mat)
         {
             if (VerificarVitoria("X"))
@@ -81,7 +87,7 @@ namespace SolucaoJV.Domain.Services
                     if (mat[i, j] == null)
                     {
                         return 0;  // Jogo ainda em andamento
-                    }
+                    } 
                 }
             }
 

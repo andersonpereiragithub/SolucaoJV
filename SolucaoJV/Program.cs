@@ -15,20 +15,20 @@ namespace SolucaoJV.V
         {
             var serviceProvider = new ServiceCollection()
 
-                .AddSingleton<Tabuleiro>()
-                .AddSingleton<ConfiguraTela>()
-                .AddSingleton<Posicao>()
-                .AddSingleton<JogadaService>()
-                .AddScoped<PartidaDomainService>()
-                .AddScoped<IPartidaAppService, PartidaAppService>()
-                .AddScoped<PartidaController>()
-                .AddScoped<IMensagemService, MensagemService>()
+               .AddSingleton<Tabuleiro>()
+               .AddSingleton<ConfiguraTela>()
+               .AddSingleton<Posicao>()
+               .AddSingleton<JogadaService>()
+               .AddScoped<PartidaDomainService>()
+               .AddScoped<IPartidaAppService, PartidaAppService>()
+               .AddScoped<PartidaController>()
+               .AddScoped<IMensagemService, MensagemService>()
 
-                .BuildServiceProvider();
-            
-             var ipartidaService = serviceProvider.GetService<IPartidaAppService>();
-             var partidaController = serviceProvider.GetRequiredService<PartidaController>();
-             
+               .BuildServiceProvider();
+
+            var ipartidaService = serviceProvider.GetService<IPartidaAppService>();
+            var partidaController = serviceProvider.GetRequiredService<PartidaController>();
+
             ipartidaService.IniciarPartida();
         }
     }
