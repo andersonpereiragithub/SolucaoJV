@@ -34,6 +34,9 @@ namespace SolucaoJV.Application.Services
         public void IniciarPartida()
         {
             _configuraTela.ViewTela();
+
+            ConsoleBoasVindas.Exibir();
+            
             _tabuleiroUI.DesenharTabuleiroJogo();
 
             while (!_partidaDomainService.Terminada)

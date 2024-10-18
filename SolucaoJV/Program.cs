@@ -29,6 +29,7 @@ namespace SolucaoJV.V
             var ipartidaService = serviceProvider.GetService<IPartidaAppService>();
             var partidaController = serviceProvider.GetRequiredService<PartidaController>();
 
+            
             ipartidaService.IniciarPartida();
         }
     }

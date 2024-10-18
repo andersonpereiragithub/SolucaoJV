@@ -13,6 +13,7 @@ namespace SolucaoJV.UI.Views
 
         public void DesenharTabuleiroJogo()
         {
+            Console.Clear();
             EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
 
             DesenharLinhaVertical(14);

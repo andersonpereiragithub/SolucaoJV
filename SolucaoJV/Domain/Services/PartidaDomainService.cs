@@ -103,12 +103,12 @@ namespace SolucaoJV.Domain.Services
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    bool linhaIguais = (mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador);
+                    bool linhasIguais = (mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador);
                     bool colunasIguais = (mat[0, i] == jogador && mat[1, i] == jogador && mat[2, i] == jogador);
-                    bool diagonalPricipalIguais = (mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador);
-                    bool diagnonaSecundariaIguais = (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador);
+                    bool diagonalPricipalIgual = (mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador);
+                    bool diagonalSecundariaIgual = (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador);
 
-                    if (linhaIguais || colunasIguais || diagonalPricipalIguais || diagnonaSecundariaIguais)
+                    if (linhasIguais || colunasIguais || diagonalPricipalIgual || diagonalSecundariaIgual)
                     {
                         return true;
                     }
