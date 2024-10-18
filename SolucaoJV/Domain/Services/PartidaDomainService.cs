@@ -6,8 +6,12 @@ namespace SolucaoJV.Domain.Services
 {
     internal class PartidaDomainService
     {
-        private int Linha { get; set; } 
-        private int Coluna { get; set; } 
+        const int VITORIA = 1;
+        const int CONTINUA = 0;
+        const int EMPATE = -1;
+
+        private int Linha { get; set; }
+        private int Coluna { get; set; }
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
@@ -30,20 +34,21 @@ namespace SolucaoJV.Domain.Services
         {
             Jogadas = new string[3, 3];
         }
+
         public string VerificarVitoria()
         {
-            int resultadoVitoria = CondicaoDeVitoria(Jogadas);
+            int resultadoPartida = CondicaoDeVitoria(Jogadas);
 
-            if (resultadoVitoria == 1)
+            if (resultadoPartida == VITORIA)
             {
                 AlterarCorDeFundo(ConsoleColor.White);
                 AlterarCorDeTextoPorJogador(JogadorAtual);
 
                 return JogadorAtual.ToString();
             }
-            else if (resultadoVitoria == -1)
+            else if (resultadoPartida == EMPATE)
             {
-                Terminada = true; //Aqui está o motivo de não gerar o EMPATE
+                Terminada = true;
             }
 
             return null;
@@ -65,19 +70,19 @@ namespace SolucaoJV.Domain.Services
         {
             Console.BackgroundColor = cor;
         }
-        
+
         public int CondicaoDeVitoria(string[,] mat)
         {
             if (VerificarVitoria("X"))
             {
                 Terminada = true;
-                return 1;  // Vitória de "X"
+                return VITORIA;
             }
 
             if (VerificarVitoria("O"))
             {
                 Terminada = true;
-                return 1;  // Vitória de "O"
+                return VITORIA;
             }
 
             for (int i = 0; i < 3; i++)
@@ -86,29 +91,28 @@ namespace SolucaoJV.Domain.Services
                 {
                     if (mat[i, j] == null)
                     {
-                        return 0;  // Jogo ainda em andamento
-                    } 
+                        return CONTINUA;
+                    }
                 }
             }
 
-            return -1;
+            Terminada = true;
+            return EMPATE;
 
             bool VerificarVitoria(string jogador)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if ((mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador) ||  // Linha
-                        (mat[0, i] == jogador && mat[1, i] == jogador && mat[2, i] == jogador))   // Coluna
+                    bool linhaIguais = (mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador);
+                    bool colunasIguais = (mat[0, i] == jogador && mat[1, i] == jogador && mat[2, i] == jogador);
+                    bool diagonalPricipalIguais = (mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador);
+                    bool diagnonaSecundariaIguais = (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador);
+
+                    if (linhaIguais || colunasIguais || diagonalPricipalIguais || diagnonaSecundariaIguais)
                     {
                         return true;
                     }
                 }
-                if ((mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador) ||  // Diagonal principal
-                    (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador))   // Diagonal secundária
-                {
-                    return true;
-                }
-
                 return false;
             }
         }
@@ -130,7 +134,6 @@ namespace SolucaoJV.Domain.Services
             Linha = linha - 'a';
             Coluna = coluna - 1;
         }
-
 
         public void MudarJogador()
         {
@@ -158,7 +161,6 @@ namespace SolucaoJV.Domain.Services
                 {
                     Jogadas[linha, coluna] = null;
                 }
-
             }
             JogadorAtual = TipoJogador.X;
             Terminada = false;

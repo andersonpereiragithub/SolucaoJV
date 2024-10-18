@@ -40,11 +40,15 @@ namespace SolucaoJV.UI.Controllers
         public (int, int) LerJogada()
         {
             string jogada = Console.ReadLine().ToLower();
-            if (_posicao.JogadaValida(jogada))
+            bool jogadaValida = _posicao.JogadaValida(jogada);
+
+            if (jogadaValida)
             {
                 char linha = jogada[0];
                 int coluna = int.Parse(jogada[1] + "");
-                return _jogadaService.RegistrarJogada(linha, coluna);
+                (int, int) posicaoDaJogada = _jogadaService.RegistrarJogada(linha, coluna);
+
+                return posicaoDaJogada;
             }
             else
             {
