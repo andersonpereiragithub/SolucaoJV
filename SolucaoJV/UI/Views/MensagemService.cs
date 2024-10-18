@@ -22,17 +22,6 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(3, 15);
             Console.WriteLine("Deseja reiniciar o jogo? (s/n): ");
             Console.SetCursorPosition(34, 15);
-
-            //resposta = Console.ReadLine().ToLower();
-
-            //if (resposta[0] == 's')
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
     }
 }

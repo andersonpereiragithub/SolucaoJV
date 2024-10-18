@@ -30,7 +30,6 @@ namespace SolucaoJV.UI.Views
         {
             foreach(char caractere in mensagemBoasVindas)
             {
-                
                 Console.Write(caractere);
                 Console.Beep(800, 30);
                 Thread.Sleep(espera);
