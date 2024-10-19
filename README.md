@@ -1,22 +1,22 @@
-# SolucaoJV - Jogo da Velha
+# 🏆 **SolucaoJV - Jogo da Velha** 🏆
 
-## Descrição
+## 🎮 **Descrição**
 
 O **SolucaoJV** é um projeto de console de um Jogo da Velha desenvolvido em C# com o objetivo de **treinar as lições de programação** como parte de um desafio de aprendizado. A ideia inicial era criar um jogo simples, mas ao longo do tempo, o código foi refatorado para seguir as boas práticas de design de software, como os princípios SOLID. Este repositório demonstra a evolução da codificação, mostrando a transição de um código amador para um código mais robusto e limpo.
 
 ---
 
-## Funcionalidades
+## ⚙️ **Funcionalidades**
 
-- Jogo da Velha jogável no console.
-- Verificação automática de vencedores ou empate.
-- Reiniciar o jogo ao final de cada partida.
-- Interface simples e intuitiva.
-- **(Em breve)** Possibilidade de jogar contra uma IA.
+- 🕹️ **Jogo da Velha jogável no console.**
+- 🔍 **Verificação automática de vencedores ou empate.**
+- 🔄 **Reiniciar o jogo ao final de cada partida.**
+- 🧑‍💻 **Interface simples e intuitiva.**
+- 🤖 **(Em breve)** Possibilidade de jogar contra uma IA.
 
 ---
 
-## Estrutura do Projeto
+## 🗂️ **Estrutura do Projeto**
 
 O projeto segue os princípios de responsabilidade única (SRP), separando as camadas de lógica de negócio e interface do usuário. Abaixo, estão as classes principais do projeto e suas responsabilidades:
 
@@ -27,55 +27,55 @@ O projeto segue os princípios de responsabilidade única (SRP), separando as ca
 
 ---
 
-## Imagens
+## 🖼️ **Imagens**
 
-### Tela de Boas-Vindas
-<img src="./Img/TelaBoasVindas.PNG" width="400">
+### 🎉 **Tela de Boas-Vindas**
+<img src="./Img/TelaBoasVindas.PNG" width="200">
 
-### Vencedores por Coluna
+### 🏅 **Vencedores por Coluna**
 
 <p align="center">
-    <img src="./Img/TelaColuna1_O_Venceu.PNG" width="300">
-    <img src="./Img/TelaColuna1_X_Venceu.PNG" width="300">
+    <img src="./Img/TelaColuna1_O_Venceu.PNG" width="150">
+    <img src="./Img/TelaColuna1_X_Venceu.PNG" width="150">
 </p>
 
 <p align="center">
-    <img src="./Img/TelaColuna2_O_Venceu.PNG" width="300">
-    <img src="./Img/TelaColuna2_X_Venceu.PNG" width="300">
+    <img src="./Img/TelaColuna2_O_Venceu.PNG" width="150">
+    <img src="./Img/TelaColuna2_X_Venceu.PNG" width="150">
 </p>
 
-### Vencedores por Diagonal
+### 🏅 **Vencedores por Diagonal**
 
 <p align="center">
-    <img src="./Img/TelaDiagonaPrincipal_O_Venceu.PNG" width="300">
-    <img src="./Img/TelaDiagonaPrincipal_X_Venceu.PNG" width="300">
+    <img src="./Img/TelaDiagonaPrincipal_O_Venceu.PNG" width="150">
+    <img src="./Img/TelaDiagonaPrincipal_X_Venceu.PNG" width="150">
 </p>
 
 <p align="center">
-    <img src="./Img/TelaDiagonaSecundaria_O_Venceu.PNG" width="300">
-    <img src="./Img/TelaDiagonaSecundaria_X_Venceu.PNG" width="300">
+    <img src="./Img/TelaDiagonaSecundaria_O_Venceu.PNG" width="150">
+    <img src="./Img/TelaDiagonaSecundaria_X_Venceu.PNG" width="150">
 </p>
 
-### Empate
-<img src="./Img/TelaEmpate.PNG" width="400">
+### 🤝 **Empate**
+<img src="./Img/TelaEmpate.PNG" width="200">
 
 ---
 
-## Futuras Alterações
+## 🔧 **Futuras Alterações**
 
-- [ ] Inserir Nome do Jogador X e O
-- [ ] Melhorar o Fechamento do Console
-- [ ] Tornar o jogo "Melhor de 3 ou 5 vitórias"
-- [ ] Jogar contra IA
-- [ ] Qualquer nova funcionalidade que me leve ao aprendizado
+- [ ] ✍️ **Inserir Nome do Jogador X e O**
+- [ ] 🛠️ **Melhorar o Fechamento do Console**
+- [ ] 🎯 **Tornar o jogo "Melhor de 3 ou 5 vitórias"**
+- [ ] 🤖 **Jogar contra IA**
+- [ ] 🔍 **Qualquer nova funcionalidade que me leve ao aprendizado**
 
 ---
 
-## Evolução do Código
+## 📈 **Evolução do Código**
 
 O projeto **SolucaoJV** começou com uma abordagem simples e ao longo do tempo foi evoluindo. Abaixo estão alguns marcos importantes:
 
-### 1. Primeira Versão (Código Amador)
+### 1. 🛠️ **Primeira Versão (Código Amador)**
 
 A primeira versão do projeto era funcional, mas o código era monolítico, com responsabilidades misturadas. O jogo funcionava, mas a manutenção seria difícil à medida que novas funcionalidades fossem adicionadas.
 
