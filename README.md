@@ -30,38 +30,44 @@ O projeto segue os princípios de responsabilidade única (SRP), separando as ca
 ## Imagens
 
 ### Tela de Boas-Vindas
-![TelaBoasVindas](https://github.com/andersonpereiragithub/SolucaoJV/Img/TelaBoasVindas.png)
+<img src="./Img/TelaBoasVindas.PNG" width="400">
 
 ### Vencedores por Coluna
 
-#### Coluna 1 - O Venceu
-![TelaColuna1_O_Venceu](./Img/TelaColuna1_O_Venceu.png)
+<p align="center">
+    <img src="./Img/TelaColuna1_O_Venceu.PNG" width="300">
+    <img src="./Img/TelaColuna1_X_Venceu.PNG" width="300">
+</p>
 
-#### Coluna 1 - X Venceu
-![TelaColuna1_X_Venceu](./Img/TelaColuna1_X_Venceu.png)
-
-#### Coluna 2 - O Venceu
-![TelaColuna2_O_Venceu](./Img/TelaColuna2_O_Venceu.png)
-
-#### Coluna 2 - X Venceu
-![TelaColuna2_X_Venceu](./Img/TelaColuna2_X_Venceu.png)
+<p align="center">
+    <img src="./Img/TelaColuna2_O_Venceu.PNG" width="300">
+    <img src="./Img/TelaColuna2_X_Venceu.PNG" width="300">
+</p>
 
 ### Vencedores por Diagonal
 
-#### Diagonal Principal - O Venceu
-![TelaDiagonaPrincipal_O_Venceu](./Img/TelaDiagonaPrincipal_O_Venceu.png)
+<p align="center">
+    <img src="./Img/TelaDiagonaPrincipal_O_Venceu.PNG" width="300">
+    <img src="./Img/TelaDiagonaPrincipal_X_Venceu.PNG" width="300">
+</p>
 
-#### Diagonal Principal - X Venceu
-![TelaDiagonaPrincipal_X_Venceu](./Img/TelaDiagonaPrincipal_X_Venceu.png)
-
-#### Diagonal Secundária - O Venceu
-![TelaDiagonaSecundaria_O_Venceu](./Img/TelaDiagonaSecundaria_O_Venceu.png)
-
-#### Diagonal Secundária - X Venceu
-![TelaDiagonaSecundaria_X_Venceu](./Img/TelaDiagonaSecundaria_X_Venceu.png)
+<p align="center">
+    <img src="./Img/TelaDiagonaSecundaria_O_Venceu.PNG" width="300">
+    <img src="./Img/TelaDiagonaSecundaria_X_Venceu.PNG" width="300">
+</p>
 
 ### Empate
-![TelaEmpate](./Img/TelaEmpate.png)
+<img src="./Img/TelaEmpate.PNG" width="400">
+
+---
+
+## Futuras Alterações
+
+- [ ] Inserir Nome do Jogador X e O
+- [ ] Melhorar o Fechamento do Console
+- [ ] Tornar o jogo "Melhor de 3 ou 5 vitórias"
+- [ ] Jogar contra IA
+- [ ] Qualquer nova funcionalidade que me leve ao aprendizado
 
 ---
 
