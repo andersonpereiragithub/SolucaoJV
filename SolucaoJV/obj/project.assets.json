@@ -111,19 +111,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aderson\\.nuget\\packages\\": {}
+    "C:\\Users\\Delon\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aderson\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
+      "projectUniqueName": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
       "projectName": "SolucaoJV",
-      "projectPath": "C:\\Users\\Aderson\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
-      "packagesPath": "C:\\Users\\Aderson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aderson\\source\\repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\obj\\",
+      "projectPath": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\SolucaoJV.csproj",
+      "packagesPath": "C:\\Users\\Delon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Delon\\Source\\Repos\\andersonpereiragithub\\SolucaoJV\\SolucaoJV\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Aderson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Delon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -171,24 +176,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.32, 3.1.32]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

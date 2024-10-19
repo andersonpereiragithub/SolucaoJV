@@ -122,29 +122,34 @@ namespace SolucaoJV.UI.Views
             }
         }
         
-        public void EscreverEm(string s, int linha, int coluna)
+        public void EscreverEm(string letraNumeroOuTexto, int linha, int coluna)
         {
-            if (s == "X" || s == "O")
-                AlterarCor(s, linha, coluna);
-            else if (s == "1" || s == "2" || s == "3" || s == "4")
+            bool seEhLetraOuNumero = letraNumeroOuTexto == "X" || letraNumeroOuTexto == "O" || letraNumeroOuTexto == "1" || 
+                                     letraNumeroOuTexto == "2" || letraNumeroOuTexto == "3" || letraNumeroOuTexto == "4" || 
+                                     letraNumeroOuTexto == "5";
+
+            if (seEhLetraOuNumero)
             {
-                AlterarCor(s, linha, coluna);
+                AlterarCor(letraNumeroOuTexto, linha, coluna);
             }
             else
             {
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.Write(s);
+                Console.Write(letraNumeroOuTexto);
             }
         }
 
-        private static void AlterarCor(string s, int linha, int coluna)
+        private static void AlterarCor(string jogadorChegou, int linha, int coluna)
         {
+            string EhJogadorX = Convert.ToString(TipoJogador.X);
+            string EhJogadorO = Convert.ToString(TipoJogador.O);
+            
             Console.BackgroundColor = ConsoleColor.White;
 
-            if (s == Convert.ToString(TipoJogador.X) || s == Convert.ToString(TipoJogador.O))
+            if (jogadorChegou == EhJogadorX || jogadorChegou == EhJogadorO)
             {
                 Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = s == Convert.ToString(TipoJogador.X) ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+                Console.ForegroundColor = jogadorChegou == EhJogadorX ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             }
             else
             {
@@ -152,7 +157,7 @@ namespace SolucaoJV.UI.Views
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             }
 
-            Console.Write(s + " ");
+            Console.Write(jogadorChegou + " ");
             Console.ResetColor();
         }
         
