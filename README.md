@@ -27,6 +27,44 @@ O projeto segue os princípios de responsabilidade única (SRP), separando as ca
 
 ---
 
+## Imagens
+
+### Tela de Boas-Vindas
+![TelaBoasVindas](https://github.com/andersonpereiragithub/SolucaoJV/Img/TelaBoasVindas.png)
+
+### Vencedores por Coluna
+
+#### Coluna 1 - O Venceu
+![TelaColuna1_O_Venceu](./Img/TelaColuna1_O_Venceu.png)
+
+#### Coluna 1 - X Venceu
+![TelaColuna1_X_Venceu](./Img/TelaColuna1_X_Venceu.png)
+
+#### Coluna 2 - O Venceu
+![TelaColuna2_O_Venceu](./Img/TelaColuna2_O_Venceu.png)
+
+#### Coluna 2 - X Venceu
+![TelaColuna2_X_Venceu](./Img/TelaColuna2_X_Venceu.png)
+
+### Vencedores por Diagonal
+
+#### Diagonal Principal - O Venceu
+![TelaDiagonaPrincipal_O_Venceu](./Img/TelaDiagonaPrincipal_O_Venceu.png)
+
+#### Diagonal Principal - X Venceu
+![TelaDiagonaPrincipal_X_Venceu](./Img/TelaDiagonaPrincipal_X_Venceu.png)
+
+#### Diagonal Secundária - O Venceu
+![TelaDiagonaSecundaria_O_Venceu](./Img/TelaDiagonaSecundaria_O_Venceu.png)
+
+#### Diagonal Secundária - X Venceu
+![TelaDiagonaSecundaria_X_Venceu](./Img/TelaDiagonaSecundaria_X_Venceu.png)
+
+### Empate
+![TelaEmpate](./Img/TelaEmpate.png)
+
+---
+
 ## Evolução do Código
 
 O projeto **SolucaoJV** começou com uma abordagem simples e ao longo do tempo foi evoluindo. Abaixo estão alguns marcos importantes:
