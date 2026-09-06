@@ -25,7 +25,7 @@ namespace SolucaoJV.V
 
                .BuildServiceProvider();
 
-            var ipartidaService = serviceProvider.GetService<IPartidaAppService>();
+            var ipartidaService = serviceProvider.GetRequiredService<IPartidaAppService>();
             
             ipartidaService.IniciarPartida();
         }
