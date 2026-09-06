@@ -11,11 +11,19 @@ namespace SolucaoJV.Domain.ValueObjects
     {
         public bool JogadaValida(string str)
         {
+            if (string.IsNullOrEmpty(str) || str.Length != 2)
+            {
+                return false;
+            }
             if ((str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&
                 (str[1] == '1' || str[1] == '2' || str[1] == '3'))
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }

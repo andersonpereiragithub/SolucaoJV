@@ -9,7 +9,7 @@ namespace SolucaoJV.UI.Views
         public static int origLinha = 0;
         public static int origColuna = 0;
 
-        public Tabuleiro(){}
+        public Tabuleiro() { }
 
         public void DesenharTabuleiroJogo()
         {
@@ -74,11 +74,10 @@ namespace SolucaoJV.UI.Views
                     int posicaoY = linhaInicial_y + espacoEntreLinhas * linha;
 
                     EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY);
-
                 }
             }
         }
-       
+
         public void ImprimirControladores(int turno, TipoJogador jogadorAtual)
         {
             EscreverEm(Convert.ToString(turno), 8, 13);
@@ -86,7 +85,9 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(17, 15);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("  ");
+
+            Console.Write(new string(' ', 25));
+
             Console.SetCursorPosition(17, 15);
         }
 
@@ -121,11 +122,11 @@ namespace SolucaoJV.UI.Views
                     EscreverEm(jogador, 24, 11);
             }
         }
-        
+
         public void EscreverEm(string letraNumeroOuTexto, int linha, int coluna)
         {
-            bool seEhLetraOuNumero = letraNumeroOuTexto == "X" || letraNumeroOuTexto == "O" || letraNumeroOuTexto == "1" || 
-                                     letraNumeroOuTexto == "2" || letraNumeroOuTexto == "3" || letraNumeroOuTexto == "4" || 
+            bool seEhLetraOuNumero = letraNumeroOuTexto == "X" || letraNumeroOuTexto == "O" || letraNumeroOuTexto == "1" ||
+                                     letraNumeroOuTexto == "2" || letraNumeroOuTexto == "3" || letraNumeroOuTexto == "4" ||
                                      letraNumeroOuTexto == "5";
 
             if (seEhLetraOuNumero)
@@ -143,7 +144,7 @@ namespace SolucaoJV.UI.Views
         {
             string EhJogadorX = Convert.ToString(TipoJogador.X);
             string EhJogadorO = Convert.ToString(TipoJogador.O);
-            
+
             Console.BackgroundColor = ConsoleColor.White;
 
             if (jogadorChegou == EhJogadorX || jogadorChegou == EhJogadorO)
@@ -160,7 +161,7 @@ namespace SolucaoJV.UI.Views
             Console.Write(jogadorChegou + " ");
             Console.ResetColor();
         }
-        
+
         public void LimparTabuleiro()
         {
             Console.Clear();

@@ -16,21 +16,28 @@ namespace SolucaoJV.UI.Controllers
 
         public (int, int) LerJogada()
         {
-            string jogada = Console.ReadLine().ToLower();
-
-            if (_posicao.JogadaValida(jogada))
+            while (true)
             {
-                char linha = jogada[0];
-                int coluna = int.Parse(jogada[1] + "");
+                string jogada = Console.ReadLine().ToLower();
+                if (jogada == null)
+                {
+                    JogadaInvalida();
+                    continue;
+                }
 
-                RegistrarJogada(linha, coluna);
+                jogada = jogada.Trim().ToLower();
 
-                return (ConverterLinha(linha), coluna - 1); // Subtrai 1 para adequar à matriz 0-indexada
-            }
-            else
-            {
+                if (_posicao.JogadaValida(jogada))
+                {
+                    char linha = jogada[0];
+                    int coluna = int.Parse(jogada[1] + "");
+
+                    RegistrarJogada(linha, coluna);
+
+                    return (ConverterLinha(linha), coluna - 1);
+                }
+
                 JogadaInvalida();
-                return LerJogada();
             }
         }
 
@@ -52,7 +59,9 @@ namespace SolucaoJV.UI.Controllers
                 tempo--;
             }
             Console.SetCursorPosition(17, 15);
-            Console.WriteLine("                           ");
+            
+            Console.Write(new string(' ', 25));
+            
             Console.SetCursorPosition(17, 15);
         }
 
