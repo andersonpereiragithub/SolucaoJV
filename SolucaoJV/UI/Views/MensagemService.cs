@@ -23,5 +23,30 @@ namespace SolucaoJV.UI.Views
             Console.WriteLine("Deseja reiniciar o jogo? (s/n): ");
             Console.SetCursorPosition(34, 15);
         }
+        public void ExibirPosicaoOcupada(string posicao)
+        {
+            Console.SetCursorPosition(17, 16);
+            Console.Write($"[{posicao}] já ocupada!");
+        }
+        public void LimparMensagemJogada()
+        {
+            int colunaAtual = Console.CursorLeft;
+            int linhaAtual = Console.CursorTop;
+
+            ConsoleColor corFundoAtual = Console.BackgroundColor;
+            ConsoleColor corTextoAtual = Console.ForegroundColor;
+
+            Console.SetCursorPosition(13, 16);
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.Write(new string(' ', 30));
+
+            Console.BackgroundColor = corFundoAtual;
+            Console.ForegroundColor = corTextoAtual;
+
+            Console.SetCursorPosition(colunaAtual, linhaAtual);
+        }
     }
 }

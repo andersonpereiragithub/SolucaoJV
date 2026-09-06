@@ -49,6 +49,7 @@ namespace SolucaoJV.Application.Services
 
                     _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
 
+
                     (int linha, int coluna)? jogada = _jogadaService.LerJogada();
 
                     if (jogada == null)
@@ -62,8 +63,12 @@ namespace SolucaoJV.Application.Services
 
                     if (!jogadaAceita)
                     {
+                        string posicao = $"{(char)('a' + linha)}{coluna + 1}";
+                        _imensagemService.ExibirPosicaoOcupada(posicao);
                         continue;
                     }
+
+                    _imensagemService.LimparMensagemJogada();
 
                     bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
 
