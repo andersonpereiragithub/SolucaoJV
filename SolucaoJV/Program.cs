@@ -20,7 +20,7 @@ namespace SolucaoJV.V
                .AddSingleton<Posicao>()
                .AddSingleton<JogadaService>()
                .AddSingleton<PartidaDomainService>()
-               .AddScoped<IPartidaAppService, PartidaAppService>()
+               .AddSingleton<IPartidaAppService, PartidaAppService>()
                .AddSingleton<IMensagemService, MensagemService>()
 
                .BuildServiceProvider();
