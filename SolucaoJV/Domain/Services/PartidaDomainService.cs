@@ -129,10 +129,15 @@ namespace SolucaoJV.Domain.Services
             }
         }
 
-        public void RegistrarJogada(char linha, int coluna)
+        public bool TentarRegistrarJogada(int linha, int coluna)
         {
-            Linha = linha - 'a';
-            Coluna = coluna - 1;
+            if (!PosicaoDisponivel(linha, coluna))
+            {
+                return false;
+            }
+
+            Jogadas[linha, coluna] = JogadorAtual.ToString();
+            return true;
         }
 
         public void MudarJogador()

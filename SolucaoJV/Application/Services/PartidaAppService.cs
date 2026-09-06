@@ -36,7 +36,7 @@ namespace SolucaoJV.Application.Services
             _configuraTela.ViewTela();
 
             ConsoleBoasVindas.Exibir();
-            
+
             _tabuleiroUI.DesenharTabuleiroJogo();
 
             while (!_partidaDomainService.Terminada)
@@ -48,7 +48,11 @@ namespace SolucaoJV.Application.Services
 
                 (int linha, int coluna) = _jogadaService.LerJogada();
 
-                RegistrarJogada(linha, coluna);
+                bool jogadaAceita = RegistrarJogada(linha, coluna);
+                if (!jogadaAceita)
+                {
+                    continue;
+                }
 
                 bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
 
@@ -73,18 +77,19 @@ namespace SolucaoJV.Application.Services
             }
         }
 
-        public void RegistrarJogada(int linha, int coluna)
+        public bool RegistrarJogada(int linha, int coluna)
         {
-            bool PosicaoEstaDisponivel = _partidaDomainService.PosicaoDisponivel(linha, coluna);
+            bool jogadaAceita = _partidaDomainService.TentarRegistrarJogada(linha, coluna);
 
-            if (PosicaoEstaDisponivel)
+            if (!jogadaAceita)
             {
-                string jogadorAtual = Convert.ToString(_partidaDomainService.JogadorAtual);
-
-                _partidaDomainService.Jogadas[linha, coluna] = jogadorAtual;
-                _tabuleiroUI.ImprimeJogadas(jogadorAtual, linha, coluna);
-
+                return false;
             }
+
+            string jogadorAtual = Convert.ToString(_partidaDomainService.JogadorAtual);
+            _tabuleiroUI.ImprimeJogadas(jogadorAtual, linha, coluna);
+
+            return true;
         }
 
         public void MudarJogador()

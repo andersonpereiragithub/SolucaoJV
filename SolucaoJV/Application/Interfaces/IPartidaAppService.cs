@@ -8,7 +8,7 @@ namespace SolucaoJV.Application.Interfaces
     {
         void IniciarPartida();
         void MudarJogador();
-        void RegistrarJogada(int linha, int coluna);
+        bool RegistrarJogada(int linha, int coluna);
         void ReiniciarPartida();
     }
 }
