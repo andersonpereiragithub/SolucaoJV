@@ -33,47 +33,53 @@ namespace SolucaoJV.Application.Services
 
         public void IniciarPartida()
         {
-            _configuraTela.ViewTela();
-
-            ConsoleBoasVindas.Exibir();
-
-            _tabuleiroUI.DesenharTabuleiroJogo();
-
-            while (!_partidaDomainService.Terminada)
+            while (true)
             {
-                int turnoAtual = _partidaDomainService.ObterTurno();
-                TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
-                _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
+                _configuraTela.ViewTela();
 
-                (int linha, int coluna) = _jogadaService.LerJogada();
+                ConsoleBoasVindas.Exibir();
 
-                bool jogadaAceita = RegistrarJogada(linha, coluna);
-                if (!jogadaAceita)
+                _tabuleiroUI.DesenharTabuleiroJogo();
+
+                while (!_partidaDomainService.Terminada)
                 {
-                    continue;
-                }
+                    int turnoAtual = _partidaDomainService.ObterTurno();
+                    TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
-                bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
+                    _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
 
-                if (podeHaverGanhador)
-                {
-                    string vencedor = _partidaDomainService.VerificarVitoria();
-                    bool houveVitoria = vencedor != null;
-                    bool houveEmpate = vencedor == null && turnoAtual == 5;
+                    (int linha, int coluna) = _jogadaService.LerJogada();
 
-                    if (houveVitoria)
+                    bool jogadaAceita = RegistrarJogada(linha, coluna);
+                    if (!jogadaAceita)
                     {
-                        _imensagemService.ExibirVencedor(vencedor);
-                        ReiniciarPartida();
+                        continue;
                     }
-                    else if (houveEmpate)
+
+                    bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
+
+                    if (podeHaverGanhador)
                     {
-                        _imensagemService.ExibirEmpate();
-                        ReiniciarPartida();
+                        string vencedor = _partidaDomainService.VerificarVitoria();
+                        bool houveVitoria = vencedor != null;
+                        bool houveEmpate = vencedor == null && turnoAtual == 5;
+
+                        if (houveVitoria)
+                        {
+                            _imensagemService.ExibirVencedor(vencedor);
+                        }
+                        else if (houveEmpate)
+                        {
+                            _imensagemService.ExibirEmpate();
+                        }
+                    }
+                    if (!_partidaDomainService.Terminada)
+                    {
+                        MudarJogador();
                     }
                 }
-                MudarJogador();
+                ReiniciarPartida();
             }
         }
 
@@ -105,7 +111,6 @@ namespace SolucaoJV.Application.Services
             if (jogarNovamente == 's'.ToString())
             {
                 ResetarParametros();
-                IniciarPartida();
             }
             else
             {
