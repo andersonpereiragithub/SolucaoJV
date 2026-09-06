@@ -19,7 +19,7 @@ namespace SolucaoJV.V
                .AddSingleton<ConfiguraTela>()
                .AddSingleton<Posicao>()
                .AddSingleton<JogadaService>()
-               .AddScoped<PartidaDomainService>()
+               .AddSingleton<PartidaDomainService>()
                .AddScoped<IPartidaAppService, PartidaAppService>()
                .AddSingleton<IMensagemService, MensagemService>()
 
