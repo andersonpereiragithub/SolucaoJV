@@ -49,9 +49,17 @@ namespace SolucaoJV.Application.Services
 
                     _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
 
-                    (int linha, int coluna) = _jogadaService.LerJogada();
+                    (int linha, int coluna)? jogada = _jogadaService.LerJogada();
+
+                    if (jogada == null)
+                    {
+                        return;
+                    }
+
+                    (int linha, int coluna) = jogada.Value;
 
                     bool jogadaAceita = RegistrarJogada(linha, coluna);
+
                     if (!jogadaAceita)
                     {
                         continue;
@@ -79,7 +87,12 @@ namespace SolucaoJV.Application.Services
                         MudarJogador();
                     }
                 }
-                ReiniciarPartida();
+
+                bool reiniciar = ReiniciarPartida();
+                if (!reiniciar)
+                {
+                    return;
+                }
             }
         }
 
@@ -103,20 +116,23 @@ namespace SolucaoJV.Application.Services
             _partidaDomainService.MudarJogador();
         }
 
-        public void ReiniciarPartida()
+        public bool ReiniciarPartida()
         {
             _imensagemService.MensagemSeDesejaReiniciar();
-            string jogarNovamente = Console.ReadLine().ToLower();
 
-            if (jogarNovamente == 's'.ToString())
+            string jogarNovamente = Console.ReadLine();
+
+            if (jogarNovamente == null)
+            {
+                return false;
+            }
+
+            if (jogarNovamente == "s")
             {
                 ResetarParametros();
+                return true;
             }
-            else
-            {
-                Console.Clear();
-                Environment.Exit(0);
-            }
+            return false;
         }
 
         private void ResetarParametros()

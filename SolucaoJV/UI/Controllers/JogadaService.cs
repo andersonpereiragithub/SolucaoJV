@@ -14,15 +14,14 @@ namespace SolucaoJV.UI.Controllers
             _posicao = posicao;
         }
 
-        public (int, int) LerJogada()
+        public (int, int)? LerJogada()
         {
             while (true)
             {
-                string jogada = Console.ReadLine().ToLower();
+                string jogada = Console.ReadLine();
                 if (jogada == null)
                 {
-                    JogadaInvalida();
-                    continue;
+                    return null;
                 }
 
                 jogada = jogada.Trim().ToLower();
