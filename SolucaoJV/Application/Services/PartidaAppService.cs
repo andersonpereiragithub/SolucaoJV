@@ -123,21 +123,13 @@ namespace SolucaoJV.Application.Services
 
         private bool ReiniciarPartida()
         {
-            _imensagemService.MensagemSeDesejaReiniciar();
+            bool reiniciar = _imensagemService.DesejaReiniciar();
 
-            string jogarNovamente = Console.ReadLine();
-
-            if (jogarNovamente == null)
-            {
-                return false;
-            }
-
-            if (jogarNovamente == "s")
+            if (reiniciar)
             {
                 ResetarParametros();
-                return true;
             }
-            return false;
+            return reiniciar;
         }
 
         private void ResetarParametros()

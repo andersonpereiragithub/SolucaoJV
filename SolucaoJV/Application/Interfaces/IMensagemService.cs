@@ -7,7 +7,7 @@ namespace SolucaoJV.Application.Interfaces
     {
         void ExibirVencedor(TipoJogador vencedor);
         public void ExibirEmpate();
-        void MensagemSeDesejaReiniciar();
+        bool DesejaReiniciar();
         void ExibirPosicaoOcupada(string posicao);
         void LimparMensagemJogada();
     }

@@ -12,7 +12,7 @@ namespace SolucaoJV.UI.Views
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = vencedor == TipoJogador.X ? ConsoleColor.Red : ConsoleColor.DarkGreen;
-            
+
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");
         }
@@ -21,11 +21,18 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"Houve EMPATE!!!");
         }
-        public void MensagemSeDesejaReiniciar()
+        public bool DesejaReiniciar()
         {
             Console.SetCursorPosition(3, 15);
             Console.WriteLine("Deseja reiniciar o jogo? (s/n): ");
             Console.SetCursorPosition(34, 15);
+
+            string jogarNovamente = Console.ReadLine();
+            if (jogarNovamente == null)
+            {
+                return false;
+            }
+            return jogarNovamente == "s";
         }
         public void ExibirPosicaoOcupada(string posicao)
         {
