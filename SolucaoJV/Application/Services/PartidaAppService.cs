@@ -70,7 +70,7 @@ namespace SolucaoJV.Application.Services
 
                     _imensagemService.LimparMensagemJogada();
 
-                    bool podeHaverGanhador = _partidaDomainService.ObterTurno() > 2;
+                    bool podeHaverGanhador = _partidaDomainService.PodeHaverGanhador();
 
                     if (podeHaverGanhador)
                     {

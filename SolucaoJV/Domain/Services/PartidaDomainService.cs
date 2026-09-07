@@ -146,6 +146,10 @@ namespace SolucaoJV.Domain.Services
             Terminada = false;
             Turno = 1;
         }
+        public bool PodeHaverGanhador()
+        {
+            return Turno > 2;
+        }
     }
 }
 
