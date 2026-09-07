@@ -101,7 +101,7 @@ namespace SolucaoJV.Application.Services
             }
         }
 
-        public bool RegistrarJogada(int linha, int coluna)
+        private bool RegistrarJogada(int linha, int coluna)
         {
             bool jogadaAceita = _partidaDomainService.TentarRegistrarJogada(linha, coluna);
 
@@ -116,12 +116,12 @@ namespace SolucaoJV.Application.Services
             return true;
         }
 
-        public void MudarJogador()
+        private void MudarJogador()
         {
             _partidaDomainService.MudarJogador();
         }
 
-        public bool ReiniciarPartida()
+        private bool ReiniciarPartida()
         {
             _imensagemService.MensagemSeDesejaReiniciar();
 

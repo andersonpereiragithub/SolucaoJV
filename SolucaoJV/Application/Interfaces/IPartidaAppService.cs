@@ -7,8 +7,5 @@ namespace SolucaoJV.Application.Interfaces
     public interface IPartidaAppService
     {
         void IniciarPartida();
-        void MudarJogador();
-        bool RegistrarJogada(int linha, int coluna);
-        bool ReiniciarPartida();
     }
 }
