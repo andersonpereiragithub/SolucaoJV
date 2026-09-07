@@ -76,7 +76,7 @@ namespace SolucaoJV.Application.Services
                     {
                         string vencedor = _partidaDomainService.VerificarVitoria();
                         bool houveVitoria = vencedor != null;
-                        bool houveEmpate = vencedor == null && turnoAtual == 5;
+                        bool houveEmpate = vencedor == null && _partidaDomainService.Terminada;
 
                         if (houveVitoria)
                         {
