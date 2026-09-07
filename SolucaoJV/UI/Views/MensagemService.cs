@@ -9,6 +9,9 @@ namespace SolucaoJV.UI.Views
 
         public void ExibirVencedor(string vencedor)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = vencedor == "X" ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+            
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");
         }

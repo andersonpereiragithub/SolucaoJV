@@ -1,6 +1,5 @@
 ﻿using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.ValueObjects;
-using System;
 
 namespace SolucaoJV.Domain.Services
 {
@@ -41,30 +40,10 @@ namespace SolucaoJV.Domain.Services
 
             if (resultadoPartida == VITORIA)
             {
-                AlterarCorDeFundo(ConsoleColor.White);
-                AlterarCorDeTextoPorJogador(JogadorAtual);
-
                 return JogadorAtual.ToString();
             }
             
             return null;
-        }
-
-        private void AlterarCorDeTextoPorJogador(TipoJogador jogador)
-        {
-            if (jogador == TipoJogador.X)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-            }
-        }
-
-        private void AlterarCorDeFundo(ConsoleColor cor)
-        {
-            Console.BackgroundColor = cor;
         }
 
         public int CondicaoDeVitoria(string[,] mat)
