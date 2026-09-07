@@ -34,26 +34,30 @@ namespace SolucaoJV.Domain.Services
 
         public string VerificarVitoria()
         {
-            int resultadoPartida = CondicaoDeVitoria(Jogadas);
+            int resultadoPartida = CondicaoDeVitoria(Jogadas, out string vencedor);
 
             if (resultadoPartida == VITORIA)
             {
-                return JogadorAtual.ToString();
+                return vencedor;
             }
             
             return null;
         }
 
-        public int CondicaoDeVitoria(string[,] mat)
+        public int CondicaoDeVitoria(string[,] mat, out string vencedor)
         {
+            vencedor = null;
+
             if (VerificarVitoria("X"))
             {
+                vencedor = "X";
                 Terminada = true;
                 return VITORIA;
             }
 
             if (VerificarVitoria("O"))
             {
+                vencedor = "O";
                 Terminada = true;
                 return VITORIA;
             }
