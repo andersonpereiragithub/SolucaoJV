@@ -46,11 +46,7 @@ namespace SolucaoJV.Domain.Services
 
                 return JogadorAtual.ToString();
             }
-            else if (resultadoPartida == EMPATE)
-            {
-                Terminada = true;
-            }
-
+            
             return null;
         }
 
