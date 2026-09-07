@@ -91,35 +91,35 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(17, 15);
         }
 
-        public void ImprimeJogadas(string jogador, int linha, int coluna)
+        public void ImprimeJogadas(TipoJogador jogador, int linha, int coluna)
         {
             // REFATORAR CÓDIGO => inserindo variáveis nas posiçõe a1, b1, c1, etc...
             if (linha == 0)
             {
                 if (coluna == 0)
-                    EscreverEm(jogador, 10, 3);
+                    EscreverEm(jogador.ToString(), 10, 3);
                 else if (coluna == 1)
-                    EscreverEm(jogador, 17, 3);
+                    EscreverEm(jogador.ToString(), 17, 3);
                 else
-                    EscreverEm(jogador, 24, 3);
+                    EscreverEm(jogador.ToString(), 24, 3);
             }
             else if (linha == 1)
             {
                 if (coluna == 0)
-                    EscreverEm(jogador, 10, 7);
+                    EscreverEm(jogador.ToString(), 10, 7);
                 else if (coluna == 1)
-                    EscreverEm(jogador, 17, 7);
+                    EscreverEm(jogador.ToString(), 17, 7);
                 else
-                    EscreverEm(jogador, 24, 7);
+                    EscreverEm(jogador.ToString(), 24, 7);
             }
             else
             {
                 if (coluna == 0)
-                    EscreverEm(jogador, 10, 11);
+                    EscreverEm(jogador.ToString(), 10, 11);
                 else if (coluna == 1)
-                    EscreverEm(jogador, 17, 11);
+                    EscreverEm(jogador.ToString(), 17, 11);
                 else
-                    EscreverEm(jogador, 24, 11);
+                    EscreverEm(jogador.ToString(), 24, 11);
             }
         }
 

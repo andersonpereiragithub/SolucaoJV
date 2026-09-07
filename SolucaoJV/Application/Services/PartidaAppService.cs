@@ -109,7 +109,8 @@ namespace SolucaoJV.Application.Services
                 return false;
             }
 
-            string jogadorAtual = Convert.ToString(_partidaDomainService.JogadorAtual);
+            TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
+
             _tabuleiroUI.ImprimeJogadas(jogadorAtual, linha, coluna);
 
             return true;
