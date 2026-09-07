@@ -9,8 +9,6 @@ namespace SolucaoJV.Domain.Services
         const int CONTINUA = 0;
         const int EMPATE = -1;
 
-        private int Linha { get; set; }
-        private int Coluna { get; set; }
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
