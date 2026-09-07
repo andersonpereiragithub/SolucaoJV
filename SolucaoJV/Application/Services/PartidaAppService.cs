@@ -35,7 +35,6 @@ namespace SolucaoJV.Application.Services
         {
             while (true)
             {
-
                 _configuraTela.ViewTela();
 
                 ConsoleBoasVindas.Exibir();
@@ -89,7 +88,7 @@ namespace SolucaoJV.Application.Services
                     }
                     if (!_partidaDomainService.Terminada)
                     {
-                        MudarJogador();
+                        _partidaDomainService.MudarJogador();
                     }
                 }
 
@@ -116,25 +115,15 @@ namespace SolucaoJV.Application.Services
             return true;
         }
 
-        private void MudarJogador()
-        {
-            _partidaDomainService.MudarJogador();
-        }
-
         private bool ReiniciarPartida()
         {
             bool reiniciar = _imensagemService.DesejaReiniciar();
 
             if (reiniciar)
             {
-                ResetarParametros();
+                _partidaDomainService.LimparTabuleiro();
             }
             return reiniciar;
-        }
-
-        private void ResetarParametros()
-        {
-            _partidaDomainService.LimparTabuleiro();
         }
     }
 }
