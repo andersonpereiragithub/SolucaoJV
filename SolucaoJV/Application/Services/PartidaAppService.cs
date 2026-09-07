@@ -44,11 +44,11 @@ namespace SolucaoJV.Application.Services
 
                 while (!_partidaDomainService.Terminada)
                 {
-                    int turnoAtual = _partidaDomainService.ObterTurno();
+                    int turnoAtual = _partidaDomainService.Turno;
+                    
                     TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
                     _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
-
 
                     (int linha, int coluna)? jogada = _jogadaService.LerJogada();
 

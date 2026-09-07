@@ -6,9 +6,9 @@ namespace SolucaoJV.Domain.Services
     internal class PartidaDomainService
     {
         public string[,] Jogadas { get; private set; }
-        public TipoJogador JogadorAtual { get; set; }
-        public bool Terminada { get; set; }
-        public int Turno { get; set; }
+        public TipoJogador JogadorAtual { get; private set; }
+        public bool Terminada { get; private set; }
+        public int Turno { get; private set; }
 
         public PartidaDomainService()
         {
@@ -16,11 +16,6 @@ namespace SolucaoJV.Domain.Services
             JogadorAtual = TipoJogador.X;
             Terminada = false;
             Turno = 1;
-        }
-
-        public int ObterTurno()
-        {
-            return Turno;
         }
 
         private void IniciarJogadas()
