@@ -1,5 +1,6 @@
 ﻿using System;
 using SolucaoJV.Application.Interfaces;
+using SolucaoJV.Domain.Entities;
 
 namespace SolucaoJV.UI.Views
 {
@@ -7,10 +8,10 @@ namespace SolucaoJV.UI.Views
     {
         string resposta = "";
 
-        public void ExibirVencedor(string vencedor)
+        public void ExibirVencedor(TipoJogador vencedor)
         {
             Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = vencedor == "X" ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+            Console.ForegroundColor = vencedor == TipoJogador.X ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"{vencedor} VENCEU!!!");

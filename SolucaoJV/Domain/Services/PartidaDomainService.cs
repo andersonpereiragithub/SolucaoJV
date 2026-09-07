@@ -28,9 +28,9 @@ namespace SolucaoJV.Domain.Services
             Jogadas = new string[3, 3];
         }
 
-        public string VerificarVitoria()
+        public TipoJogador? VerificarVitoria()
         {
-            ResultadoPartida resultadoPartida = CondicaoDeVitoria(Jogadas, out string vencedor);
+            ResultadoPartida resultadoPartida = CondicaoDeVitoria(Jogadas, out TipoJogador? vencedor);
 
             if (resultadoPartida == ResultadoPartida.Vitoria)
             {
@@ -40,20 +40,20 @@ namespace SolucaoJV.Domain.Services
             return null;
         }
 
-        public ResultadoPartida CondicaoDeVitoria(string[,] mat, out string vencedor)
+        public ResultadoPartida CondicaoDeVitoria(string[,] mat, out TipoJogador? vencedor)
         {
             vencedor = null;
 
             if (VerificarVitoria("X"))
             {
-                vencedor = "X";
+                vencedor = TipoJogador.X;
                 Terminada = true;
                 return ResultadoPartida.Vitoria;
             }
 
             if (VerificarVitoria("O"))
             {
-                vencedor = "O";
+                vencedor = TipoJogador.O;
                 Terminada = true;
                 return ResultadoPartida.Vitoria;
             }

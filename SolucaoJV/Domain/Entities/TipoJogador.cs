@@ -4,8 +4,9 @@ using System.Text;
 
 namespace SolucaoJV.Domain.Entities
 {
-    enum TipoJogador
+    public enum TipoJogador
     {
-        X, O
+        X, 
+        O
     }
 }

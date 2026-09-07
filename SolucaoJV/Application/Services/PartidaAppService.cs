@@ -74,13 +74,13 @@ namespace SolucaoJV.Application.Services
 
                     if (podeHaverGanhador)
                     {
-                        string vencedor = _partidaDomainService.VerificarVitoria();
+                        TipoJogador? vencedor = _partidaDomainService.VerificarVitoria();
                         bool houveVitoria = vencedor != null;
                         bool houveEmpate = vencedor == null && _partidaDomainService.Terminada;
 
                         if (houveVitoria)
                         {
-                            _imensagemService.ExibirVencedor(vencedor);
+                            _imensagemService.ExibirVencedor(vencedor.Value);
                         }
                         else if (houveEmpate)
                         {
