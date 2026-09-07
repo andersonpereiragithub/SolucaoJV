@@ -5,10 +5,6 @@ namespace SolucaoJV.Domain.Services
 {
     internal class PartidaDomainService
     {
-        const int VITORIA = 1;
-        const int CONTINUA = 0;
-        const int EMPATE = -1;
-
         public string[,] Jogadas { get; private set; }
         public TipoJogador JogadorAtual { get; set; }
         public bool Terminada { get; set; }
@@ -34,9 +30,9 @@ namespace SolucaoJV.Domain.Services
 
         public string VerificarVitoria()
         {
-            int resultadoPartida = CondicaoDeVitoria(Jogadas, out string vencedor);
+            ResultadoPartida resultadoPartida = CondicaoDeVitoria(Jogadas, out string vencedor);
 
-            if (resultadoPartida == VITORIA)
+            if (resultadoPartida == ResultadoPartida.Vitoria)
             {
                 return vencedor;
             }
@@ -44,7 +40,7 @@ namespace SolucaoJV.Domain.Services
             return null;
         }
 
-        public int CondicaoDeVitoria(string[,] mat, out string vencedor)
+        public ResultadoPartida CondicaoDeVitoria(string[,] mat, out string vencedor)
         {
             vencedor = null;
 
@@ -52,14 +48,14 @@ namespace SolucaoJV.Domain.Services
             {
                 vencedor = "X";
                 Terminada = true;
-                return VITORIA;
+                return ResultadoPartida.Vitoria;
             }
 
             if (VerificarVitoria("O"))
             {
                 vencedor = "O";
                 Terminada = true;
-                return VITORIA;
+                return ResultadoPartida.Vitoria;
             }
 
             for (int i = 0; i < 3; i++)
@@ -68,13 +64,13 @@ namespace SolucaoJV.Domain.Services
                 {
                     if (mat[i, j] == null)
                     {
-                        return CONTINUA;
+                        return ResultadoPartida.Continua;
                     }
                 }
             }
 
             Terminada = true;
-            return EMPATE;
+            return ResultadoPartida.Empate;
 
             bool VerificarVitoria(string jogador)
             {
