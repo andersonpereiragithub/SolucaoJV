@@ -15,7 +15,7 @@ namespace SolucaoJV.V
         {
             var serviceProvider = new ServiceCollection()
 
-               .AddSingleton<Tabuleiro>()
+               .AddSingleton<ITabuleiro, Tabuleiro>()
                .AddSingleton<ConfiguraTela>()
                .AddSingleton<Posicao>()
                .AddSingleton<JogadaService>()

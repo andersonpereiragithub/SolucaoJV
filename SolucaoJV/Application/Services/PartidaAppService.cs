@@ -11,14 +11,14 @@ namespace SolucaoJV.Application.Services
     internal class PartidaAppService : IPartidaAppService
     {
         private readonly PartidaDomainService _partidaDomainService;
-        private readonly Tabuleiro _tabuleiroUI;
+        private readonly ITabuleiro _tabuleiroUI;
         private TipoJogador _jogadorAtual;
         private readonly ConfiguraTela _configuraTela;
         private readonly JogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
 
         public PartidaAppService(
-            Tabuleiro tabuleiro,
+            ITabuleiro tabuleiro,
             PartidaDomainService partidaDomainService,
             ConfiguraTela configuraTela,
             JogadaService jogadaService,

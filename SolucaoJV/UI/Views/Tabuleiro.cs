@@ -1,10 +1,11 @@
-﻿using SolucaoJV.Domain.Entities;
+﻿using SolucaoJV.Application.Interfaces;
+using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
 using System;
 
 namespace SolucaoJV.UI.Views
 {
-    class Tabuleiro
+    class Tabuleiro : ITabuleiro
     {
         public static int origLinha = 0;
         public static int origColuna = 0;
@@ -93,7 +94,6 @@ namespace SolucaoJV.UI.Views
 
         public void ImprimeJogadas(TipoJogador jogador, int linha, int coluna)
         {
-            // REFATORAR CÓDIGO => inserindo variáveis nas posiçõe a1, b1, c1, etc...
             if (linha == 0)
             {
                 if (coluna == 0)
