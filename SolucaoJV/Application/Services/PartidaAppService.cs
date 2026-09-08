@@ -1,10 +1,7 @@
 ﻿using SolucaoJV.UI.Views;
-using SolucaoJV.UI.Controllers;
 using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
-using System;
-using SolucaoJV.Domain.ValueObjects;
 
 namespace SolucaoJV.Application.Services
 {
@@ -14,14 +11,14 @@ namespace SolucaoJV.Application.Services
         private readonly ITabuleiro _tabuleiroUI;
         private TipoJogador _jogadorAtual;
         private readonly IConfiguraTela _configuraTela;
-        private readonly JogadaService _jogadaService;
+        private readonly IJogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
 
         public PartidaAppService(
             ITabuleiro tabuleiro,
             PartidaDomainService partidaDomainService,
             IConfiguraTela configuraTela,
-            JogadaService jogadaService,
+            IJogadaService jogadaService,
             IMensagemService imensagemService)
         {
             _tabuleiroUI = tabuleiro;

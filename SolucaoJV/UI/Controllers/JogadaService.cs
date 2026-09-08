@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
+using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.ValueObjects;
 namespace SolucaoJV.UI.Controllers
 {
-    class JogadaService
+    class JogadaService : IJogadaService
     {
         private readonly Posicao _posicao;
 
@@ -19,6 +18,7 @@ namespace SolucaoJV.UI.Controllers
             while (true)
             {
                 string jogada = Console.ReadLine();
+
                 if (jogada == null)
                 {
                     return null;
