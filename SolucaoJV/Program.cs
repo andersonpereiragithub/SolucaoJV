@@ -16,7 +16,7 @@ namespace SolucaoJV.V
             var serviceProvider = new ServiceCollection()
 
                .AddSingleton<ITabuleiro, Tabuleiro>()
-               .AddSingleton<ConfiguraTela>()
+               .AddSingleton<IConfiguraTela, ConfiguraTela>()
                .AddSingleton<Posicao>()
                .AddSingleton<JogadaService>()
                .AddSingleton<PartidaDomainService>()

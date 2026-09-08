@@ -1,8 +1,9 @@
-﻿using System;
+﻿using SolucaoJV.Application.Interfaces;
+using System;
 
 namespace SolucaoJV.UI.Views
 {
-    class ConfiguraTela
+    class ConfiguraTela : IConfiguraTela
     {
         public void ViewTela()
         {

@@ -13,14 +13,14 @@ namespace SolucaoJV.Application.Services
         private readonly PartidaDomainService _partidaDomainService;
         private readonly ITabuleiro _tabuleiroUI;
         private TipoJogador _jogadorAtual;
-        private readonly ConfiguraTela _configuraTela;
+        private readonly IConfiguraTela _configuraTela;
         private readonly JogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
 
         public PartidaAppService(
             ITabuleiro tabuleiro,
             PartidaDomainService partidaDomainService,
-            ConfiguraTela configuraTela,
+            IConfiguraTela configuraTela,
             JogadaService jogadaService,
             IMensagemService imensagemService)
         {
