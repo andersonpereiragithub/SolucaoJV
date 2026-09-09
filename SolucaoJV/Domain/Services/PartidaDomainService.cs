@@ -121,7 +121,7 @@ namespace SolucaoJV.Domain.Services
             Turno++;
         }
 
-        public void LimparTabuleiro()
+        public void ReiniciarEstadoPartida()
         {
             for (int linha = 0; linha < 3; linha++)
             {

@@ -113,7 +113,7 @@ namespace SolucaoJV.Application.Services
 
             if (reiniciar)
             {
-                _partidaDomainService.LimparTabuleiro();
+                _partidaDomainService.ReiniciarEstadoPartida();
             }
             return reiniciar;
         }
