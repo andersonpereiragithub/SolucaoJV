@@ -20,10 +20,10 @@ namespace SolucaoJV.Domain.Services
 
         public ResultadoPartida VerificarResultado(out TipoJogador? vencedor)
         {
-               return CondicaoDeVitoria(Jogadas, out vencedor);
+               return CondicaoDeVitoria(out vencedor);
         }
 
-        private ResultadoPartida CondicaoDeVitoria(string[,] mat, out TipoJogador? vencedor)
+        private ResultadoPartida CondicaoDeVitoria(out TipoJogador? vencedor)
         {
             vencedor = null;
 
@@ -45,7 +45,7 @@ namespace SolucaoJV.Domain.Services
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (mat[i, j] == null)
+                    if (Jogadas[i, j] == null)
                     {
                         return ResultadoPartida.Continua;
                     }
@@ -59,8 +59,8 @@ namespace SolucaoJV.Domain.Services
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    bool linhasIguais = (mat[i, 0] == jogador && mat[i, 1] == jogador && mat[i, 2] == jogador);
-                    bool colunasIguais = (mat[0, i] == jogador && mat[1, i] == jogador && mat[2, i] == jogador);
+                    bool linhasIguais = (Jogadas[i, 0] == jogador && Jogadas[i, 1] == jogador && Jogadas[i, 2] == jogador);
+                    bool colunasIguais = (Jogadas[0, i] == jogador && Jogadas[1, i] == jogador && Jogadas[2, i] == jogador);
 
                     if (linhasIguais || colunasIguais)
                     {
@@ -68,8 +68,8 @@ namespace SolucaoJV.Domain.Services
                     }
                 }
 
-                    bool diagonalPricipalIgual = (mat[0, 0] == jogador && mat[1, 1] == jogador && mat[2, 2] == jogador);
-                    bool diagonalSecundariaIgual = (mat[0, 2] == jogador && mat[1, 1] == jogador && mat[2, 0] == jogador);
+                    bool diagonalPricipalIgual = (Jogadas[0, 0] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 2] == jogador);
+                    bool diagonalSecundariaIgual = (Jogadas[0, 2] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 0] == jogador);
                 
                 return diagonalPricipalIgual || diagonalSecundariaIgual;
             }

@@ -1,5 +1,4 @@
-﻿using SolucaoJV.UI.Views;
-using SolucaoJV.Application.Interfaces;
+﻿using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.Entities;
 using SolucaoJV.Domain.Services;
 
