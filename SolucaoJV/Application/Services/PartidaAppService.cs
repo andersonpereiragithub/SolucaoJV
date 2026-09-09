@@ -9,7 +9,6 @@ namespace SolucaoJV.Application.Services
     {
         private readonly PartidaDomainService _partidaDomainService;
         private readonly ITabuleiro _tabuleiroUI;
-        private TipoJogador _jogadorAtual;
         private readonly IConfiguraTela _configuraTela;
         private readonly IJogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
@@ -62,8 +61,7 @@ namespace SolucaoJV.Application.Services
 
                     if (!jogadaAceita)
                     {
-                        string posicao = $"{(char)('a' + linha)}{coluna + 1}";
-                        _imensagemService.ExibirPosicaoOcupada(posicao);
+                        _imensagemService.ExibirPosicaoOcupada(linha, coluna);
                         continue;
                     }
 

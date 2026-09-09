@@ -34,8 +34,10 @@ namespace SolucaoJV.UI.Views
             }
             return jogarNovamente == "s";
         }
-        public void ExibirPosicaoOcupada(string posicao)
+        public void ExibirPosicaoOcupada(int linha, int coluna)
         {
+            string posicao = $"{(char)('a' + linha)}{coluna + 1}";
+
             Console.SetCursorPosition(17, 16);
             Console.Write($"[{posicao}] já ocupada!");
         }
