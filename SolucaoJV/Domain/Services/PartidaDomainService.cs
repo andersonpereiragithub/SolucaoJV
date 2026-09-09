@@ -5,22 +5,17 @@ namespace SolucaoJV.Domain.Services
 {
     internal class PartidaDomainService
     {
-        public string[,] Jogadas { get; private set; }
+        private string[,] Jogadas { get; }
         public TipoJogador JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
         public int Turno { get; private set; }
 
         public PartidaDomainService()
         {
-            IniciarJogadas();
+            Jogadas = new string[3, 3];
             JogadorAtual = TipoJogador.X;
             Terminada = false;
             Turno = 1;
-        }
-
-        private void IniciarJogadas()
-        {
-            Jogadas = new string[3, 3];
         }
 
         public ResultadoPartida VerificarResultado(out TipoJogador? vencedor)
@@ -80,7 +75,7 @@ namespace SolucaoJV.Domain.Services
             }
         }
 
-        public bool PosicaoDisponivel(int linha, int coluna)
+        private bool PosicaoDisponivel(int linha, int coluna)
         {
             if (Jogadas[linha, coluna] == null)
             {
