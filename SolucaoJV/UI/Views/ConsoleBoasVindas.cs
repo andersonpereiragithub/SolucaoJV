@@ -1,13 +1,14 @@
-﻿using System;
+﻿using SolucaoJV.Application.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
 namespace SolucaoJV.UI.Views
 {
-    internal class ConsoleBoasVindas
+    internal class ConsoleBoasVindas : IBoasVindas
     {
-        public static void Exibir()
+        public void Exibir()
         {
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.White;
@@ -26,7 +27,7 @@ namespace SolucaoJV.UI.Views
             Console.ReadKey();
         }
 
-        private static void EscreverComEfeito(string mensagemBoasVindas, int espera = 50)
+        private void EscreverComEfeito(string mensagemBoasVindas, int espera = 50)
         {
             foreach(char caractere in mensagemBoasVindas)
             {

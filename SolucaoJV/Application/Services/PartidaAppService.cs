@@ -13,19 +13,22 @@ namespace SolucaoJV.Application.Services
         private readonly IConfiguraTela _configuraTela;
         private readonly IJogadaService _jogadaService;
         private readonly IMensagemService _imensagemService;
+        private readonly IBoasVindas _boasVindas;
 
         public PartidaAppService(
             ITabuleiro tabuleiro,
             PartidaDomainService partidaDomainService,
             IConfiguraTela configuraTela,
             IJogadaService jogadaService,
-            IMensagemService imensagemService)
+            IMensagemService imensagemService,
+            IBoasVindas boasVindas)
         {
             _tabuleiroUI = tabuleiro;
             _partidaDomainService = partidaDomainService;
             _configuraTela = configuraTela;
             _jogadaService = jogadaService;
             _imensagemService = imensagemService;
+            _boasVindas = boasVindas;
         }
 
         public void IniciarPartida()
@@ -34,7 +37,7 @@ namespace SolucaoJV.Application.Services
             {
                 _configuraTela.ViewTela();
 
-                ConsoleBoasVindas.Exibir();
+                _boasVindas.Exibir();
 
                 _tabuleiroUI.DesenharTabuleiroJogo();
 

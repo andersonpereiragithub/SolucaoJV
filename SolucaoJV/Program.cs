@@ -22,6 +22,7 @@ namespace SolucaoJV.V
                .AddSingleton<PartidaDomainService>()
                .AddSingleton<IPartidaAppService, PartidaAppService>()
                .AddSingleton<IMensagemService, MensagemService>()
+               .AddSingleton<IBoasVindas, ConsoleBoasVindas>()
 
                .BuildServiceProvider();
 
