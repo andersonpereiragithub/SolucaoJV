@@ -28,7 +28,7 @@ namespace SolucaoJV.Domain.Services
                return CondicaoDeVitoria(Jogadas, out vencedor);
         }
 
-        public ResultadoPartida CondicaoDeVitoria(string[,] mat, out TipoJogador? vencedor)
+        private ResultadoPartida CondicaoDeVitoria(string[,] mat, out TipoJogador? vencedor)
         {
             vencedor = null;
 
@@ -116,7 +116,7 @@ namespace SolucaoJV.Domain.Services
             }
         }
 
-        public void IncrementarTurno()
+        private void IncrementarTurno()
         {
             Turno++;
         }
