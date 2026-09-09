@@ -23,16 +23,9 @@ namespace SolucaoJV.Domain.Services
             Jogadas = new string[3, 3];
         }
 
-        public TipoJogador? VerificarVitoria()
+        public ResultadoPartida VerificarResultado(out TipoJogador? vencedor)
         {
-            ResultadoPartida resultadoPartida = CondicaoDeVitoria(Jogadas, out TipoJogador? vencedor);
-
-            if (resultadoPartida == ResultadoPartida.Vitoria)
-            {
-                return vencedor;
-            }
-            
-            return null;
+               return CondicaoDeVitoria(Jogadas, out vencedor);
         }
 
         public ResultadoPartida CondicaoDeVitoria(string[,] mat, out TipoJogador? vencedor)
