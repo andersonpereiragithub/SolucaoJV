@@ -43,7 +43,7 @@ namespace SolucaoJV.Application.Services
                 while (!_partidaDomainService.Terminada)
                 {
                     int turnoAtual = _partidaDomainService.Turno;
-                    
+
                     TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
                     _tabuleiroUI.ImprimirControladores(turnoAtual, jogadorAtual);
@@ -67,20 +67,15 @@ namespace SolucaoJV.Application.Services
 
                     _imensagemService.LimparMensagemJogada();
 
-                    bool podeHaverGanhador = _partidaDomainService.PodeHaverGanhador();
+                    ResultadoPartida resultadoPartida = _partidaDomainService.VerificarResultado(out TipoJogador? vencedor);
 
-                    if (podeHaverGanhador)
+                    if (resultadoPartida == ResultadoPartida.Vitoria)
                     {
-                        ResultadoPartida resultadoPartida = _partidaDomainService.VerificarResultado(out TipoJogador? vencedor);
-
-                        if (resultadoPartida == ResultadoPartida.Vitoria)
-                        {
-                            _imensagemService.ExibirVencedor(vencedor.Value);
-                        }
-                        else if (resultadoPartida == ResultadoPartida.Empate)
-                        {
-                            _imensagemService.ExibirEmpate();
-                        }
+                        _imensagemService.ExibirVencedor(vencedor.Value);
+                    }
+                    else if (resultadoPartida == ResultadoPartida.Empate)
+                    {
+                        _imensagemService.ExibirEmpate();
                     }
                     if (!_partidaDomainService.Terminada)
                     {
