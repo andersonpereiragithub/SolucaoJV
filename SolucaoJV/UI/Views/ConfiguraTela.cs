@@ -13,14 +13,15 @@ namespace SolucaoJV.UI.Views
             string tituloTela = "Jogo da Velha";
 
             Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
 
-            Console.SetWindowSize(larguraTela, alturaTela);
-            Console.SetBufferSize(larguraTela, alturaTela);
-            Console.Title = tituloTela;
+            if (OperatingSystem.IsWindows())
+            {
+                Console.SetWindowSize(larguraTela, alturaTela);
+                Console.SetBufferSize(larguraTela, alturaTela);
+            }
+                Console.Title = tituloTela;
         }
     }
 }

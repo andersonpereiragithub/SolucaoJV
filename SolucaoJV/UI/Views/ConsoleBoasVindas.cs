@@ -1,7 +1,5 @@
 ﻿using SolucaoJV.Application.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace SolucaoJV.UI.Views
@@ -32,7 +30,6 @@ namespace SolucaoJV.UI.Views
             foreach(char caractere in mensagemBoasVindas)
             {
                 Console.Write(caractere);
-                Console.Beep(800, 30);
                 Thread.Sleep(espera);
             }
         }
