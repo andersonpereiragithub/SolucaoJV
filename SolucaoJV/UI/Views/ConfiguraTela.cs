@@ -21,7 +21,7 @@ namespace SolucaoJV.UI.Views
                 Console.SetWindowSize(larguraTela, alturaTela);
                 Console.SetBufferSize(larguraTela, alturaTela);
             }
-                Console.Title = tituloTela;
+            Console.Title = tituloTela;
         }
     }
 }

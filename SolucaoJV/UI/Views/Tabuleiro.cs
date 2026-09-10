@@ -94,33 +94,10 @@ namespace SolucaoJV.UI.Views
 
         public void ImprimeJogadas(TipoJogador jogador, int linha, int coluna)
         {
-            if (linha == 0)
-            {
-                if (coluna == 0)
-                    EscreverEm(jogador.ToString(), 10, 3);
-                else if (coluna == 1)
-                    EscreverEm(jogador.ToString(), 17, 3);
-                else
-                    EscreverEm(jogador.ToString(), 24, 3);
-            }
-            else if (linha == 1)
-            {
-                if (coluna == 0)
-                    EscreverEm(jogador.ToString(), 10, 7);
-                else if (coluna == 1)
-                    EscreverEm(jogador.ToString(), 17, 7);
-                else
-                    EscreverEm(jogador.ToString(), 24, 7);
-            }
-            else
-            {
-                if (coluna == 0)
-                    EscreverEm(jogador.ToString(), 10, 11);
-                else if (coluna == 1)
-                    EscreverEm(jogador.ToString(), 17, 11);
-                else
-                    EscreverEm(jogador.ToString(), 24, 11);
-            }
+            int posicaoX = 10 + (7 * coluna);
+            int posicaoY = 3 + (4 * linha);
+
+            EscreverEm(jogador.ToString(), posicaoX, posicaoY);
         }
 
         public void EscreverEm(string letraNumeroOuTexto, int linha, int coluna)

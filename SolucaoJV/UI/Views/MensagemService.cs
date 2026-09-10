@@ -12,11 +12,11 @@ namespace SolucaoJV.UI.Views
             Console.ForegroundColor = vencedor == TipoJogador.X ? ConsoleColor.Red : ConsoleColor.DarkGreen;
 
             Console.SetCursorPosition(14, 14);
-            Console.WriteLine($"{vencedor} VENCEU!!!");
+            Console.WriteLine($"---> VENCEU!!!");
         }
         public void ExibirEmpate()
         {
-            Console.SetCursorPosition(14, 14);
+            Console.SetCursorPosition(14, 15);
             Console.WriteLine($"Houve EMPATE!!!");
         }
         public void ExibirMensagemReinicio()
