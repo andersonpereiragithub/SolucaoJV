@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Threading;
 using SolucaoJV.Application.Interfaces;
-using SolucaoJV.Domain.ValueObjects;
 namespace SolucaoJV.UI.Controllers
 {
     class JogadaService : IJogadaService
     {
-        private readonly Posicao _posicao;
-
-        public JogadaService(Posicao posicao)
-        {
-            _posicao = posicao;
-        }
 
         public (int, int)? LerJogada()
         {
@@ -26,7 +19,7 @@ namespace SolucaoJV.UI.Controllers
 
                 jogada = jogada.Trim().ToLower();
 
-                if (_posicao.JogadaValida(jogada))
+                if (JogadaValida(jogada))
                 {
                     char linha = jogada[0];
                     int coluna = int.Parse(jogada[1] + "");
@@ -73,6 +66,22 @@ namespace SolucaoJV.UI.Controllers
                 'c' => 2,
                 _ => throw new ArgumentException("Linha inválida")
             };
+        }
+        private bool JogadaValida(string str)
+        {
+            if (string.IsNullOrEmpty(str) || str.Length != 2)
+            {
+                return false;
+            }
+            if ((str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&
+                (str[1] == '1' || str[1] == '2' || str[1] == '3'))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

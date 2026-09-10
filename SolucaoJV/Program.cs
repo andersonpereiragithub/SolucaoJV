@@ -5,7 +5,6 @@ using SolucaoJV.Domain.Services;
 using SolucaoJV.UI.Views;
 using SolucaoJV.UI.Controllers;
 using System;
-using SolucaoJV.Domain.ValueObjects;
 
 namespace SolucaoJV.V
 {
@@ -17,7 +16,6 @@ namespace SolucaoJV.V
 
                .AddSingleton<ITabuleiro, Tabuleiro>()
                .AddSingleton<IConfiguraTela, ConfiguraTela>()
-               .AddSingleton<Posicao>()
                .AddSingleton<IJogadaService, JogadaService>()
                .AddSingleton<PartidaDomainService>()
                .AddSingleton<IPartidaAppService, PartidaAppService>()

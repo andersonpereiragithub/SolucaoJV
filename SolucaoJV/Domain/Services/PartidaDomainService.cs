@@ -1,5 +1,4 @@
 ﻿using SolucaoJV.Domain.Entities;
-using SolucaoJV.Domain.ValueObjects;
 
 namespace SolucaoJV.Domain.Services
 {
