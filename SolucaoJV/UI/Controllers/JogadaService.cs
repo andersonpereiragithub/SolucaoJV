@@ -83,5 +83,18 @@ namespace SolucaoJV.UI.Controllers
                 return false;
             }
         }
+        public bool DesejaReiniciar()
+        {
+            string jogarNovamente = Console.ReadLine();
+
+            if (jogarNovamente == null)
+            {
+                return false;
+            }
+
+            jogarNovamente = jogarNovamente.Trim().ToLower();
+
+            return jogarNovamente == "s";
+        }
     }
 }

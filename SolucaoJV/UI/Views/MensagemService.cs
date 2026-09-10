@@ -6,8 +6,6 @@ namespace SolucaoJV.UI.Views
 {
     public class MensagemService : IMensagemService
     {
-        string resposta = "";
-
         public void ExibirVencedor(TipoJogador vencedor)
         {
             Console.BackgroundColor = ConsoleColor.White;
@@ -21,18 +19,11 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(14, 14);
             Console.WriteLine($"Houve EMPATE!!!");
         }
-        public bool DesejaReiniciar()
+        public void ExibirMensagemReinicio()
         {
             Console.SetCursorPosition(3, 15);
             Console.WriteLine("Deseja reiniciar o jogo? (s/n): ");
             Console.SetCursorPosition(34, 15);
-
-            string jogarNovamente = Console.ReadLine();
-            if (jogarNovamente == null)
-            {
-                return false;
-            }
-            return jogarNovamente == "s";
         }
         public void ExibirPosicaoOcupada(int linha, int coluna)
         {

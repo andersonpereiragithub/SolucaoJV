@@ -108,7 +108,9 @@ namespace SolucaoJV.Application.Services
 
         private bool ReiniciarPartida()
         {
-            bool reiniciar = _imensagemService.DesejaReiniciar();
+            _imensagemService.ExibirMensagemReinicio();
+
+            bool reiniciar = _jogadaService.DesejaReiniciar();
 
             if (reiniciar)
             {

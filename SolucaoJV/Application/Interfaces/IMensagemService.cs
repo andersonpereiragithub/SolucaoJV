@@ -1,5 +1,4 @@
 ﻿using SolucaoJV.Domain.Entities;
-using System;
 
 namespace SolucaoJV.Application.Interfaces
 {
@@ -7,7 +6,7 @@ namespace SolucaoJV.Application.Interfaces
     {
         void ExibirVencedor(TipoJogador vencedor);
         public void ExibirEmpate();
-        bool DesejaReiniciar();
+        void ExibirMensagemReinicio();
         void ExibirPosicaoOcupada(int linha, int coluna);
         void LimparMensagemJogada();
     }
