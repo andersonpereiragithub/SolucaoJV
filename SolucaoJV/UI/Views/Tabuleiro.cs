@@ -10,6 +10,11 @@ namespace SolucaoJV.UI.Views
         public static int origLinha = 0;
         public static int origColuna = 0;
 
+        private const int PosicaoInicialX = 10;
+        private const int PosicaoInicialY = 3;
+        private const int EspacoEntreColunas = 7;
+        private const int EspacoEntreLinhas = 4;
+
         public Tabuleiro() { }
 
         public void DesenharTabuleiroJogo()
@@ -94,8 +99,8 @@ namespace SolucaoJV.UI.Views
 
         public void ImprimeJogadas(TipoJogador jogador, int linha, int coluna)
         {
-            int posicaoX = 10 + (7 * coluna);
-            int posicaoY = 3 + (4 * linha);
+            int posicaoX = PosicaoInicialX + (EspacoEntreColunas * coluna);
+            int posicaoY = PosicaoInicialY + (EspacoEntreLinhas * linha);
 
             EscreverEm(jogador.ToString(), posicaoX, posicaoY);
         }
