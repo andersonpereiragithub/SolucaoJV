@@ -16,7 +16,7 @@ namespace SolucaoJV.UI.Views
         }
         public void ExibirEmpate()
         {
-            Console.SetCursorPosition(14, 15);
+            Console.SetCursorPosition(14, 14);
             Console.WriteLine($"Houve EMPATE!!!");
         }
         public void ExibirMensagemReinicio()

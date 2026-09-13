@@ -6,6 +6,10 @@ namespace SolucaoJV.UI.Views
 {
     class Tabuleiro : ITabuleiro
     {
+        private const int QuantidadeCaracteresApagar = 25;
+        private const int PosicaoEntradaX = 17;
+        private const int PosicaoEntradaY = 15;
+
         private const int OrigemX = 0;
         private const int OrigemY = 0;
 
@@ -17,7 +21,7 @@ namespace SolucaoJV.UI.Views
         public void DesenharTabuleiroJogo()
         {
             Console.Clear();
-            EscreverEm("### J O G O  D A  V E L H A ###", 4, 0);
+            EscreverEm("### J O G O  D A  V E L H A ###", 4, 0, ConsoleColor.DarkBlue);
 
             DesenharLinhaVertical(14);
             DesenharLinhaVertical(21);
@@ -28,30 +32,29 @@ namespace SolucaoJV.UI.Views
             DesenharPosicoesDeJogadas();
 
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            EscreverEm("Turno: \nJogador [   ]", 0, 13);
-            Console.SetCursorPosition(8, 15);
-            Console.Write("Sua vez: ");
+            EscreverEm("Turno: \nJogador [   ]", 0, 13, ConsoleColor.DarkBlue);
+            EscreverEm("Sua vez: ", 8, 15, ConsoleColor.DarkBlue);
         }
 
-        private void DesenharLinhaVertical(int coluna)
+        private void DesenharLinhaVertical(int posicaoX)
         {
-            for (int i = 2; i < 13; i++)
+            for (int posicaoY = 2; posicaoY < 13; posicaoY++)
             {
-                EscreverEm("|", coluna, i);
+                EscreverEm("|", posicaoX, posicaoY, ConsoleColor.DarkBlue);
             }
         }
 
-        private void DesenharLinhaHorizontal(int linha)
+        private void DesenharLinhaHorizontal(int posicaoY)
         {
-            for (int i = 8; i < 28; i++)
+            for (int posicaoX = 8; posicaoX < 28; posicaoX++)
             {
-                if (i == 14 || i == 21)
+                if (posicaoX == 14 || posicaoX == 21)
                 {
-                    EscreverEm("+", i, linha);
+                    EscreverEm("+", posicaoX, posicaoY, ConsoleColor.DarkBlue);
                 }
                 else
                 {
-                    EscreverEm("-", i, linha);
+                    EscreverEm("-", posicaoX, posicaoY, ConsoleColor.DarkBlue);
                 }
             }
         }
@@ -64,75 +67,82 @@ namespace SolucaoJV.UI.Views
                 { "c1", "c2", "c3" }
             };
 
-            for (int linha = 0; linha < 3; linha++)
+            for (int linha = 0; linha < posicoes.GetLength(0); linha++)
             {
-                for (int coluna = 0; coluna < 3; coluna++)
+                for (int coluna = 0; coluna < posicoes.GetLength(1); coluna++)
                 {
-                    int posicaoX = PosicaoInicialX + (EspacoEntreColunas * coluna);
-                    int posicaoY = PosicaoInicialY + (EspacoEntreLinhas * linha);
+                    (int posicaoX, int posicaoY) = CalcularPosicao(linha, coluna);
 
-                    EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY);
+                    EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY, ConsoleColor.DarkGray);
                 }
             }
+        }
+
+        private (int posicaoX, int posicaoY) CalcularPosicao(int linha, int coluna)
+        {
+            int posicaoX = PosicaoInicialX + (EspacoEntreColunas * coluna);
+            int posicaoY = PosicaoInicialY + (EspacoEntreLinhas * linha);
+
+            return (posicaoX, posicaoY);
         }
 
         public void ImprimirControladores(int turno, TipoJogador jogadorAtual)
         {
             EscreverEm(Convert.ToString(turno), 8, 13);
             EscreverEm(Convert.ToString(jogadorAtual), 10, 14);
-            Console.SetCursorPosition(17, 15);
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(PosicaoEntradaX, PosicaoEntradaY);
 
-            Console.Write(new string(' ', 25));
+            Console.Write(new string(' ', QuantidadeCaracteresApagar));
 
-            Console.SetCursorPosition(17, 15);
+            Console.SetCursorPosition(PosicaoEntradaX, PosicaoEntradaY);
         }
 
-        public void ImprimeJogadas(TipoJogador jogador, int linha, int coluna)
+        public void ImprimeJogada(TipoJogador jogador, int linha, int coluna)
         {
-            int posicaoX = PosicaoInicialX + (EspacoEntreColunas * coluna);
-            int posicaoY = PosicaoInicialY + (EspacoEntreLinhas * linha);
+            (int posicaoX, int posicaoY) = CalcularPosicao(linha, coluna);
 
             EscreverEm(jogador.ToString(), posicaoX, posicaoY);
         }
 
-        private void EscreverEm(string valorExibido, int posicaoX, int posicaoY)
+        private void EscreverEm(string valorExibido, int posicaoX, int posicaoY, ConsoleColor? cor = null)
         {
-            bool ehTurno = int.TryParse(valorExibido, out int turno) && turno >= 1 && turno <= 5;
-
-            bool deveAlterarCor = valorExibido == "X" || valorExibido == "O" || ehTurno;
-
             Console.SetCursorPosition(OrigemX + posicaoX, OrigemY + posicaoY);
 
-            if (deveAlterarCor)
+            if (cor.HasValue)
             {
-                AlterarCor(valorExibido);
+                Console.ForegroundColor = cor.Value;
             }
             else
             {
-                Console.Write(valorExibido);
+                AlterarCor(valorExibido);
             }
+
+            Console.Write(valorExibido + " ");
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
         }
 
         private void AlterarCor(string valorExibido)
         {
             bool ehJogadorX = valorExibido == TipoJogador.X.ToString();
             bool ehJogadorO = valorExibido == TipoJogador.O.ToString();
+            bool ehTurno = int.TryParse(valorExibido, out int turno) && turno >= 1 && turno <= 5;
 
             Console.BackgroundColor = ConsoleColor.White;
 
             if (ehJogadorX || ehJogadorO)
             {
-                Console.ForegroundColor = valorExibido == TipoJogador.X.ToString() ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ehJogadorX ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             }
-            else
+            else if (ehTurno)
             {
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             }
-
-            Console.Write(valorExibido + " ");
-            Console.ResetColor();
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
         }
     }
 }
