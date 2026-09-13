@@ -1,21 +1,18 @@
 ﻿using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.Entities;
-using SolucaoJV.Domain.Services;
 using System;
 
 namespace SolucaoJV.UI.Views
 {
     class Tabuleiro : ITabuleiro
     {
-        public static int origLinha = 0;
-        public static int origColuna = 0;
+        private const int OrigemX = 0;
+        private const int OrigemY = 0;
 
         private const int PosicaoInicialX = 10;
         private const int PosicaoInicialY = 3;
         private const int EspacoEntreColunas = 7;
         private const int EspacoEntreLinhas = 4;
-
-        public Tabuleiro() { }
 
         public void DesenharTabuleiroJogo()
         {
@@ -67,17 +64,12 @@ namespace SolucaoJV.UI.Views
                 { "c1", "c2", "c3" }
             };
 
-            int colunaInicial_X = 10;
-            int linhaInicial_y = 3;
-            int espacoEntreColunas = 7;
-            int espacoEntreLinhas = 4;
-
             for (int linha = 0; linha < 3; linha++)
             {
                 for (int coluna = 0; coluna < 3; coluna++)
                 {
-                    int posicaoX = colunaInicial_X + espacoEntreColunas * coluna;
-                    int posicaoY = linhaInicial_y + espacoEntreLinhas * linha;
+                    int posicaoX = PosicaoInicialX + (EspacoEntreColunas * coluna);
+                    int posicaoY = PosicaoInicialY + (EspacoEntreLinhas * linha);
 
                     EscreverEm(posicoes[linha, coluna], posicaoX, posicaoY);
                 }
@@ -105,48 +97,42 @@ namespace SolucaoJV.UI.Views
             EscreverEm(jogador.ToString(), posicaoX, posicaoY);
         }
 
-        public void EscreverEm(string letraNumeroOuTexto, int linha, int coluna)
+        private void EscreverEm(string valorExibido, int posicaoX, int posicaoY)
         {
-            bool seEhLetraOuNumero = letraNumeroOuTexto == "X" || letraNumeroOuTexto == "O" || letraNumeroOuTexto == "1" ||
-                                     letraNumeroOuTexto == "2" || letraNumeroOuTexto == "3" || letraNumeroOuTexto == "4" ||
-                                     letraNumeroOuTexto == "5";
+            bool ehTurno = int.TryParse(valorExibido, out int turno) && turno >= 1 && turno <= 5;
 
-            if (seEhLetraOuNumero)
+            bool deveAlterarCor = valorExibido == "X" || valorExibido == "O" || ehTurno;
+
+            Console.SetCursorPosition(OrigemX + posicaoX, OrigemY + posicaoY);
+
+            if (deveAlterarCor)
             {
-                AlterarCor(letraNumeroOuTexto, linha, coluna);
+                AlterarCor(valorExibido);
             }
             else
             {
-                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.Write(letraNumeroOuTexto);
+                Console.Write(valorExibido);
             }
         }
 
-        private static void AlterarCor(string jogadorChegou, int linha, int coluna)
+        private void AlterarCor(string valorExibido)
         {
-            string EhJogadorX = Convert.ToString(TipoJogador.X);
-            string EhJogadorO = Convert.ToString(TipoJogador.O);
+            bool ehJogadorX = valorExibido == TipoJogador.X.ToString();
+            bool ehJogadorO = valorExibido == TipoJogador.O.ToString();
 
             Console.BackgroundColor = ConsoleColor.White;
 
-            if (jogadorChegou == EhJogadorX || jogadorChegou == EhJogadorO)
+            if (ehJogadorX || ehJogadorO)
             {
-                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
-                Console.ForegroundColor = jogadorChegou == EhJogadorX ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+                Console.ForegroundColor = valorExibido == TipoJogador.X.ToString() ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             }
             else
             {
-                Console.SetCursorPosition(origLinha + linha, origColuna + coluna);
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             }
 
-            Console.Write(jogadorChegou + " ");
+            Console.Write(valorExibido + " ");
             Console.ResetColor();
-        }
-
-        public void LimparTabuleiro()
-        {
-            Console.Clear();
         }
     }
 }
