@@ -9,5 +9,6 @@ namespace SolucaoJV.Application.Interfaces
         void ExibirMensagemReinicio();
         void ExibirPosicaoOcupada(int linha, int coluna);
         void LimparMensagemJogada();
+        void ExibirJogadaInvalida();
     }
 }

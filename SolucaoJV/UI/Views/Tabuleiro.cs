@@ -6,10 +6,6 @@ namespace SolucaoJV.UI.Views
 {
     class Tabuleiro : ITabuleiro
     {
-        private const int QuantidadeCaracteresApagar = 25;
-        private const int PosicaoEntradaX = 17;
-        private const int PosicaoEntradaY = 15;
-
         private const int OrigemX = 0;
         private const int OrigemY = 0;
 
@@ -90,11 +86,11 @@ namespace SolucaoJV.UI.Views
         {
             EscreverEm(Convert.ToString(turno), 8, 13);
             EscreverEm(Convert.ToString(jogadorAtual), 10, 14);
-            Console.SetCursorPosition(PosicaoEntradaX, PosicaoEntradaY);
+            Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
 
-            Console.Write(new string(' ', QuantidadeCaracteresApagar));
+            Console.Write(new string(' ', LayoutConsole.QuantidadeCaracteresApagar));
 
-            Console.SetCursorPosition(PosicaoEntradaX, PosicaoEntradaY);
+            Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
         }
 
         public void ImprimeJogada(TipoJogador jogador, int linha, int coluna)

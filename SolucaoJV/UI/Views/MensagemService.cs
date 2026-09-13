@@ -1,6 +1,7 @@
-﻿using System;
-using SolucaoJV.Application.Interfaces;
+﻿using SolucaoJV.Application.Interfaces;
 using SolucaoJV.Domain.Entities;
+using System;
+using System.Threading;
 
 namespace SolucaoJV.UI.Views
 {
@@ -51,6 +52,22 @@ namespace SolucaoJV.UI.Views
             Console.ForegroundColor = corTextoAtual;
 
             Console.SetCursorPosition(colunaAtual, linhaAtual);
+        }
+        public void ExibirJogadaInvalida()
+        {
+            int tempo = 3;
+            for (int i = 0; i < 3; i++)
+            {
+                Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
+                Console.WriteLine($"Jogada Inválida...({tempo})");
+                Thread.Sleep(1000);
+                tempo--;
+            }
+            Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
+
+            Console.Write(new string(' ', LayoutConsole.QuantidadeCaracteresApagar));
+
+            Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
         }
     }
 }

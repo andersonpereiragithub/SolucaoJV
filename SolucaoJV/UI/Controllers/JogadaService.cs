@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Threading;
 using SolucaoJV.Application.Interfaces;
+
 namespace SolucaoJV.UI.Controllers
 {
     class JogadaService : IJogadaService
     {
+        private readonly IMensagemService _mensagemService;
+
+        public JogadaService(IMensagemService mensagemService)
+        {
+            _mensagemService = mensagemService;
+        }
 
         public (int, int)? LerJogada()
         {
@@ -22,41 +28,14 @@ namespace SolucaoJV.UI.Controllers
                 if (JogadaValida(jogada))
                 {
                     char linha = jogada[0];
-                    int coluna = int.Parse(jogada[1] + "");
-
-                    RegistrarJogada(linha, coluna);
+                    int coluna = int.Parse(jogada[1].ToString());
 
                     return (ConverterLinha(linha), coluna - 1);
                 }
 
-                JogadaInvalida();
+                _mensagemService.ExibirJogadaInvalida();
             }
         }
-
-        public (int, int) RegistrarJogada(int linha, int coluna)
-        {
-            int linhaIndex = linha - 'a';
-            int colunaIndex = coluna - 1;
-            return (linhaIndex, colunaIndex);
-        }
-
-        private void JogadaInvalida()
-        {
-            int tempo = 3;
-            for (int i = 0; i < 3; i++)
-            {
-                Console.SetCursorPosition(17, 15);
-                Console.WriteLine($"Jogada Inválida...({tempo})");
-                Thread.Sleep(1000);
-                tempo--;
-            }
-            Console.SetCursorPosition(17, 15);
-            
-            Console.Write(new string(' ', 25));
-            
-            Console.SetCursorPosition(17, 15);
-        }
-
         private int ConverterLinha(char linha)
         {
             return linha switch
@@ -73,28 +52,21 @@ namespace SolucaoJV.UI.Controllers
             {
                 return false;
             }
-            if ((str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&
-                (str[1] == '1' || str[1] == '2' || str[1] == '3'))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (str[0] == 'a' || str[0] == 'b' || str[0] == 'c') &&
+                   (str[1] == '1' || str[1] == '2' || str[1] == '3');
         }
         public bool DesejaReiniciar()
         {
-            string jogarNovamente = Console.ReadLine();
+            string resposta = Console.ReadLine();
 
-            if (jogarNovamente == null)
+            if (resposta == null)
             {
                 return false;
             }
 
-            jogarNovamente = jogarNovamente.Trim().ToLower();
+            resposta = resposta.Trim().ToLower();
 
-            return jogarNovamente == "s";
+            return resposta == "s";
         }
     }
 }

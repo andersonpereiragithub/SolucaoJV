@@ -9,7 +9,7 @@ namespace SolucaoJV.UI.Views
         public void Exibir()
         {
             string mensagem = "Seja bem-vindo ao Jogo da Velha!";
-
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("\n\n\n\n    *********************************");
             Console.WriteLine("  **                                 **\n **                                   **\n  **                                 **");
             Console.WriteLine("    *********************************");
