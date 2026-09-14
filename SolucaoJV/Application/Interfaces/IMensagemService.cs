@@ -10,5 +10,6 @@ namespace SolucaoJV.Application.Interfaces
         void ExibirPosicaoOcupada(int linha, int coluna);
         void LimparMensagemJogada();
         void ExibirJogadaInvalida();
+        void ExibirAvisoConfiguracaoTela();
     }
 }

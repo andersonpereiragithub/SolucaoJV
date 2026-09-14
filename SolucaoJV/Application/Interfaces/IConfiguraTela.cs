@@ -2,6 +2,6 @@
 {
     internal interface IConfiguraTela
     {
-        void ConfigurarTela();
+        bool ConfigurarTela();
     }
 }

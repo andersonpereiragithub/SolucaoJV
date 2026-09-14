@@ -49,7 +49,7 @@ namespace SolucaoJV.UI.Views
             ConsoleColor corFundoAtual = Console.BackgroundColor;
             ConsoleColor corTextoAtual = Console.ForegroundColor;
 
-            Console.SetCursorPosition(17, 16);
+            Console.SetCursorPosition(LayoutConsole.PosicaoMensagemJogadaX, LayoutConsole.PosicaoMensagemJogadaX);
 
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -77,6 +77,15 @@ namespace SolucaoJV.UI.Views
             Console.Write(new string(' ', LayoutConsole.QuantidadeCaracteresApagar));
 
             Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
+        }
+        public void ExibirAvisoConfiguracaoTela()
+        {
+            Console.SetCursorPosition(2, 15);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+
+            Console.WriteLine("Aviso: tamanho da tela NÃO CONFIGURADO!");
+
+            Console.ForegroundColor = ConsoleColor.Black;
         }
     }
 }

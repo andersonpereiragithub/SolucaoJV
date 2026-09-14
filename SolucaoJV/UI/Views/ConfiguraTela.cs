@@ -6,7 +6,7 @@ namespace SolucaoJV.UI.Views
     class ConfiguraTela : IConfiguraTela
     {
         private const string tituloTela = "Jogo da Velha";
-        public void ConfigurarTela()
+        public bool ConfigurarTela()
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -14,10 +14,20 @@ namespace SolucaoJV.UI.Views
 
             if (OperatingSystem.IsWindows())
             {
-                Console.SetWindowSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
-                Console.SetBufferSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
+                try
+                {
+                    Console.SetWindowSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
+                    Console.SetBufferSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
+                }
+                catch
+                {
+                    return false;
+                }
             }
+
             Console.Title = tituloTela;
+            
+            return true;
         }
     }
 }

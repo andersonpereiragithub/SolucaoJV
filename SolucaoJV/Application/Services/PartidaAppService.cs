@@ -33,7 +33,12 @@ namespace SolucaoJV.Application.Services
         {
             while (true)
             {
-                _configuraTela.ConfigurarTela();
+                bool telaConfigurada = _configuraTela.ConfigurarTela();
+
+                if (!telaConfigurada)
+                {
+                    _imensagemService.ExibirAvisoConfiguracaoTela();
+                }
 
                 _boasVindas.Exibir();
 
