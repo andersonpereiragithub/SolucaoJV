@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SolucaoJV.Domain.Entities
+﻿namespace SolucaoJV.Domain.Entities
 {
     class Jogador
     {
-        public string Name { get; set; }
+        public string Nome { get; set; }
         public TipoJogador Tipo { get; set; }
 
-        public Jogador(string name, TipoJogador tipo)
+        public Jogador(string nome, TipoJogador tipo)
         {
-            Name = name;
+            Nome = nome;
             Tipo = tipo;
         }
     }

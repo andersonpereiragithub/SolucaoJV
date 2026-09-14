@@ -6,6 +6,6 @@ namespace SolucaoJV.Application.Interfaces
     {
         void DesenharTabuleiroJogo();
         void ImprimirControladores(int turno, TipoJogador jogador);
-        void ImprimeJogada(TipoJogador jogador, int linha, int coluna);
+        void ImprimirJogada(TipoJogador jogador, int linha, int coluna);
     }
 }

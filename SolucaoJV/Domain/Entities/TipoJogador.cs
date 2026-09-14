@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SolucaoJV.Domain.Entities
+﻿namespace SolucaoJV.Domain.Entities
 {
     public enum TipoJogador
     {
-        X, 
+        X,
         O
     }
 }

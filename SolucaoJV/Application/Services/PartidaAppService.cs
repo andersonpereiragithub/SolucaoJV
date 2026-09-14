@@ -101,7 +101,7 @@ namespace SolucaoJV.Application.Services
 
             TipoJogador jogadorAtual = _partidaDomainService.JogadorAtual;
 
-            _tabuleiroUI.ImprimeJogada(jogadorAtual, linha, coluna);
+            _tabuleiroUI.ImprimirJogada(jogadorAtual, linha, coluna);
 
             return true;
         }

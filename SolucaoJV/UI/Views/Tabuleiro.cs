@@ -93,7 +93,7 @@ namespace SolucaoJV.UI.Views
             Console.SetCursorPosition(LayoutConsole.PosicaoEntradaX, LayoutConsole.PosicaoEntradaY);
         }
 
-        public void ImprimeJogada(TipoJogador jogador, int linha, int coluna)
+        public void ImprimirJogada(TipoJogador jogador, int linha, int coluna)
         {
             (int posicaoX, int posicaoY) = CalcularPosicao(linha, coluna);
 

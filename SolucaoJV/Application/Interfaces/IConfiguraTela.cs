@@ -1,5 +1,4 @@
-﻿
-namespace SolucaoJV.Application.Interfaces
+﻿namespace SolucaoJV.Application.Interfaces
 {
     internal interface IConfiguraTela
     {
