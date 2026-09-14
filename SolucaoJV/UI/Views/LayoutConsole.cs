@@ -15,5 +15,8 @@
 
         public const int PosicaoMensagemJogadaX = 17;
         public const int PosicaoMensagemJogadaY = 16;
+
+        public const int LarguraTela = 40;
+        public const int AlturaTela = 18;
     }
 }

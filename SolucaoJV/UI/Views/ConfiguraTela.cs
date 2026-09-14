@@ -5,21 +5,17 @@ namespace SolucaoJV.UI.Views
 {
     class ConfiguraTela : IConfiguraTela
     {
-        public void ViewTela()
+        private const string tituloTela = "Jogo da Velha";
+        public void ConfigurarTela()
         {
-            int larguraTela = 40;
-            int alturaTela = 18;
-
-            string tituloTela = "Jogo da Velha";
-
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Clear();
 
             if (OperatingSystem.IsWindows())
             {
-                Console.SetWindowSize(larguraTela, alturaTela);
-                Console.SetBufferSize(larguraTela, alturaTela);
+                Console.SetWindowSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
+                Console.SetBufferSize(LayoutConsole.LarguraTela, LayoutConsole.AlturaTela);
             }
             Console.Title = tituloTela;
         }

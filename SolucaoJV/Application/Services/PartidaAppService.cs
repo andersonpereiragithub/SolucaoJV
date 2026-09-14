@@ -33,7 +33,7 @@ namespace SolucaoJV.Application.Services
         {
             while (true)
             {
-                _configuraTela.ViewTela();
+                _configuraTela.ConfigurarTela();
 
                 _boasVindas.Exibir();
 
