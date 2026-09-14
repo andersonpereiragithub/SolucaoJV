@@ -66,7 +66,7 @@ namespace SolucaoJV.Application.Services
 
                     _imensagemService.LimparMensagemJogada();
 
-                    ResultadoPartida resultadoPartida = _partidaDomainService.VerificarResultado(out TipoJogador? vencedor);
+                    ResultadoPartida resultadoPartida = _partidaDomainService.DeterminarResultado(out TipoJogador? vencedor);
 
                     if (resultadoPartida == ResultadoPartida.Vitoria)
                     {

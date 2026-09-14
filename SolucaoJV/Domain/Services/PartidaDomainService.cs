@@ -4,47 +4,45 @@ namespace SolucaoJV.Domain.Services
 {
     internal class PartidaDomainService
     {
-        private string[,] Jogadas { get; }
+        private TipoJogador?[,] Jogadas { get; }
         public TipoJogador JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
         public int Turno { get; private set; }
 
+        private const int TamanhoTabuleiro = 3;
         public PartidaDomainService()
         {
-            Jogadas = new string[3, 3];
+            Jogadas = new TipoJogador?[TamanhoTabuleiro, TamanhoTabuleiro];
             JogadorAtual = TipoJogador.X;
             Terminada = false;
             Turno = 1;
         }
 
-        public ResultadoPartida VerificarResultado(out TipoJogador? vencedor)
-        {
-               return CondicaoDeVitoria(out vencedor);
-        }
-
-        private ResultadoPartida CondicaoDeVitoria(out TipoJogador? vencedor)
+        public ResultadoPartida DeterminarResultado(out TipoJogador? vencedor)
         {
             vencedor = null;
 
-            if (VerificarVitoria("X"))
+            if (VerificarVitoria(TipoJogador.X))
             {
                 vencedor = TipoJogador.X;
-                Terminada = true;
-                return ResultadoPartida.Vitoria;
             }
 
-            if (VerificarVitoria("O"))
+            else if (VerificarVitoria(TipoJogador.O))
             {
                 vencedor = TipoJogador.O;
+            }
+
+            if (vencedor != null)
+            {
                 Terminada = true;
                 return ResultadoPartida.Vitoria;
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int linha = 0; linha < Jogadas.GetLength(0); linha++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int coluna = 0; coluna < Jogadas.GetLength(1); coluna++)
                 {
-                    if (Jogadas[i, j] == null)
+                    if (Jogadas[linha, coluna] == null)
                     {
                         return ResultadoPartida.Continua;
                     }
@@ -54,9 +52,9 @@ namespace SolucaoJV.Domain.Services
             Terminada = true;
             return ResultadoPartida.Empate;
 
-            bool VerificarVitoria(string jogador)
+            bool VerificarVitoria(TipoJogador jogador)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < Jogadas.GetLength(0); i++)
                 {
                     bool linhasIguais = (Jogadas[i, 0] == jogador && Jogadas[i, 1] == jogador && Jogadas[i, 2] == jogador);
                     bool colunasIguais = (Jogadas[0, i] == jogador && Jogadas[1, i] == jogador && Jogadas[2, i] == jogador);
@@ -67,23 +65,16 @@ namespace SolucaoJV.Domain.Services
                     }
                 }
 
-                    bool diagonalPricipalIgual = (Jogadas[0, 0] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 2] == jogador);
-                    bool diagonalSecundariaIgual = (Jogadas[0, 2] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 0] == jogador);
-                
-                return diagonalPricipalIgual || diagonalSecundariaIgual;
+                bool diagonalPrincipalIgual = (Jogadas[0, 0] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 2] == jogador);
+                bool diagonalSecundariaIgual = (Jogadas[0, 2] == jogador && Jogadas[1, 1] == jogador && Jogadas[2, 0] == jogador);
+
+                return diagonalPrincipalIgual || diagonalSecundariaIgual;
             }
         }
 
         private bool PosicaoDisponivel(int linha, int coluna)
         {
-            if (Jogadas[linha, coluna] == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Jogadas[linha, coluna] == null;
         }
 
         public bool TentarRegistrarJogada(int linha, int coluna)
@@ -93,7 +84,7 @@ namespace SolucaoJV.Domain.Services
                 return false;
             }
 
-            Jogadas[linha, coluna] = JogadorAtual.ToString();
+            Jogadas[linha, coluna] = JogadorAtual;
             return true;
         }
 
@@ -106,20 +97,15 @@ namespace SolucaoJV.Domain.Services
             else
             {
                 JogadorAtual = TipoJogador.X;
-                IncrementarTurno();
+                Turno++;
             }
-        }
-
-        private void IncrementarTurno()
-        {
-            Turno++;
         }
 
         public void ReiniciarEstadoPartida()
         {
-            for (int linha = 0; linha < 3; linha++)
+            for (int linha = 0; linha < Jogadas.GetLength(0); linha++)
             {
-                for (int coluna = 0; coluna < 3; coluna++)
+                for (int coluna = 0; coluna < Jogadas.GetLength(1); coluna++)
                 {
                     Jogadas[linha, coluna] = null;
                 }
